@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Alan & Sol - Invitación Real de Boda</title>
-    <!-- Tipografías de Estilo Real y Caligráfico -->
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Librería para la explosión sutil de brillo -->
+    <title>Alan & Sol - Invitación de Boda</title>
+    <!-- Tipografías Elegantes de Rey y Reina -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Librería para la explosión sutil de brillos -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
-            --azul-elegante: #081428;
-            --azul-sobre: #0A1B3A;
             --azul-francia: #003399;
-            --fondo-nude: #F7F3EE;
+            --azul-profundo: #001F66;
+            --fondo-nude: #F9F5F0;
             --blanco: #FFFFFF;
-            --dorado-real: #D4AF37;
+            --dorado: #D4AF37;
             --dorado-brillo: #F3E5AB;
-            --sombra-sobre: rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -29,28 +27,20 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--azul-elegante);
+            background-color: var(--azul-francia);
             color: var(--azul-francia);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        .font-real {
-            font-family: 'Cinzel', serif;
-        }
-
-        .font-caligrafia {
-            font-family: 'Alex Brush', cursive;
-        }
-
-        /* --- PORTADA: SOBRE AZUL DE REY Y REINA --- */
+        /* --- PORTADA: SOBRE AZUL FRANCIA --- */
         #portada-sobre {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: var(--azul-elegante);
+            background-color: var(--azul-profundo);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -65,13 +55,13 @@
             pointer-events: none;
         }
 
-        .sobre-contenedor {
+        .sobre-tarjeta {
             width: 100%;
             max-width: 420px;
-            height: 580px;
-            background: linear-gradient(145deg, #0d2248, #071327);
+            height: 560px;
+            background: linear-gradient(135deg, #003399 0%, #001F66 100%);
             border-radius: 16px;
-            box-shadow: 0 15px 35px var(--sombra-sobre), 0 0 0 1px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(212, 175, 55, 0.3);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -82,89 +72,85 @@
             overflow: hidden;
         }
 
-        /* Pliegue del sobre */
-        .sobre-contenedor::before {
+        /* Solapa del sobre */
+        .sobre-tarjeta::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 220px;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.15), transparent);
+            height: 200px;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.2), transparent);
             clip-path: polygon(0 0, 50% 100%, 100% 0);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
         }
 
-        .sobre-header {
+        .titulo-portada {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2.6rem;
+            color: var(--blanco);
+            letter-spacing: 2px;
             position: relative;
             z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
 
-        .titulo-real {
-            font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
-            color: var(--blanco);
-            letter-spacing: 3px;
-            margin-top: 10px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-        }
-
-        .subtitulo-real {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2rem;
-            color: var(--dorado-real);
-            margin-top: -5px;
-        }
-
-        /* Estampilla de Lacrado Dorada */
+        /* Estampilla Dorada AS */
         .estampilla-btn {
-            width: 95px;
-            height: 95px;
+            width: 90px;
+            height: 90px;
             background: radial-gradient(circle, #f5d77f 0%, #d4af37 60%, #997a15 100%);
             border-radius: 50%;
             border: 3px solid #FFF8DC;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             position: relative;
             z-index: 3;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            animation: latidoSutil 2.5s infinite ease-in-out;
+            transition: transform 0.2s ease;
+            animation: pulso 2.2s infinite ease-in-out;
         }
 
         .estampilla-btn:active {
             transform: scale(0.92);
         }
 
-        @keyframes latidoSutil {
+        @keyframes pulso {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
 
         .estampilla-texto {
-            font-family: 'Cinzel', serif;
-            font-size: 2.1rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #4A3B00;
+            color: #3D2F00;
             letter-spacing: 2px;
-            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
         }
 
-        .sobre-footer {
+        .portada-subtexto {
             position: relative;
             z-index: 2;
-            color: #E2E8F0;
-            font-size: 0.88rem;
-            line-height: 1.5;
-            max-width: 300px;
+            color: var(--blanco);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 310px;
             font-weight: 300;
         }
 
-        /* --- CONTENIDO DE LA INVITACIÓN (FONDO NUDE) --- */
+        .texto-romantico-portada {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--dorado-brillo);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* --- CONTENIDO DE LA INVITACIÓN (FONDO NUDE / LETRAS AZUL FRANCIA) --- */
         #invitacion {
-            max-width: 480px;
+            max-width: 500px;
             margin: 0 auto;
             background-color: var(--fondo-nude);
             min-height: 100vh;
@@ -179,19 +165,14 @@
         section {
             padding: 45px 22px;
             text-align: center;
-            border-bottom: 1px solid rgba(0, 51, 153, 0.08);
-        }
-
-        .alianzas-icon {
-            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 51, 153, 0.1);
         }
 
         h2.seccion-titulo {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
             color: var(--azul-francia);
             margin-bottom: 12px;
-            font-weight: 600;
         }
 
         p, label {
@@ -200,22 +181,22 @@
             font-size: 0.95rem;
         }
 
-        .texto-romantico {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
+        .texto-realeza {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
             color: var(--azul-francia);
             margin: 12px 0;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .foto-boda {
             width: 100%;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             margin: 18px 0;
             display: block;
             object-fit: cover;
-            border: 3px solid var(--blanco);
+            border: 4px solid var(--blanco);
         }
 
         /* --- CALENDARIO --- */
@@ -224,14 +205,13 @@
             padding: 22px;
             border-radius: 14px;
             margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid rgba(0, 51, 153, 0.08);
         }
 
         .cal-mes {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 15px;
@@ -248,7 +228,7 @@
         }
 
         .cal-dia-head {
-            font-weight: 600;
+            font-weight: 700;
             opacity: 0.7;
         }
 
@@ -274,13 +254,12 @@
             padding: 12px 6px;
             border-radius: 10px;
             flex: 1;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
         }
 
         .crono-num {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.4rem;
             color: var(--azul-francia);
         }
 
@@ -293,7 +272,7 @@
             color: var(--azul-francia);
         }
 
-        /* --- RELOJ HORA ENORME --- */
+        /* --- RELOJ ENORME --- */
         .reloj-container {
             margin: 20px auto 10px auto;
             width: 140px;
@@ -306,10 +285,19 @@
         }
 
         .reloj-hora {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
             color: var(--azul-francia);
+        }
+
+        /* MAPA EMBED */
+        .mapa-iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         /* --- COLORES NO PERMITIDOS --- */
@@ -326,7 +314,7 @@
             align-items: center;
             font-size: 0.75rem;
             color: var(--azul-francia);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .circulo-color {
@@ -348,17 +336,16 @@
         }
 
         .versiculo-texto {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
-            line-height: 1.4;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            line-height: 1.3;
             color: var(--azul-francia);
         }
 
         .versiculo-ref {
             margin-top: 12px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--azul-francia);
@@ -418,8 +405,7 @@
             font-size: 0.9rem;
         }
 
-        /* Iframe para reproducción de YouTube */
-        #youtubePlayer {
+        #playerIframe {
             position: absolute;
             width: 1px;
             height: 1px;
@@ -430,46 +416,44 @@
 </head>
 <body>
 
-    <!-- REPRODUCTOR DE LA CANCIÓN "Perfect" DE ED SHEERAN -->
-    <iframe id="youtubePlayer" src="" allow="autoplay"></iframe>
+    <!-- REPRODUCTOR DE LA CANCIÓN EXACTA "PERFECT" DE ED SHEERAN -->
+    <iframe id="playerIframe" src="" allow="autoplay"></iframe>
 
-    <!-- PORTADA DE SOBRE AZUL DE REY Y REINA -->
+    <!-- PORTADA DE SOBRE AZUL FRANCIA -->
     <div id="portada-sobre">
-        <div class="sobre-contenedor">
-            <div class="sobre-header">
-                <h1 class="titulo-real">Alan & Sol</h1>
-                <div class="subtitulo-real">Nuestra Boda Real</div>
-            </div>
+        <div class="sobre-tarjeta">
+            <h1 class="titulo-portada">Alan & Sol</h1>
 
             <!-- Estampilla dorada con iniciales AS -->
             <div class="estampilla-btn" onclick="abrirInvitacion(event)">
                 <span class="estampilla-texto">AS</span>
             </div>
 
-            <div class="sobre-footer">
-                <p>Sube el volumen de tu celular y presiona la estampilla dorada para contarte algo muy importante...</p>
+            <div class="portada-subtexto">
+                <span class="texto-romantico-portada">Hoy comienza una historia de amor sin fin</span>
+                <p>Sube el volumen de tu celular y presiona el botón para contarte algo muy importante...</p>
             </div>
         </div>
     </div>
 
-    <!-- CONTENIDO INTERNO EN FONDO NUDE CON LETRAS AZUL FRANCIA -->
+    <!-- CONTENIDO INTERNO DE LA INVITACIÓN -->
     <div id="invitacion">
         
         <!-- SECCIÓN 1: NOS CASAMOS -->
         <section>
-            <div class="alianzas-icon">
+            <div style="margin-bottom: 10px;">
                 <svg width="60" height="40" viewBox="0 0 100 60" fill="none">
                     <circle cx="35" cy="30" r="22" stroke="#D4AF37" stroke-width="6"/>
                     <circle cx="65" cy="30" r="22" stroke="#D4AF37" stroke-width="6"/>
                 </svg>
             </div>
             <h2 class="seccion-titulo">¡Nos casamos!</h2>
-            <p class="texto-romantico">Dios unió nuestras vidas para siempre</p>
+            <p class="texto-realeza">Dios unió nuestras vidas</p>
             
-            <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol - Foto 1" class="foto-boda">
+            <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol" class="foto-boda">
         </section>
 
-        <!-- SECCIÓN 2: CALENDARIO, CRONÓMETRO Y HORA -->
+        <!-- SECCIÓN 2: CALENDARIO, CRONÓMETRO Y RELOJ ENORME -->
         <section>
             <h2 class="seccion-titulo">Día del Compromiso</h2>
             
@@ -493,7 +477,7 @@
                 </div>
             </div>
 
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.78rem; font-weight: 600; margin-top: 25px;">¿Cuánto falta?</p>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.78rem; font-weight: 700; margin-top: 25px;">¿Cuánto falta?</p>
             
             <!-- CRONÓMETRO -->
             <div class="cronometro">
@@ -523,7 +507,7 @@
                     <line x1="90" y1="50" x2="84" y2="50" stroke="#003399" stroke-width="3"/>
                     <line x1="50" y1="90" x2="50" y2="84" stroke="#003399" stroke-width="3"/>
                     <line x1="10" y1="50" x2="16" y2="50" stroke="#003399" stroke-width="3"/>
-                    <!-- Aguja corta marcando las 9 (21 hs) y larga marcando las 12 (00 min) -->
+                    <!-- Agujas a las 21:00 (las 9 en punto) -->
                     <line x1="50" y1="50" x2="26" y2="50" stroke="#003399" stroke-width="4" stroke-linecap="round"/>
                     <line x1="50" y1="50" x2="50" y2="18" stroke="#003399" stroke-width="3" stroke-linecap="round"/>
                     <circle cx="50" cy="50" r="4" fill="#003399"/>
@@ -532,25 +516,28 @@
             <div class="reloj-hora">21:00 hs</div>
         </section>
 
-        <!-- SECCIÓN 3: UBICACIÓN Y SEGUNDA FOTO -->
+        <!-- SECCIÓN 3: UBICACIÓN CON MAPA INTERACTIVO -->
         <section>
             <h2 class="seccion-titulo">Ubicación</h2>
             <p><strong>"Lalola"</strong></p>
             <p>Av. Dardo Rocha 1982, Berazategui</p>
+
+            <!-- Mapa embebido de Google Maps -->
+            <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.431284711685!2d-58.21631022342981!3d-34.74472256501198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32831d15668d5%3A0x6b6d21f8a8ad3b6!2sAv.%20Dardo%20Rocha%201982%2C%20B1884%20Berazategui%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
             
             <a href="https://maps.google.com/?q=Av.+Dardo+Rocha+1982,+Berazategui" target="_blank" class="btn-accion">
                 📍 Ver en Google Maps
             </a>
 
-            <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol - Foto 2" class="foto-boda">
+            <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda">
         </section>
 
         <!-- SECCIÓN 4: VESTIMENTA Y COLORES NO PERMITIDOS -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Elegante / Formal Dress Code</p>
+            <p style="font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
             
-            <p style="margin-top: 30px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
+            <p style="margin-top: 30px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
             <div class="colores-grid">
                 <div class="color-item">
                     <div class="circulo-color" style="background-color: #FFFFFF;"></div>
@@ -579,25 +566,27 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 6: MÚSICA Y SPOTIFY -->
+        <!-- SECCIÓN 6: MÚSICA CON ICONO DE SPOTIFY -->
         <section>
             <h2 class="seccion-titulo">Música para Bailar</h2>
             <p>¿Qué canción no puede faltar en la fiesta?</p>
             
-            <input type="text" id="cancionTema" placeholder="Nombre de la canción y artista">
-            <button class="btn-accion" onclick="sugerirCancion()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <input type="text" id="cancionTema" placeholder="Escribe el nombre del tema y artista">
+            
+            <button class="btn-accion" style="background-color: #1DB954; color: #FFFFFF;" onclick="sugerirCancion()">
+                <!-- Icono Oficial de Spotify -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-.1.2-.78-.42-.6-.18-.42-.78.18-.6 1.02 4.14-1.26 11.22-.96 15.24 1.44.539.36.719 1.02.36 1.38z"/>
                 </svg>
-                Sugerir en Spotify
+                Sugerir Canción
             </button>
         </section>
 
         <!-- SECCIÓN 7: REGALOS / ALIAS -->
         <section>
             <h2 class="seccion-titulo">Regalos</h2>
-            <p class="texto-romantico">Mi mejor regalo es tu presencia</p>
-            <p>Si deseas colaborar con nuestra luna de miel:</p>
+            <p class="texto-realeza">Mi mejor regalo es tu presencia</p>
+            <p>Si deseas realizar un presente:</p>
             
             <div class="datos-banco">
                 <p><strong>Alias:</strong> labodadealanysol</p>
@@ -611,15 +600,16 @@
             </button>
         </section>
 
-        <!-- SECCIÓN 8: CONFIRMACIÓN DE ASISTENCIA -->
+        <!-- SECCIÓN 8: CONFIRMACIÓN DE ASISTENCIA CON WHATSAPP -->
         <section>
             <h2 class="seccion-titulo">Confirmación</h2>
             <p>Por favor confirma tu presencia:</p>
             
-            <input type="text" id="nombreInvitado" placeholder="Nombre y Apellido">
+            <input type="text" id="nombreInvitado" placeholder="Tu Nombre y Apellido">
             
-            <button class="btn-accion" style="background-color: #25D366;" onclick="confirmarWhatsApp()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <button class="btn-accion" style="background-color: #25D366; color: #FFFFFF;" onclick="confirmarWhatsApp()">
+                <!-- Icono Oficial de WhatsApp -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
                 Confirmar por WhatsApp
@@ -628,8 +618,8 @@
 
         <!-- SECCIÓN 9: ÚLTIMA FOTO Y CIERRE -->
         <section style="border-bottom: none; padding-bottom: 80px;">
-            <img src="IMG-20261017-WA0126.jpg" alt="Alan y Sol - Foto 3" class="foto-boda">
-            <p class="texto-romantico">Caminar de tu mano es nuestro sueño hecho realidad</p>
+            <img src="IMG-20261017-WA0126.jpg" alt="Alan y Sol" class="foto-boda">
+            <p class="texto-realeza">Juntos escribiremos el mejor capítulo de nuestras vidas</p>
             <h2 class="seccion-titulo" style="margin-top: 25px;">¡Los esperamos!</h2>
         </section>
 
@@ -637,34 +627,34 @@
 
     <script>
         function abrirInvitacion(e) {
-            // Explosión de brillos corta y sutil al presionar la estampilla
+            // Ráfaga sutil de destellos dorados y azul Francia
             const rect = e.target.getBoundingClientRect();
             const x = (rect.left + rect.width / 2) / window.innerWidth;
             const y = (rect.top + rect.height / 2) / window.innerHeight;
 
             confetti({
-                particleCount: 45,
-                spread: 60,
-                startVelocity: 25,
+                particleCount: 35,
+                spread: 50,
+                startVelocity: 20,
                 origin: { x: x, y: y },
                 colors: ['#D4AF37', '#003399', '#FFFFFF', '#F3E5AB'],
-                ticks: 120, // Duración muy corta y sutil
-                scalar: 0.8
+                ticks: 100,
+                scalar: 0.85
             });
 
-            // Reproducir música (YouTube API Iframe Embed)
-            const player = document.getElementById('youtubePlayer');
-            player.src = "https://www.youtube.com/embed/vyLASD70F7o?autoplay=1&enablejsapi=1";
+            // Cargar y reproducir automáticamente la canción de YouTube (Ed Sheeran - Perfect)
+            const iframe = document.getElementById('playerIframe');
+            iframe.src = "https://www.youtube.com/embed/vyLASD70F7o?autoplay=1&enablejsapi=1";
 
-            // Ocultar sobre y mostrar invitación tras una brevísima transición
+            // Mostrar contenido principal
             setTimeout(() => {
                 document.getElementById('portada-sobre').classList.add('hidden');
                 document.getElementById('invitacion').classList.add('visible');
                 window.scrollTo(0, 0);
-            }, 500);
+            }, 450);
         }
 
-        // CRONÓMETRO AL 19 DE DICIEMBRE DE 2026 A LAS 21:00 HS
+        // CRONÓMETRO HASTA EL 19 DE DICIEMBRE DE 2026 A LAS 21:00 HS
         const fechaEvento = new Date('December 19, 2026 21:00:00').getTime();
 
         setInterval(function() {
@@ -690,32 +680,32 @@
             document.getElementById('segundos').innerText = s < 10 ? '0' + s : s;
         }, 1000);
 
-        // ENVIAR SUGERENCIA DE CANCIÓN
+        // SUGERIR CANCIÓN POR WHATSAPP
         function sugerirCancion() {
             const tema = document.getElementById('cancionTema').value.trim();
             if(!tema) {
-                alert("Por favor ingresa el nombre de la canción.");
+                alert("Por favor escribe el nombre de la canción.");
                 return;
             }
-            const msg = encodeURIComponent(`Hola! Me gustaría sugerir esta canción para bailar en la boda de Alan y Sol: ${tema}`);
+            const msg = encodeURIComponent(`Hola! Me gustaría sugerir esta canción para la fiesta de Alan y Sol: ${tema}`);
             window.open(`https://wa.me/5491123983071?text=${msg}`, '_blank');
         }
 
-        // CONFIRMAR ASISTENCIA
+        // CONFIRMAR ASISTENCIA POR WHATSAPP (A LA PERSONA 1123983071)
         function confirmarWhatsApp() {
             const nombre = document.getElementById('nombreInvitado').value.trim();
             if(!nombre) {
-                alert("Por favor ingresa tu nombre y apellido.");
+                alert("Por favor escribe tu nombre y apellido para confirmar.");
                 return;
             }
             const msg = encodeURIComponent(`Hola! Confirmo mi asistencia a la boda de Alan y Sol. Nombre: ${nombre}`);
             window.open(`https://wa.me/5491123983071?text=${msg}`, '_blank');
         }
 
-        // COPIAR ALIAS
+        // COPIAR ALIAS AL PORTAPAPELES
         function copiarAlias() {
             navigator.clipboard.writeText("labodadealanysol").then(() => {
-                alert("Alias 'labodadealanysol' copiado al portapapeles.");
+                alert("Alias 'labodadealanysol' copiado correctamente.");
             });
         }
     </script>
