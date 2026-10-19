@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías Elegantes de Rey y Reina -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tipografías Elegantes y Caligráficas -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Librería para la explosión sutil de brillos -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --azul-francia: #003399;
-            --azul-profundo: #001F66;
+            --azul-sobre: #4A6B9C;
             --fondo-nude: #F9F5F0;
             --blanco: #FFFFFF;
             --dorado: #D4AF37;
             --dorado-brillo: #F3E5AB;
+            --texto-oscuro: #2C3E50;
         }
 
         * {
@@ -27,20 +28,20 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--azul-francia);
+            background-color: #EFEBE4;
             color: var(--azul-francia);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA: SOBRE AZUL FRANCIA --- */
-        #portada-sobre {
+        /* --- PORTADA: RÉPLICA DEL DISEÑO DE LA FOTO --- */
+        #portada-pantalla {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: var(--azul-profundo);
+            background: #EAE6DF;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -49,108 +50,123 @@
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
-        #portada-sobre.hidden {
+        #portada-pantalla.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
 
-        .sobre-tarjeta {
+        .tarjeta-sobre-container {
             width: 100%;
-            max-width: 420px;
-            height: 560px;
-            background: linear-gradient(135deg, #003399 0%, #001F66 100%);
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(212, 175, 55, 0.3);
-            position: relative;
+            max-width: 400px;
+            background: #F7F5F0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            padding: 40px 25px 35px 25px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            padding: 40px 20px;
             text-align: center;
-            overflow: hidden;
         }
 
-        /* Solapa del sobre */
-        .sobre-tarjeta::before {
+        .nombres-portada {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.2rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        /* Sobre Azul */
+        .sobre-ilustracion {
+            width: 100%;
+            max-width: 290px;
+            height: 190px;
+            background: linear-gradient(135deg, #4A6C9B 0%, #325078 100%);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        /* Pliegues del sobre */
+        .sobre-ilustracion::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.2), transparent);
-            clip-path: polygon(0 0, 50% 100%, 100% 0);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            width: 0;
+            height: 0;
+            border-left: 145px solid transparent;
+            border-right: 145px solid transparent;
+            border-top: 100px solid #3A5982;
+            z-index: 1;
         }
 
-        .titulo-portada {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 2.6rem;
-            color: var(--blanco);
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        .sobre-ilustracion::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 145px solid #2B466A;
+            border-right: 145px solid #2B466A;
+            border-top: 90px solid transparent;
+            z-index: 1;
         }
 
-        /* Estampilla Dorada AS */
-        .estampilla-btn {
-            width: 90px;
-            height: 90px;
-            background: radial-gradient(circle, #f5d77f 0%, #d4af37 60%, #997a15 100%);
+        /* Sello de lacrado en el centro */
+        .sello-lacrado {
+            width: 55px;
+            height: 55px;
+            background: radial-gradient(circle, #F3E5AB 0%, #D4AF37 70%, #AA820A 100%);
             border-radius: 50%;
-            border: 3px solid #FFF8DC;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid #FFF8DC;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
             position: relative;
             z-index: 3;
-            transition: transform 0.2s ease;
-            animation: pulso 2.2s infinite ease-in-out;
+            animation: latidoSutil 2s infinite ease-in-out;
         }
 
-        .estampilla-btn:active {
-            transform: scale(0.92);
-        }
-
-        @keyframes pulso {
+        @keyframes latidoSutil {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.06); }
         }
 
-        .estampilla-texto {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 1.8rem;
+        .sello-texto {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #3D2F00;
-            letter-spacing: 2px;
+            color: #4A3B00;
+            letter-spacing: 1px;
         }
 
-        .portada-subtexto {
-            position: relative;
-            z-index: 2;
-            color: var(--blanco);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            max-width: 310px;
-            font-weight: 300;
-        }
-
-        .texto-romantico-portada {
-            font-family: 'Great Vibes', cursive;
+        .frase-portada {
+            font-family: 'Alex Brush', cursive;
             font-size: 1.8rem;
-            color: var(--dorado-brillo);
-            margin-bottom: 8px;
-            display: block;
+            color: var(--azul-francia);
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
-        /* --- CONTENIDO DE LA INVITACIÓN (FONDO NUDE / LETRAS AZUL FRANCIA) --- */
+        .instruccion-portada {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.5;
+            max-width: 280px;
+        }
+
+        /* --- CONTENIDO INTERNO DE LA INVITACIÓN (FONDO NUDE / AZUL FRANCIA) --- */
         #invitacion {
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
             background-color: var(--fondo-nude);
             min-height: 100vh;
@@ -169,10 +185,11 @@
         }
 
         h2.seccion-titulo {
-            font-family: 'Cinzel Decorative', serif;
+            font-family: 'Cinzel', serif;
             font-size: 1.8rem;
             color: var(--azul-francia);
             margin-bottom: 12px;
+            font-weight: 600;
         }
 
         p, label {
@@ -182,7 +199,7 @@
         }
 
         .texto-realeza {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Alex Brush', cursive;
             font-size: 2.2rem;
             color: var(--azul-francia);
             margin: 12px 0;
@@ -210,12 +227,13 @@
         }
 
         .cal-mes {
-            font-family: 'Cinzel Decorative', serif;
+            font-family: 'Cinzel', serif;
             font-size: 1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 15px;
             color: var(--azul-francia);
+            font-weight: 700;
         }
 
         .cal-grid {
@@ -258,8 +276,9 @@
         }
 
         .crono-num {
-            font-family: 'Cinzel Decorative', serif;
+            font-family: 'Cinzel', serif;
             font-size: 1.4rem;
+            font-weight: 700;
             color: var(--azul-francia);
         }
 
@@ -285,12 +304,13 @@
         }
 
         .reloj-hora {
-            font-family: 'Cinzel Decorative', serif;
+            font-family: 'Cinzel', serif;
             font-size: 2rem;
+            font-weight: 700;
             color: var(--azul-francia);
         }
 
-        /* MAPA EMBED */
+        /* MAPA INTERACTIVO */
         .mapa-iframe {
             width: 100%;
             height: 220px;
@@ -336,7 +356,7 @@
         }
 
         .versiculo-texto {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Alex Brush', cursive;
             font-size: 2rem;
             line-height: 1.3;
             color: var(--azul-francia);
@@ -344,11 +364,12 @@
 
         .versiculo-ref {
             margin-top: 12px;
-            font-family: 'Cinzel Decorative', serif;
+            font-family: 'Cinzel', serif;
             font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--azul-francia);
+            font-weight: 600;
         }
 
         /* --- BOTONES Y FORMULARIOS --- */
@@ -419,20 +440,20 @@
     <!-- REPRODUCTOR DE LA CANCIÓN EXACTA "PERFECT" DE ED SHEERAN -->
     <iframe id="playerIframe" src="" allow="autoplay"></iframe>
 
-    <!-- PORTADA DE SOBRE AZUL FRANCIA -->
-    <div id="portada-sobre">
-        <div class="sobre-tarjeta">
-            <h1 class="titulo-portada">Alan & Sol</h1>
+    <!-- PORTADA BASADA EN TU IMAGEN -->
+    <div id="portada-pantalla">
+        <div class="tarjeta-sobre-container">
+            <h1 class="nombres-portada">Alan & Sol</h1>
 
-            <!-- Estampilla dorada con iniciales AS -->
-            <div class="estampilla-btn" onclick="abrirInvitacion(event)">
-                <span class="estampilla-texto">AS</span>
+            <!-- Sobre azul interactivo con sello de lacrado en el centro -->
+            <div class="sobre-ilustracion" onclick="abrirInvitacion(event)">
+                <div class="sello-lacrado">
+                    <span class="sello-texto">AS</span>
+                </div>
             </div>
 
-            <div class="portada-subtexto">
-                <span class="texto-romantico-portada">Hoy comienza una historia de amor sin fin</span>
-                <p>Sube el volumen de tu celular y presiona el botón para contarte algo muy importante...</p>
-            </div>
+            <div class="frase-portada">Hoy comienza una historia de amor sin fin</div>
+            <p class="instruccion-portada">Sube el volumen de tu celular y presiona el sello del sobre para contarte algo muy importante...</p>
         </div>
     </div>
 
@@ -507,7 +528,6 @@
                     <line x1="90" y1="50" x2="84" y2="50" stroke="#003399" stroke-width="3"/>
                     <line x1="50" y1="90" x2="50" y2="84" stroke="#003399" stroke-width="3"/>
                     <line x1="10" y1="50" x2="16" y2="50" stroke="#003399" stroke-width="3"/>
-                    <!-- Agujas a las 21:00 (las 9 en punto) -->
                     <line x1="50" y1="50" x2="26" y2="50" stroke="#003399" stroke-width="4" stroke-linecap="round"/>
                     <line x1="50" y1="50" x2="50" y2="18" stroke="#003399" stroke-width="3" stroke-linecap="round"/>
                     <circle cx="50" cy="50" r="4" fill="#003399"/>
@@ -516,13 +536,12 @@
             <div class="reloj-hora">21:00 hs</div>
         </section>
 
-        <!-- SECCIÓN 3: UBICACIÓN CON MAPA INTERACTIVO -->
+        <!-- SECCIÓN 3: UBICACIÓN Y MAPA INTERACTIVO -->
         <section>
             <h2 class="seccion-titulo">Ubicación</h2>
             <p><strong>"Lalola"</strong></p>
             <p>Av. Dardo Rocha 1982, Berazategui</p>
 
-            <!-- Mapa embebido de Google Maps -->
             <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.431284711685!2d-58.21631022342981!3d-34.74472256501198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32831d15668d5%3A0x6b6d21f8a8ad3b6!2sAv.%20Dardo%20Rocha%201982%2C%20B1884%20Berazategui%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
             
             <a href="https://maps.google.com/?q=Av.+Dardo+Rocha+1982,+Berazategui" target="_blank" class="btn-accion">
@@ -574,7 +593,6 @@
             <input type="text" id="cancionTema" placeholder="Escribe el nombre del tema y artista">
             
             <button class="btn-accion" style="background-color: #1DB954; color: #FFFFFF;" onclick="sugerirCancion()">
-                <!-- Icono Oficial de Spotify -->
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-.1.2-.78-.42-.6-.18-.42-.78.18-.6 1.02 4.14-1.26 11.22-.96 15.24 1.44.539.36.719 1.02.36 1.38z"/>
                 </svg>
@@ -608,7 +626,6 @@
             <input type="text" id="nombreInvitado" placeholder="Tu Nombre y Apellido">
             
             <button class="btn-accion" style="background-color: #25D366; color: #FFFFFF;" onclick="confirmarWhatsApp()">
-                <!-- Icono Oficial de WhatsApp -->
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
@@ -627,7 +644,7 @@
 
     <script>
         function abrirInvitacion(e) {
-            // Ráfaga sutil de destellos dorados y azul Francia
+            // Explosión sutil y precisa de destellos dorados y azul Francia
             const rect = e.target.getBoundingClientRect();
             const x = (rect.left + rect.width / 2) / window.innerWidth;
             const y = (rect.top + rect.height / 2) / window.innerHeight;
@@ -642,19 +659,19 @@
                 scalar: 0.85
             });
 
-            // Cargar y reproducir automáticamente la canción de YouTube (Ed Sheeran - Perfect)
+            // Reproducir la canción "Perfect" de Ed Sheeran mediante el iframe de YouTube
             const iframe = document.getElementById('playerIframe');
             iframe.src = "https://www.youtube.com/embed/vyLASD70F7o?autoplay=1&enablejsapi=1";
 
-            // Mostrar contenido principal
+            // Transición fluida a la invitación
             setTimeout(() => {
-                document.getElementById('portada-sobre').classList.add('hidden');
+                document.getElementById('portada-pantalla').classList.add('hidden');
                 document.getElementById('invitacion').classList.add('visible');
                 window.scrollTo(0, 0);
             }, 450);
         }
 
-        // CRONÓMETRO HASTA EL 19 DE DICIEMBRE DE 2026 A LAS 21:00 HS
+        // CRONÓMETRO AL 19 DE DICIEMBRE DE 2026 A LAS 21:00 HS
         const fechaEvento = new Date('December 19, 2026 21:00:00').getTime();
 
         setInterval(function() {
@@ -680,7 +697,7 @@
             document.getElementById('segundos').innerText = s < 10 ? '0' + s : s;
         }, 1000);
 
-        // SUGERIR CANCIÓN POR WHATSAPP
+        // SUGERIR CANCIÓN
         function sugerirCancion() {
             const tema = document.getElementById('cancionTema').value.trim();
             if(!tema) {
@@ -691,7 +708,7 @@
             window.open(`https://wa.me/5491123983071?text=${msg}`, '_blank');
         }
 
-        // CONFIRMAR ASISTENCIA POR WHATSAPP (A LA PERSONA 1123983071)
+        // CONFIRMAR ASISTENCIA
         function confirmarWhatsApp() {
             const nombre = document.getElementById('nombreInvitado').value.trim();
             if(!nombre) {
@@ -702,7 +719,7 @@
             window.open(`https://wa.me/5491123983071?text=${msg}`, '_blank');
         }
 
-        // COPIAR ALIAS AL PORTAPAPELES
+        // COPIAR ALIAS
         function copiarAlias() {
             navigator.clipboard.writeText("labodadealanysol").then(() => {
                 alert("Alias 'labodadealanysol' copiado correctamente.");
