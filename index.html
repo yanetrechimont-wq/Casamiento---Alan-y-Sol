@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan & Sol - Nuestra Boda</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Confetti JS para la explosión de brillo -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --azul-elegante: #0B1D3A;
+            --azul-francia: #1A365D;
+            --fondo-nude: #F9F6F0;
+            --blanco: #FFFFFF;
+            --dorado: #C5A880;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--fondo-nude);
+            color: var(--azul-francia);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* --- PORTADA INICIAL --- */
+        #portada {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--azul-elegante);
+            color: var(--blanco);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            text-align: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #portada.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .sello {
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--dorado);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--dorado);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .portada-titulo {
+            font-size: 3.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .portada-sub {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 280px;
+            line-height: 1.5;
+        }
+
+        .btn-entrar {
+            background: transparent;
+            border: 1px solid var(--dorado);
+            color: var(--blanco);
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+        }
+
+        .btn-entrar:active, .btn-entrar:hover {
+            background-color: var(--dorado);
+            color: var(--azul-elegante);
+        }
+
+        /* --- CONTENIDO PRINCIPAL DE LA INVITACIÓN --- */
+        #contenido {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--fondo-nude);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        #contenido.visible {
+            display: block;
+        }
+
+        section {
+            padding: 50px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .alianzas {
+            font-size: 3rem;
+            color: var(--dorado);
+            margin-bottom: 10px;
+        }
+
+        h2.seccion-titulo {
+            font-size: 2.5rem;
+            color: var(--azul-francia);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--azul-francia);
+            margin-bottom: 15px;
+        }
+
+        .foto-container {
+            width: 100%;
+            max-height: 400px;
+            overflow: hidden;
+            border-radius: 4px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .foto-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Calendario */
+        .calendario-box {
+            background: var(--blanco);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .calendario-mes {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .calendario-fecha {
+            font-size: 2.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--dorado);
+            margin-bottom: 5px;
+        }
+
+        /* Cronómetro */
+        .cronometro {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+        }
+        .tiempo-item {
+            background: var(--blanco);
+            padding: 12px 10px;
+            border-radius: 6px;
+            min-width: 70px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .tiempo-numero {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .tiempo-texto {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Reloj hora */
+        .reloj-grande {
+            font-size: 3.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--dorado);
+            margin: 15px 0;
+        }
+
+        /* Botón Mapa */
+        .btn-mapa, .btn-accion {
+            display: inline-block;
+            background-color: var(--azul-francia);
+            color: var(--blanco);
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            transition: opacity 0.3s;
+        }
+        .btn-mapa:hover, .btn-accion:hover {
+            opacity: 0.9;
+        }
+
+        /* Colores no permitidos */
+        .colores-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .circulo-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .color-item {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        /* Versículo */
+        .versiculo {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+        .versiculo-ref {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Formulario Canciones & Asistencia */
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: var(--blanco);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .alias-box {
+            background: var(--blanco);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--dorado);
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .spotify-icon {
+            font-size: 1.5rem;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AUDIO DE FONDO -->
+    <audio id="musicaFondo" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" preload="auto" loop></audio>
+    <!-- Nota: La URL oficial de YouTube del usuario es https://youtu.be/vyLASD70F7o (Ed Sheeran - Perfect). En navegadores web móviles modernos, la reproducción automática de audio requiere interacción directa del usuario, la cual se gestiona al hacer clic en el botón de la portada. -->
+
+    <!-- PORTADA -->
+    <div id="portada">
+        <div class="sello">AS</div>
+        <h1 class="portada-titulo">Alan & Sol</h1>
+        <p class="portada-sub">Sube el volumen de tu celular y presiona el botón para contarte algo muy importante.</p>
+        <button class="btn-entrar" onclick="abrirInvitacion()">Abrir Invitación</button>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="contenido">
+        
+        <!-- SECCIÓN INICIAL / NOS CASAMOS -->
+        <section>
+            <div class="alianzas">💍</div>
+            <h2 class="seccion-titulo">¡Nos casamos!</h2>
+            <p>Porque Dios unió nuestras vidas para compartir un mismo camino de amor y fe.</p>
+            
+            <div class="foto-container">
+                <img src="
+
+http://googleusercontent.com/generated_image_content/0
+
+" alt="Alan y Sol - Foto 1">
+            </div>
+            
+            <p style="margin-top: 20px; font-style: italic;">"Lo que Dios unió, que no lo separe el hombre."</p>
+        </section>
+
+        <!-- FECHA Y CALENDARIO -->
+        <section>
+            <h2 class="seccion-titulo">Día del Compromiso</h2>
+            <div class="calendario-box">
+                <div class="calendario-mes">Diciembre 2026</div>
+                <div class="calendario-fecha">19</div>
+                <p style="margin-bottom: 0; font-size: 0.9rem;">19 de Diciembre de 2026</p>
+            </div>
+
+            <!-- CRONÓMETRO -->
+            <div class="cronometro" id="cuentaRegresiva">
+                <div class="tiempo-item">
+                    <div class="tiempo-numero" id="dias">00</div>
+                    <div class="tiempo-texto">Días</div>
+                </div>
+                <div class="tiempo-item">
+                    <div class="tiempo-numero" id="horas">00</div>
+                    <div class="tiempo-texto">Horas</div>
+                </div>
+                <div class="tiempo-item">
+                    <div class="tiempo-numero" id="minutos">00</div>
+                    <div class="tiempo-texto">Min</div>
+                </div>
+                <div class="tiempo-item">
+                    <div class="tiempo-numero" id="segundos">00</div>
+                    <div class="tiempo-texto">Seg</div>
+                </div>
+            </div>
+
+            <!-- RELOJ HORA -->
+            <div style="margin-top: 30px;">
+                <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">Te esperamos a las</p>
+                <div class="reloj-grande">21:00 hs</div>
+            </div>
+        </section>
+
+        <!-- UBICACIÓN -->
+        <section>
+            <h2 class="seccion-titulo">Ubicación</h2>
+            <p><strong>Lalola</strong><br>Av. Dardo Rocha 1982, Berazategui</p>
+            <a href="https://maps.google.com/?q=Av.+Dardo+Rocha+1982,+Berazategui" target="_blank" class="btn-mapa">Ver en Google Maps</a>
+        </section>
+
+        <!-- SEGUNDA FOTO -->
+        <section>
+            <div class="foto-container" style="margin-top: 0;">
+                <img src="
+
+http://googleusercontent.com/generated_image_content/1
+
+" alt="Alan y Sol - Foto 2">
+            </div>
+        </section>
+
+        <!-- CÓDIGO DE VESTIMENTA Y COLORES -->
+        <section>
+            <h2 class="seccion-titulo">Código de Vestimenta</h2>
+            <p style="font-size: 1.1rem; font-weight: 600;">Elegante / Elegant</p>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Colores no permitidos</p>
+            <div class="colores-grid">
+                <div class="color-item">
+                    <div class="circulo-color" style="background: #FFFFFF;"></div>
+                    <span>Blanco</span>
+                </div>
+                <div class="color-item">
+                    <div class="circulo-color" style="background: #C53030;"></div>
+                    <span>Rojo</span>
+                </div>
+                <div class="color-item">
+                    <div class="circulo-color" style="background: #E2D8C9;"></div>
+                    <span>Nude</span>
+                </div>
+                <div class="color-item">
+                    <div class="circulo-color" style="background: #09101D;"></div>
+                    <span>Azul Noche</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- VERSÍCULO -->
+        <section>
+            <div class="versiculo">
+                “El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia.”
+            </div>
+            <div class="versiculo-ref">1 Corintios 13:7</div>
+        </section>
+
+        <!-- MÚSICA / SPOTIFY -->
+        <section>
+            <h2 class="seccion-titulo"><span class="spotify-icon">🎵</span> Música para la Fiesta</h2>
+            <p>¿Qué canción no puede faltar en la pista de baile?</p>
+            <input type="text" id="cancionSugerida" placeholder="Tema y Artista sugerido">
+            <button class="btn-accion" onclick="sugerirCancion()">Enviar sugerencia</button>
+        </section>
+
+        <!-- REGALOS / ALIAS -->
+        <section>
+            <h2 class="seccion-titulo">Regalos</h2>
+            <p>Nuestro mejor regalo es tu presencia. Si deseas hacernos un obsequio, podés colaborar con nuestra luna de miel:</p>
+            
+            <div class="alias-box">
+                <p><strong>Alias:</strong> labodadealanysol</p>
+                <p><strong>CBU:</strong> 1430001713038912300011</p>
+                <p><strong>Titular:</strong> Rosario Soledad Patitucci</p>
+                <p><strong>Banco:</strong> Brubank</p>
+            </div>
+        </section>
+
+        <!-- CONFIRMACIÓN DE ASISTENCIA -->
+        <section>
+            <h2 class="seccion-titulo">Confirmación de Asistencia</h2>
+            <p>Por favor, confirma tu presencia completando tus datos:</p>
+            <input type="text" id="nombreInvitado" placeholder="Tu Nombre y Apellido">
+            <select id="asistenciaOpcion">
+                <option value="Sí, ahí estaré">Sí, ahí estaré</option>
+                <option value="No podré asistir">No podré asistir</option>
+            </select>
+            <button class="btn-accion" onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+        </section>
+
+        <!-- CIERRE -->
+        <section style="border-bottom: none;">
+            <div class="foto-container">
+                <img src="watermarked_img_2997933059200661891.jpg" alt="Alan y Sol - Cierre">
+            </div>
+            <h2 class="seccion-titulo" style="margin-top: 25px;">¡Los esperamos!</h2>
+            <p style="font-style: italic;">Gracias por ser parte de este momento tan especial en nuestras vidas.</p>
+        </section>
+
+    </div>
+
+    <script>
+        // Función principal al presionar el botón de la portada
+        function abrirInvitacion() {
+            // Ocultar portada
+            const portada = document.getElementById('portada');
+            portada.classList.add('hidden');
+
+            // Mostrar contenido principal
+            const contenido = document.getElementById('contenido');
+            contenido.classList.add('visible');
+
+            // Reproducir canción
+            const musica = document.getElementById('musicaFondo');
+            musica.play().catch(error => {
+                console.log("Reproducción automática prevenida por el navegador:", error);
+            });
+
+            // Explosión de brillo (Confeti con temática elegante/dorada)
+            confetti({
+                particleCount: 120,
+                spread: 80,
+                origin: { y: 0.6 },
+                colors: ['#1A365D', '#C5A880', '#FFFFFF', '#D4AF37']
+            });
+        }
+
+        // Cuenta regresiva hasta el 19 de Diciembre de 2026 a las 21:00 hs
+        const fechaBoda = new Date('December 19, 2026 21:00:00').getTime();
+
+        const timer = setInterval(function() {
+            const ahora = new Date().getTime();
+            const diferencia = fechaBoda - ahora;
+
+            if (diferencia < 0) {
+                clearInterval(timer);
+                document.getElementById('cuentaRegresiva').innerHTML = "¡L llegó el gran día!";
+                return;
+            }
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('dias').innerText = String(dias).padStart(2, '0');
+            document.getElementById('horas').innerText = String(horas).padStart(2, '0');
+            document.getElementById('minutos').innerText = String(minutos).padStart(2, '0');
+            document.getElementById('segundos').innerText = String(segundos).padStart(2, '0');
+        }, 1000);
+
+        // Sugerir canción
+        function sugerirCancion() {
+            const cancion = document.getElementById('cancionSugerida').value;
+            if(!cancion) {
+                alert("Por favor ingresa una canción.");
+                return;
+            }
+            const texto = encodeURIComponent(`Hola! Quiero sugerir esta canción para la boda de Alan y Sol: ${cancion}`);
+            window.open(`https://wa.me/5491123983071?text=${texto}`, '_blank');
+        }
+
+        // Confirmar asistencia por WhatsApp
+        function enviarWhatsApp() {
+            const nombre = document.getElementById('nombreInvitado').value;
+            const asistencia = document.getElementById('asistenciaOpcion').value;
+            
+            if(!nombre) {
+                alert("Por favor ingresa tu nombre y apellido.");
+                return;
+            }
+
+            const mensaje = encodeURIComponent(`Hola! Soy ${nombre}. Mi respuesta para la boda de Alan y Sol es: ${asistencia}.`);
+            window.open(`https://wa.me/5491123983071?text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
