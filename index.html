@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías Elegantes y de Alta Legibilidad -->
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tipografías de Realeza: Gruesas, Elegantes y Altamente Legibles -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <!-- Librería para la explosión de brillos tipo princesa -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
-            --azul-portada: #0A192F;
-            --azul-francia: #002D80;
-            --fondo-nude: #FAF7F2;
+            --azul-francia: #002266;
+            --azul-carta: #0B2545;
+            --azul-sello: #133C55;
+            --fondo-nude: #F9F5EE;
             --blanco: #FFFFFF;
-            --dorado-lacrado: linear-gradient(135deg, #FFE89C 0%, #D4AF37 50%, #997A15 100%);
-            --dorado-texto: #D4AF37;
+            --texto-oscuro: #001233;
         }
 
         * {
@@ -27,20 +27,20 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--azul-portada);
+            background-color: var(--blanco);
             color: var(--azul-francia);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA: SOBRE AZUL CON ESTAMPILLA DORADA (SIN FLORES) --- */
+        /* --- PORTADA: FONDO BLANCO PURO --- */
         #portada-pantalla {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #0A192F 0%, #030A16 100%);
+            background-color: #FFFFFF;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -57,45 +57,43 @@
 
         .tarjeta-sobre-container {
             width: 100%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1.5px solid rgba(212, 175, 55, 0.4);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            padding: 40px 25px 35px 25px;
+            max-width: 410px;
+            background: #FFFFFF;
+            border-radius: 24px;
+            padding: 20px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            backdrop-filter: blur(8px);
         }
 
         .nombres-portada {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
-            color: var(--dorado-texto);
+            font-size: 3.8rem;
+            color: var(--azul-francia);
             margin-bottom: 20px;
             line-height: 1.1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-weight: 800;
         }
 
-        /* Sobre Azul Limpio */
+        /* CARTA / SOBRE AZUL FRANCIA ELEGANTE */
         .sobre-ilustracion {
             width: 100%;
-            max-width: 290px;
-            height: 190px;
-            background: linear-gradient(135deg, #112240 0%, #0A192F 100%);
-            border: 1.5px solid rgba(212, 175, 55, 0.5);
-            border-radius: 10px;
+            max-width: 300px;
+            height: 195px;
+            background: linear-gradient(135deg, #0B2545 0%, #134074 100%);
+            border-radius: 12px;
             position: relative;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+            box-shadow: 0 14px 30px rgba(0, 34, 102, 0.25);
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 25px;
             cursor: pointer;
+            border: 1px solid rgba(0, 34, 102, 0.2);
         }
 
+        /* Pliegues de la carta */
         .sobre-ilustracion::before {
             content: '';
             position: absolute;
@@ -103,9 +101,9 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 144px solid transparent;
-            border-right: 144px solid transparent;
-            border-top: 100px solid #1D3557;
+            border-left: 148px solid transparent;
+            border-right: 148px solid transparent;
+            border-top: 102px solid #1D4E89;
             z-index: 1;
         }
 
@@ -116,20 +114,20 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 144px solid #0D1B2A;
-            border-right: 144px solid #0D1B2A;
-            border-top: 90px solid transparent;
+            border-left: 148px solid #001D4A;
+            border-right: 148px solid #001D4A;
+            border-top: 92px solid transparent;
             z-index: 1;
         }
 
-        /* Estampilla Dorada de Lacrado sin flores */
+        /* ESTAMPILLA / SELLO AZUL ELEGANTE */
         .sello-lacrado {
-            width: 58px;
-            height: 58px;
-            background: var(--dorado-lacrado);
+            width: 62px;
+            height: 62px;
+            background: radial-gradient(circle, #274C77 0%, #0B2545 100%);
             border-radius: 50%;
-            border: 2px solid #FFF8DC;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.7);
+            border: 2px solid #6096BA;
+            box-shadow: 0 4px 18px rgba(0, 34, 102, 0.5);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -145,29 +143,30 @@
 
         .sello-texto {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #3A2E03;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #FFFFFF;
             letter-spacing: 1.5px;
         }
 
         .frase-portada {
             font-family: 'Alex Brush', cursive;
-            font-size: 1.9rem;
-            color: #FFF8DC;
+            font-size: 2.1rem;
+            color: var(--azul-francia);
             margin-bottom: 12px;
             line-height: 1.2;
+            font-weight: 800;
         }
 
         .instruccion-portada {
-            font-size: 0.88rem;
-            color: #CBD5E1;
+            font-size: 0.92rem;
+            color: #134074;
             line-height: 1.5;
-            max-width: 290px;
-            font-weight: 500;
+            max-width: 300px;
+            font-weight: 800;
         }
 
-        /* --- CONTENIDO INTERNO: FONDO CREMA/NUDE Y LETRAS AZUL FRANCIA --- */
+        /* --- CONTENIDO INTERNO: FONDO NUDE / CREMA --- */
         #invitacion {
             max-width: 480px;
             margin: 0 auto;
@@ -175,7 +174,7 @@
             color: var(--azul-francia);
             min-height: 100vh;
             display: none;
-            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            box-shadow: 0 0 35px rgba(0,0,0,0.12);
             padding-bottom: 60px;
         }
 
@@ -186,41 +185,42 @@
         section {
             padding: 45px 22px;
             text-align: center;
-            border-bottom: 1px solid rgba(0, 45, 128, 0.08);
+            border-bottom: 1.5px solid rgba(0, 34, 102, 0.1);
             position: relative;
         }
 
         h2.seccion-titulo {
             font-family: 'Cinzel', serif;
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             color: var(--azul-francia);
             margin-bottom: 12px;
-            font-weight: 700;
+            font-weight: 900;
             letter-spacing: 1px;
         }
 
         p, label {
             color: var(--azul-francia);
             line-height: 1.6;
-            font-size: 0.98rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 800;
         }
 
         .texto-realeza {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: var(--azul-francia);
             margin: 12px 0;
             line-height: 1.2;
+            font-weight: 800;
         }
 
-        /* FOTO PRINCIPAL CON OVERLAY DE NOMBRES */
+        /* FOTO HERO PRINCIPAL AL ABRIR */
         .foto-hero-container {
             position: relative;
             width: 100%;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 45, 128, 0.15);
+            box-shadow: 0 10px 28px rgba(0, 34, 102, 0.18);
             margin: 20px 0;
             border: 4px solid var(--blanco);
         }
@@ -236,83 +236,84 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(10, 25, 47, 0.85) 0%, transparent 100%);
-            padding: 30px 15px 15px 15px;
+            background: linear-gradient(to top, rgba(0, 34, 102, 0.92) 0%, transparent 100%);
+            padding: 35px 15px 18px 15px;
             color: var(--blanco);
             text-align: center;
         }
 
         .foto-hero-overlay h3 {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.8rem;
-            color: #FFF8DC;
+            font-size: 3.2rem;
+            color: #FFFFFF;
             line-height: 1;
+            font-weight: 800;
         }
 
         .foto-hero-overlay p {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: 3px;
             color: var(--blanco);
-            font-weight: 700;
+            font-weight: 900;
             margin-top: 5px;
         }
 
         .foto-boda {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 45, 128, 0.12);
+            border-radius: 14px;
+            box-shadow: 0 8px 22px rgba(0, 34, 102, 0.15);
             margin: 18px 0;
             display: block;
             object-fit: cover;
             border: 4px solid var(--blanco);
         }
 
-        /* --- CALENDARIO --- */
+        /* CALENDARIO */
         .calendario-card {
             background: var(--blanco);
             padding: 22px;
-            border-radius: 14px;
+            border-radius: 16px;
             margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0, 45, 128, 0.06);
-            border: 1px solid rgba(0, 45, 128, 0.1);
+            box-shadow: 0 4px 18px rgba(0, 34, 102, 0.08);
+            border: 2px solid rgba(0, 34, 102, 0.12);
         }
 
         .cal-mes {
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 15px;
             color: var(--azul-francia);
-            font-weight: 700;
+            font-weight: 900;
         }
 
         .cal-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 6px;
-            font-size: 0.88rem;
+            font-size: 0.92rem;
             text-align: center;
             color: var(--azul-francia);
-            font-weight: 600;
+            font-weight: 800;
         }
 
         .cal-dia-head {
-            font-weight: 800;
-            opacity: 0.8;
+            font-weight: 900;
+            opacity: 0.9;
         }
 
         .cal-destacado {
             background-color: var(--azul-francia);
             color: var(--blanco) !important;
-            font-weight: bold;
+            font-weight: 900;
             border-radius: 50%;
             padding: 6px 0;
-            box-shadow: 0 2px 8px rgba(0, 45, 128, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 34, 102, 0.35);
         }
 
-        /* --- CRONÓMETRO --- */
+        /* CRONÓMETRO */
         .cronometro {
             display: flex;
             justify-content: space-between;
@@ -323,33 +324,33 @@
         .crono-box {
             background: var(--blanco);
             padding: 12px 6px;
-            border-radius: 10px;
+            border-radius: 12px;
             flex: 1;
-            box-shadow: 0 3px 10px rgba(0, 45, 128, 0.06);
-            border: 1px solid rgba(0, 45, 128, 0.1);
+            box-shadow: 0 3px 12px rgba(0, 34, 102, 0.08);
+            border: 2px solid rgba(0, 34, 102, 0.12);
         }
 
         .crono-num {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.6rem;
+            font-weight: 900;
             color: var(--azul-francia);
         }
 
         .crono-tag {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 2px;
             color: var(--azul-francia);
-            font-weight: 700;
+            font-weight: 900;
         }
 
-        /* --- RELOJ ENORME --- */
+        /* RELOJ ENORME MARCANDO LAS 21:00 */
         .reloj-container {
             margin: 20px auto 10px auto;
-            width: 140px;
-            height: 140px;
+            width: 145px;
+            height: 145px;
         }
 
         .reloj-svg {
@@ -359,23 +360,27 @@
 
         .reloj-hora {
             font-family: 'Cinzel', serif;
-            font-size: 2.3rem;
-            font-weight: 800;
+            font-size: 2.4rem;
+            font-weight: 900;
             color: var(--azul-francia);
             letter-spacing: 1px;
         }
 
-        /* MAPA INTERACTIVO */
-        .mapa-iframe {
-            width: 100%;
-            height: 220px;
-            border: none;
-            border-radius: 12px;
-            margin-top: 15px;
-            box-shadow: 0 4px 12px rgba(0, 45, 128, 0.12);
+        /* VESTIMENTA E ILUSTRACIONES */
+        .iconos-vestimenta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
         }
 
-        /* --- COLORES NO PERMITIDOS --- */
+        .icono-persona {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* COLORES NO PERMITIDOS */
         .colores-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -387,47 +392,58 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             color: var(--azul-francia);
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .circulo-color {
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             margin-bottom: 6px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-            border: 1px solid rgba(0,0,0,0.12);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            border: 2px solid rgba(0,0,0,0.15);
         }
 
-        /* --- VERSÍCULO --- */
+        /* MAPA INTERACTIVO */
+        .mapa-iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: 14px;
+            margin-top: 15px;
+            box-shadow: 0 4px 14px rgba(0, 34, 102, 0.12);
+        }
+
+        /* VERSÍCULO */
         .versiculo-box {
             background: var(--blanco);
             padding: 25px 18px;
-            border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0, 45, 128, 0.06);
-            border: 1px solid rgba(0, 45, 128, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0, 34, 102, 0.08);
+            border: 2px solid rgba(0, 34, 102, 0.12);
         }
 
         .versiculo-texto {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             line-height: 1.3;
             color: var(--azul-francia);
+            font-weight: 800;
         }
 
         .versiculo-ref {
             margin-top: 12px;
             font-family: 'Cinzel', serif;
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--azul-francia);
-            font-weight: 700;
+            font-weight: 900;
         }
 
-        /* --- BOTONES Y FORMULARIOS --- */
+        /* BOTONES Y FORMULARIOS */
         .btn-accion {
             display: inline-flex;
             align-items: center;
@@ -435,17 +451,17 @@
             gap: 10px;
             background-color: var(--azul-francia);
             color: var(--blanco);
-            padding: 15px 24px;
+            padding: 16px 24px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 900;
             letter-spacing: 1px;
             border: none;
             cursor: pointer;
             width: 100%;
             margin-top: 15px;
-            box-shadow: 0 4px 14px rgba(0, 45, 128, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 34, 102, 0.35);
             transition: transform 0.2s;
         }
 
@@ -456,45 +472,45 @@
         .btn-secundario {
             background-color: transparent;
             color: var(--azul-francia);
-            border: 2px solid var(--azul-francia);
+            border: 2.5px solid var(--azul-francia);
             box-shadow: none;
         }
 
         .btn-wsp {
             background-color: #25D366 !important;
             color: #FFFFFF !important;
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3) !important;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
         }
 
         input[type="text"], select {
             width: 100%;
-            padding: 14px;
-            border: 1.5px solid rgba(0, 45, 128, 0.25);
-            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid rgba(0, 34, 102, 0.3);
+            border-radius: 12px;
             background: var(--blanco);
             color: var(--azul-francia);
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 800;
             margin-top: 10px;
             outline: none;
         }
 
         .datos-banco {
             background: var(--blanco);
-            padding: 18px;
-            border-radius: 12px;
+            padding: 20px;
+            border-radius: 14px;
             text-align: left;
             margin: 18px 0;
-            box-shadow: 0 3px 10px rgba(0, 45, 128, 0.06);
-            border: 1px solid rgba(0, 45, 128, 0.1);
+            box-shadow: 0 3px 12px rgba(0, 34, 102, 0.08);
+            border: 2px solid rgba(0, 34, 102, 0.12);
             color: var(--azul-francia);
         }
 
         .datos-banco p {
             margin-bottom: 6px;
-            font-size: 0.92rem;
-            font-weight: 600;
+            font-size: 0.98rem;
+            font-weight: 800;
         }
 
         /* REPRODUCTOR DE MÚSICA FLOTANTE */
@@ -505,45 +521,45 @@
             z-index: 9000;
             background: var(--azul-francia);
             color: var(--blanco);
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             cursor: pointer;
-            border: 2px solid var(--dorado-texto);
+            border: 2px solid #FFFFFF;
         }
 
         .alerta-copiado {
             display: none;
-            font-size: 0.82rem;
-            color: #002D80;
+            font-size: 0.88rem;
+            color: #002266;
             margin-top: 6px;
-            font-weight: 700;
+            font-weight: 900;
         }
     </style>
 </head>
 <body>
 
-    <!-- REPRODUCTOR AUDIO CON LA CANCIÓN PERFECT DE ED SHEERAN -->
+    <!-- REPRODUCTOR DE AUDIO AUDIO PERFECT DE ED SHEERAN -->
     <audio id="musicaFondo" loop preload="auto">
         <source src="https://cdns.jukehost.co.uk/c31505c24e86a59b6c16ff8380eb9d64380f2d48" type="audio/mpeg">
         <source src="https://archive.org/download/EdSheeranPerfectOfficialMusicVideo/Ed%20Sheeran%20-%20Perfect%20%28Official%20Music%20Video%29.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- BOTÓN FLOTANTE MÚSICA -->
+    <!-- BOTÓN FLOTANTE DE MÚSICA -->
     <div class="musica-control" id="btnMusica" onclick="toggleMusica()" style="display: none;">
         🎵
     </div>
 
-    <!-- PORTADA: SOBRE AZUL CON ESTAMPILLA DORADA -->
+    <!-- PORTADA BLANCA CON CARTA AZUL FRANCIA Y ESTAMPILLA AZUL -->
     <div id="portada-pantalla">
         <div class="tarjeta-sobre-container">
-            <h1 class="nombres-portada">Alan & Sol</h1>
+            <h1 class="nombres-portada">Alan y Sol</h1>
 
-            <!-- Sobre azul interactivo con sello de lacrado en el centro -->
+            <!-- Carta Azul Francia interactiva con Estampilla Azul -->
             <div class="sobre-ilustracion" onclick="abrirInvitacion(event)">
                 <div class="sello-lacrado">
                     <span class="sello-texto">AS</span>
@@ -551,14 +567,14 @@
             </div>
 
             <div class="frase-portada">Nuestra historia de amor comienza aquí</div>
-            <p class="instruccion-portada">Sube el volumen de tu celular y presiona la estampilla dorada para contarte algo muy importante...</p>
+            <p class="instruccion-portada">Sube el volumen de tu celular y presiona la estampilla para contarte algo muy importante...</p>
         </div>
     </div>
 
-    <!-- CONTENIDO INTERNO DE LA INVITACIÓN -->
+    <!-- CONTENIDO INTERNO DE LA INVITACIÓN CON FONDO NUDE / CREMA -->
     <div id="invitacion">
         
-        <!-- SECCIÓN 1: NOS CASAMOS Y PRIMERA FOTO ESTILO REY / REINA -->
+        <!-- SECCIÓN 1: PRIMERA FOTO AL ABRIR -->
         <section>
             <div style="margin-bottom: 10px;">
                 <!-- Alianzas Doradas -->
@@ -603,7 +619,7 @@
                 </div>
             </div>
 
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 800; margin-top: 25px;">¿Cuánto falta?</p>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 900; margin-top: 25px;">¿Cuánto falta?</p>
             
             <!-- CRONÓMETRO -->
             <div class="cronometro">
@@ -625,17 +641,17 @@
                 </div>
             </div>
 
-            <!-- RELOJ ENORME A LAS 21:00 HS -->
+            <!-- RELOJ ENORME MARCANDO LAS 21:00 HS -->
             <div class="reloj-container">
                 <svg class="reloj-svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#002D80" stroke-width="4.5"/>
-                    <line x1="50" y1="10" x2="50" y2="16" stroke="#002D80" stroke-width="3.5"/>
-                    <line x1="90" y1="50" x2="84" y2="50" stroke="#002D80" stroke-width="3.5"/>
-                    <line x1="50" y1="90" x2="50" y2="84" stroke="#002D80" stroke-width="3.5"/>
-                    <line x1="10" y1="50" x2="16" y2="50" stroke="#002D80" stroke-width="3.5"/>
-                    <line x1="50" y1="50" x2="26" y2="50" stroke="#002D80" stroke-width="4.5" stroke-linecap="round"/>
-                    <line x1="50" y1="50" x2="50" y2="18" stroke="#002D80" stroke-width="3.5" stroke-linecap="round"/>
-                    <circle cx="50" cy="50" r="4.5" fill="#002D80"/>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#002266" stroke-width="4.5"/>
+                    <line x1="50" y1="10" x2="50" y2="16" stroke="#002266" stroke-width="3.5"/>
+                    <line x1="90" y1="50" x2="84" y2="50" stroke="#002266" stroke-width="3.5"/>
+                    <line x1="50" y1="90" x2="50" y2="84" stroke="#002266" stroke-width="3.5"/>
+                    <line x1="10" y1="50" x2="16" y2="50" stroke="#002266" stroke-width="3.5"/>
+                    <line x1="50" y1="50" x2="26" y2="50" stroke="#002266" stroke-width="4.5" stroke-linecap="round"/>
+                    <line x1="50" y1="50" x2="50" y2="18" stroke="#002266" stroke-width="3.5" stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="4.5" fill="#002266"/>
                 </svg>
             </div>
             <div class="reloj-hora">21:00 hs</div>
@@ -654,12 +670,27 @@
             </a>
         </section>
 
-        <!-- SECCIÓN 4: VESTIMENTA Y COLORES NO PERMITIDOS -->
+        <!-- SECCIÓN 4: VESTIMENTA CON ILUSTRACIONES DE HOMBRES Y MUJERES -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
+            <p style="font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
             
-            <p style="margin-top: 30px; font-weight: 800; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
+            <div class="iconos-vestimenta">
+                <!-- Hombre Traje -->
+                <div class="icono-persona">
+                    <svg width="45" height="60" viewBox="0 0 24 24" fill="#002266">
+                        <path d="M12 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm3 7h-6a2 2 0 0 0-2 2v11h2.5v-6h1v6h3v-6h1v6H17V11a2 2 0 0 0-2-2z"/>
+                    </svg>
+                </div>
+                <!-- Mujer Vestido Elegante -->
+                <div class="icono-persona">
+                    <svg width="45" height="60" viewBox="0 0 24 24" fill="#002266">
+                        <path d="M12 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm3.5 7h-7l-1 5 2.5 10h8l2.5-10-1-5z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <p style="margin-top: 25px; font-weight: 900; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
             <div class="colores-grid">
                 <div class="color-item">
                     <div class="circulo-color" style="background-color: #FFFFFF;"></div>
@@ -678,35 +709,34 @@
                     <span>Azul Noche</span>
                 </div>
             </div>
-
-            <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda" onerror="this.style.display='none'">
         </section>
 
-        <!-- SECCIÓN 5: VERSÍCULO BÍBLICO -->
+        <!-- SECCIÓN 5: SEGUNDA FOTO JUNTO AL VERSÍCULO BÍBLICO -->
         <section>
-            <div class="versiculo-box">
+            <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda" onerror="this.style.display='none'">
+
+            <div class="versiculo-box" style="margin-top: 20px;">
                 <p class="versiculo-texto">“El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia.”</p>
                 <p class="versiculo-ref">1 Corintios 13:7</p>
             </div>
         </section>
 
-        <!-- SECCIÓN 6: MÚSICA CON ÍCONO DE SPOTIFY -->
+        <!-- SECCIÓN 6: MÚSICA PARA BAILAR CON ÍCONO DE SPOTIFY -->
         <section>
             <h2 class="seccion-titulo">Música para Bailar</h2>
             <p>¿Qué canción no puede faltar en la fiesta?</p>
             
-            <!-- Ícono Oficial de Spotify -->
             <div style="margin: 15px 0;">
                 <svg width="45" height="45" viewBox="0 0 24 24" fill="#1DB954">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.899 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.019zm1.441-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.38 9.841-.72 13.561 1.56.42.24.6.78.18 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
                 </svg>
             </div>
 
-            <input type="text" id="cancionInput" placeholder="Nombre del tema musical y artista...">
+            <input type="text" id="cancionInput" placeholder="Artista y tema musical...">
             <button onclick="sugerirCancion()" class="btn-accion btn-secundario">
                 🎵 Sugerir Canción
             </button>
-            <p id="msgCancion" style="display:none; color: #002D80; margin-top: 10px; font-weight: 700;">¡Gracias por tu sugerencia musical!</p>
+            <p id="msgCancion" style="display:none; color: #002266; margin-top: 10px; font-weight: 900;">¡Gracias por tu sugerencia musical!</p>
         </section>
 
         <!-- SECCIÓN 7: REGALOS Y DATOS BANCARIOS -->
@@ -727,7 +757,7 @@
             <p id="msgAlias" class="alerta-copiado">¡Alias copiado al portapapeles!</p>
         </section>
 
-        <!-- SECCIÓN 8: CONFIRMACIÓN DE ASISTENCIA (RSVP) CON ÍCONO DE WSP -->
+        <!-- SECCIÓN 8: CONFIRMACIÓN DE ASISTENCIA A WHATSAPP -->
         <section>
             <h2 class="seccion-titulo">Confirmación</h2>
             <p>Por favor confirma tu asistencia completando tus datos:</p>
@@ -742,7 +772,6 @@
                 </select>
 
                 <button type="submit" class="btn-accion btn-wsp">
-                    <!-- Ícono Oficial de WhatsApp -->
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                     </svg>
@@ -762,16 +791,16 @@
 
     </div>
 
-    <!-- SCRIPTS DE INTERACCIÓN Y COMPATIBILIDAD IPAD / IPHONE / ANDROID -->
+    <!-- SCRIPTS DE REPRODUCCIÓN Y ANIMACIONES COMPATIBLES -->
     <script>
-        // --- APERTURA CON EXPLOSIÓN DE BRILLO TIPO PRINCESA ---
+        // --- APERTURA CON MÚSICA Y EXPLOSIÓN DE BRILLOS PRINCESA ---
         function abrirInvitacion(event) {
-            // Explosión de destellos dorados y claros tipo princesa al tocar la estampilla
+            // Explosión de destellos de brillo tipo princesa
             confetti({
-                particleCount: 120,
-                spread: 90,
+                particleCount: 130,
+                spread: 100,
                 origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
-                colors: ['#D4AF37', '#FFF8DC', '#FFFFFF', '#E0F2FE']
+                colors: ['#002266', '#6096BA', '#FFFFFF', '#E0F2FE']
             });
 
             // Transición suave
@@ -783,7 +812,7 @@
             }, 600);
         }
 
-        // --- CONTROL DE MÚSICA DE FONDO ---
+        // --- CONTROL DE MÚSICA COMPATIBLE PARA IPHONE / ANDROID ---
         const audio = document.getElementById('musicaFondo');
         let sonando = false;
 
@@ -832,7 +861,7 @@
             }
         }, 1000);
 
-        // --- COPIAR ALIAS / CBU ---
+        // --- COPIAR ALIAS ---
         function copiarDato(idTexto, idMsg) {
             const texto = document.getElementById(idTexto).innerText;
             navigator.clipboard.writeText(texto).then(() => {
