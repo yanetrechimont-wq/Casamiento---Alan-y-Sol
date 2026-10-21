@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías de Realeza: Gruesas, Elegantes y Altamente Legibles -->
+    <!-- Tipografías de Realeza Legibles y Gruesas -->
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <!-- Librería para la explosión de brillos tipo princesa -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --azul-francia: #002266;
-            --azul-carta: #0B2545;
-            --azul-sello: #133C55;
-            --fondo-nude: #F9F5EE;
+            --azul-portada: #0A192F;
+            --azul-sobre: #002D80;
+            --fondo-crema: #FAF5EF;
             --blanco: #FFFFFF;
-            --texto-oscuro: #001233;
+            --oro-real: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            --oro-borde: #D4AF37;
         }
 
         * {
@@ -27,20 +28,20 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--blanco);
+            background-color: var(--azul-portada);
             color: var(--azul-francia);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA: FONDO BLANCO PURO --- */
+        /* --- PORTADA: FONDO AZUL CON SOBRE AZUL Y LETRAS BLANCAS --- */
         #portada-pantalla {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #FFFFFF;
+            background: linear-gradient(135deg, #0A192F 0%, #020C1B 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -58,42 +59,45 @@
         .tarjeta-sobre-container {
             width: 100%;
             max-width: 410px;
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(212, 175, 55, 0.4);
             border-radius: 24px;
-            padding: 20px 15px;
+            padding: 35px 22px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .nombres-portada {
             font-family: 'Alex Brush', cursive;
             font-size: 3.8rem;
-            color: var(--azul-francia);
+            color: #FFFFFF;
             margin-bottom: 20px;
             line-height: 1.1;
-            font-weight: 800;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.8);
+            font-weight: bold;
         }
 
-        /* CARTA / SOBRE AZUL FRANCIA ELEGANTE */
+        /* SOBRE EN AZUL FRANCIA ELEGANTE */
         .sobre-ilustracion {
             width: 100%;
-            max-width: 300px;
-            height: 195px;
-            background: linear-gradient(135deg, #0B2545 0%, #134074 100%);
+            max-width: 290px;
+            height: 190px;
+            background: linear-gradient(135deg, #002D80 0%, #001A4D 100%);
+            border: 2px solid var(--oro-borde);
             border-radius: 12px;
             position: relative;
-            box-shadow: 0 14px 30px rgba(0, 34, 102, 0.25);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 25px;
             cursor: pointer;
-            border: 1px solid rgba(0, 34, 102, 0.2);
         }
 
-        /* Pliegues de la carta */
+        /* Pliegues del sobre */
         .sobre-ilustracion::before {
             content: '';
             position: absolute;
@@ -101,9 +105,9 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 148px solid transparent;
-            border-right: 148px solid transparent;
-            border-top: 102px solid #1D4E89;
+            border-left: 143px solid transparent;
+            border-right: 143px solid transparent;
+            border-top: 100px solid #003B99;
             z-index: 1;
         }
 
@@ -114,20 +118,20 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 148px solid #001D4A;
-            border-right: 148px solid #001D4A;
-            border-top: 92px solid transparent;
+            border-left: 143px solid #001845;
+            border-right: 143px solid #001845;
+            border-top: 90px solid transparent;
             z-index: 1;
         }
 
-        /* ESTAMPILLA / SELLO AZUL ELEGANTE */
+        /* ESTAMPILLA DORADA ELEGANTE */
         .sello-lacrado {
-            width: 62px;
-            height: 62px;
-            background: radial-gradient(circle, #274C77 0%, #0B2545 100%);
+            width: 60px;
+            height: 60px;
+            background: var(--oro-real);
             border-radius: 50%;
-            border: 2px solid #6096BA;
-            box-shadow: 0 4px 18px rgba(0, 34, 102, 0.5);
+            border: 2px solid #FFF8DC;
+            box-shadow: 0 4px 18px rgba(180, 135, 40, 0.8), inset 0 2px 4px rgba(255,255,255,0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -145,36 +149,36 @@
             font-family: 'Cinzel', serif;
             font-size: 1.25rem;
             font-weight: 900;
-            color: #FFFFFF;
+            color: #3B2A00;
             letter-spacing: 1.5px;
         }
 
         .frase-portada {
             font-family: 'Alex Brush', cursive;
             font-size: 2.1rem;
-            color: var(--azul-francia);
+            color: #FFFFFF;
             margin-bottom: 12px;
             line-height: 1.2;
-            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
         }
 
         .instruccion-portada {
-            font-size: 0.92rem;
-            color: #134074;
+            font-size: 0.9rem;
+            color: #F1F5F9;
             line-height: 1.5;
-            max-width: 300px;
-            font-weight: 800;
+            max-width: 290px;
+            font-weight: 700;
         }
 
-        /* --- CONTENIDO INTERNO: FONDO NUDE / CREMA --- */
+        /* --- CONTENIDO INTERNO: FONDO CREMA/NUDE Y LETRAS AZUL FRANCIA --- */
         #invitacion {
             max-width: 480px;
             margin: 0 auto;
-            background-color: var(--fondo-nude);
+            background-color: var(--fondo-crema);
             color: var(--azul-francia);
             min-height: 100vh;
             display: none;
-            box-shadow: 0 0 35px rgba(0,0,0,0.12);
+            box-shadow: 0 0 40px rgba(0,0,0,0.25);
             padding-bottom: 60px;
         }
 
@@ -211,16 +215,16 @@
             color: var(--azul-francia);
             margin: 12px 0;
             line-height: 1.2;
-            font-weight: 800;
+            font-weight: bold;
         }
 
-        /* FOTO HERO PRINCIPAL AL ABRIR */
+        /* FOTO HERO PRINCIPAL AL ABRIR ESTILO Y REF DE LA IMAGEN DE FABRIZIO */
         .foto-hero-container {
             position: relative;
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 28px rgba(0, 34, 102, 0.18);
+            box-shadow: 0 10px 30px rgba(0, 34, 102, 0.2);
             margin: 20px 0;
             border: 4px solid var(--blanco);
         }
@@ -237,26 +241,28 @@
             left: 0;
             right: 0;
             background: linear-gradient(to top, rgba(0, 34, 102, 0.92) 0%, transparent 100%);
-            padding: 35px 15px 18px 15px;
+            padding: 40px 15px 20px 15px;
             color: var(--blanco);
             text-align: center;
         }
 
         .foto-hero-overlay h3 {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.2rem;
+            font-size: 3.4rem;
             color: #FFFFFF;
             line-height: 1;
-            font-weight: 800;
+            font-weight: bold;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.8);
         }
 
         .foto-hero-overlay p {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
+            font-size: 1.25rem;
+            letter-spacing: 4px;
             color: var(--blanco);
             font-weight: 900;
-            margin-top: 5px;
+            margin-top: 6px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         .foto-boda {
@@ -346,7 +352,7 @@
             font-weight: 900;
         }
 
-        /* RELOJ ENORME MARCANDO LAS 21:00 */
+        /* RELOJ ENORME A LAS 21:00 HS */
         .reloj-container {
             margin: 20px auto 10px auto;
             width: 145px;
@@ -366,12 +372,12 @@
             letter-spacing: 1px;
         }
 
-        /* VESTIMENTA E ILUSTRACIONES */
+        /* VESTIMENTA CON ILUSTRACIONES ELEGANTES */
         .iconos-vestimenta {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
+            gap: 35px;
+            margin: 22px 0;
         }
 
         .icono-persona {
@@ -380,12 +386,23 @@
             align-items: center;
         }
 
+        .texto-reserva-cortejo {
+            margin-top: 20px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--azul-francia);
+            font-style: italic;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* COLORES NO PERMITIDOS */
         .colores-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 18px;
         }
 
         .color-item {
@@ -529,7 +546,7 @@
             justify-content: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
             cursor: pointer;
-            border: 2px solid #FFFFFF;
+            border: 2px solid var(--oro-borde);
         }
 
         .alerta-copiado {
@@ -554,12 +571,12 @@
         🎵
     </div>
 
-    <!-- PORTADA BLANCA CON CARTA AZUL FRANCIA Y ESTAMPILLA AZUL -->
+    <!-- PORTADA AZUL CON SOBRE AZUL FRANCIA Y ESTAMPILLA DORADA -->
     <div id="portada-pantalla">
         <div class="tarjeta-sobre-container">
             <h1 class="nombres-portada">Alan y Sol</h1>
 
-            <!-- Carta Azul Francia interactiva con Estampilla Azul -->
+            <!-- Sobre Azul Francia interactivo con Estampilla Dorada -->
             <div class="sobre-ilustracion" onclick="abrirInvitacion(event)">
                 <div class="sello-lacrado">
                     <span class="sello-texto">AS</span>
@@ -567,11 +584,11 @@
             </div>
 
             <div class="frase-portada">Nuestra historia de amor comienza aquí</div>
-            <p class="instruccion-portada">Sube el volumen de tu celular y presiona la estampilla para contarte algo muy importante...</p>
+            <p class="instruccion-portada">Sube el volumen de tu celular y presiona la estampilla dorada para contarte algo muy importante...</p>
         </div>
     </div>
 
-    <!-- CONTENIDO INTERNO DE LA INVITACIÓN CON FONDO NUDE / CREMA -->
+    <!-- CONTENIDO INTERNO DE LA INVITACIÓN CON FONDO CREMA/NUDE -->
     <div id="invitacion">
         
         <!-- SECCIÓN 1: PRIMERA FOTO AL ABRIR -->
@@ -670,19 +687,19 @@
             </a>
         </section>
 
-        <!-- SECCIÓN 4: VESTIMENTA CON ILUSTRACIONES DE HOMBRES Y MUJERES -->
+        <!-- SECCIÓN 4: VESTIMENTA ELEGANTE CON ICONOS Y RESERVA PARA EL CORTEJO -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
+            <p style="font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
             
             <div class="iconos-vestimenta">
-                <!-- Hombre Traje -->
+                <!-- Traje de Hombre -->
                 <div class="icono-persona">
                     <svg width="45" height="60" viewBox="0 0 24 24" fill="#002266">
                         <path d="M12 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm3 7h-6a2 2 0 0 0-2 2v11h2.5v-6h1v6h3v-6h1v6H17V11a2 2 0 0 0-2-2z"/>
                     </svg>
                 </div>
-                <!-- Mujer Vestido Elegante -->
+                <!-- Vestido Elegante de Mujer -->
                 <div class="icono-persona">
                     <svg width="45" height="60" viewBox="0 0 24 24" fill="#002266">
                         <path d="M12 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm3.5 7h-7l-1 5 2.5 10h8l2.5-10-1-5z"/>
@@ -690,7 +707,7 @@
                 </div>
             </div>
 
-            <p style="margin-top: 25px; font-weight: 900; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
+            <p style="margin-top: 25px; font-weight: 900; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
             <div class="colores-grid">
                 <div class="color-item">
                     <div class="circulo-color" style="background-color: #FFFFFF;"></div>
@@ -709,6 +726,8 @@
                     <span>Azul Noche</span>
                 </div>
             </div>
+
+            <p class="texto-reserva-cortejo">“Estos colores están reservados para los novios y para el cortejo”</p>
         </section>
 
         <!-- SECCIÓN 5: SEGUNDA FOTO JUNTO AL VERSÍCULO BÍBLICO -->
@@ -793,14 +812,14 @@
 
     <!-- SCRIPTS DE REPRODUCCIÓN Y ANIMACIONES COMPATIBLES -->
     <script>
-        // --- APERTURA CON MÚSICA Y EXPLOSIÓN DE BRILLOS PRINCESA ---
+        // --- APERTURA CON MÚSICA Y BRILLO TIPO PRINCESA ---
         function abrirInvitacion(event) {
-            // Explosión de destellos de brillo tipo princesa
+            // Brillo de princesa puro (dorado brillante, blanco radiante y champán)
             confetti({
-                particleCount: 130,
+                particleCount: 140,
                 spread: 100,
                 origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
-                colors: ['#002266', '#6096BA', '#FFFFFF', '#E0F2FE']
+                colors: ['#D4AF37', '#FFF8DC', '#FFFFFF', '#F3E5AB']
             });
 
             // Transición suave
@@ -812,7 +831,7 @@
             }, 600);
         }
 
-        // --- CONTROL DE MÚSICA COMPATIBLE PARA IPHONE / ANDROID ---
+        // --- CONTROL DE MÚSICA COMPATIBLE PARA IPHONE Y ANDROID ---
         const audio = document.getElementById('musicaFondo');
         let sonando = false;
 
