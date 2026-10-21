@@ -30,6 +30,49 @@
 /* VESTIMENTA Y COLORES */.dress-code{margin-top:18px;font-family:Cinzel,serif;font-size:1rem;font-weight:700;letter-spacing:2px;line-height:1.8}.dress-code span{display:block;font-family:Montserrat,sans-serif;font-size:.82rem;letter-spacing:3px;margin-top:5px}.dress-code-imagen{width:100%;max-width:230px;height:auto;display:block;margin:25px auto;border:0;box-shadow:none}.colores-reservados{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:24px auto 0}.color-item{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.65rem;font-weight:700;text-transform:uppercase}.muestra-color{width:40px;height:40px;border-radius:50%;border:1px solid #102b5933}.color-blanco{background:#fff}.color-rojo{background:#9d1427}.color-nude{background:#cbb39e}.color-azul{background:#102b59}
 /* FORMULARIOS */.formulario{margin-top:25px;text-align:left}.formulario label{display:block;margin:15px 0 7px;font-size:.75rem;font-weight:700;letter-spacing:.5px}.formulario input,.formulario select{width:100%;min-height:46px;padding:12px;color:var(--azul);background:#ffffff66;border:1px solid #102b5959;border-radius:0;outline:none}.formulario input:focus,.formulario select:focus{border-color:var(--azul)}.formulario .boton{width:100%;cursor:pointer}.datos-regalo{margin-top:24px;padding:20px 12px;background:#ffffff3b;border:1px solid #102b592e;overflow-wrap:anywhere}.datos-regalo p{font-size:.85rem;margin:5px 0}.alias{font-family:Cinzel,serif;font-weight:700;font-size:1rem!important;letter-spacing:.5px}.pie{padding:40px 22px;text-align:center}.pie-nombres{font-family:'Alex Brush',cursive;font-size:3.2rem;color:var(--azul)}.pie p{font-size:.8rem;line-height:1.8}.mensaje-estado{font-size:.8rem;font-weight:700;margin-top:12px;overflow-wrap:anywhere}
 @media(max-width:360px){.seccion{padding:40px 17px}.tiempo strong{font-size:1.2rem}.tiempo span{font-size:.52rem}.sobre{height:185px}.hero-titulo{font-size:3.8rem}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* AJUSTES FINALES: azul Francia, sobre realista y sello envejecido */
+.frase-sobre{font-family:'Playfair Display',serif;font-style:italic;color:#fff;font-size:clamp(1.45rem,5vw,1.8rem);line-height:1.25;max-width:320px;text-shadow:0 2px 10px #0008;margin-top:-7px}
+.sobre{max-width:300px;height:195px;background:linear-gradient(145deg,#244b7e 0%,#153967 36%,#0b2144 70%,#07172f 100%);border:1px solid #7d91ac;box-shadow:0 28px 55px #0009,inset 0 1px 0 #ffffff30,inset 0 -22px 28px #0005,0 0 0 1px #07172f;}
+.sobre:before{background:linear-gradient(145deg,transparent 49%,#ffffff20 49.7%,transparent 50.6%),linear-gradient(215deg,transparent 49%,#ffffff16 49.7%,transparent 50.6%),linear-gradient(0deg,#06162c38,#ffffff05)}
+.sobre:after{background:linear-gradient(35deg,#091b36,#1b3b67 50%,#0a1b35);box-shadow:inset 0 3px 12px #0005}
+.sobre-borde{inset:9px;border:1px solid #c2cbd533}
+.sello{width:66px;height:66px;background:radial-gradient(circle at 30% 22%,#e6d1a0 0%,#a77b3d 22%,#79512b 45%,#50341e 68%,#b08a4e 83%,#6c4825 100%);border:2px solid #b99b65;box-shadow:0 4px 12px #0009,inset 0 0 0 2px #614322,inset 0 0 0 4px #d3b77c;filter:saturate(.78);}
+.sello:before{inset:5px;border:1px dashed #d8c08a}
+.sello:after{content:'✦  ✧  ✦';position:absolute;inset:-7px;border:1px dotted #b69a69;border-radius:50%;color:#c7aa75;font-size:7px;letter-spacing:8px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+#invitacion{background-color:#102b59;background-image:radial-gradient(ellipse at 8% 5%,#ffffff0d,transparent 38%),radial-gradient(ellipse at 90% 45%,#00000016,transparent 40%),repeating-linear-gradient(135deg,#ffffff08 0,#ffffff08 1px,transparent 1px,transparent 4px),repeating-linear-gradient(0deg,#ffffff06 0,#ffffff06 1px,transparent 1px,transparent 7px)}
+.titulo{color:#fff;text-shadow:0 2px 10px #07162f}
+.interior-nombres{color:#fff;text-shadow:0 2px 8px #07162f}
+.fecha-grande{color:#fff}
+.mini-titulo{color:#e5d5ae}
+.separador{background:#c9a45d}
+.foto-principal{border:0;box-shadow:none}
+.calendario{margin-top:30px;padding:30px 18px;background:linear-gradient(145deg,#173968,#0b2042);border:1px solid #b99b65;box-shadow:0 14px 30px #0005,inset 0 0 0 5px #ffffff08}
+.calendario-mes{font-size:1.15rem;color:#f1dfb5}
+.dias span{padding:11px 0}
+.reloj-antiguo{width:150px;height:150px;border:7px solid #9b7a48;background:radial-gradient(circle,#f8f0dc 0%,#e8d9b5 70%,#b59a65 100%);box-shadow:0 0 0 2px #d6bd83, inset 0 0 0 2px #fff8e9,0 14px 30px #0007}
+.reloj-antiguo:before{inset:8px;border:1px solid #9b7a48}
+.reloj-hora{margin:22px auto 12px}
+.reloj-hora .aguja-hora{transform:translateX(-50%) rotate(270deg)}
+.reloj-hora .aguja-minuto{transform:translateX(-50%) rotate(0deg)}
+.hero-sello{display:none!important}
+@media(max-width:360px){.sello{width:60px;height:60px}.frase-sobre{font-size:1.35rem}}
+
+
+/* FONDO RESTAURADO: papel crema como la versión anterior, no azul pleno */
+:root{--crema:#e9dfcf;--crema-claro:#f4ecdf;}
+body{background:#07162f;color:#102b59}
+#invitacion{background-color:#e9dfcf;background-image:radial-gradient(ellipse at 8% 5%,rgba(255,255,255,.38),transparent 38%),radial-gradient(ellipse at 90% 45%,rgba(125,100,70,.07),transparent 40%),repeating-linear-gradient(135deg,rgba(70,55,35,.025) 0,rgba(70,55,35,.025) 1px,transparent 1px,transparent 5px),repeating-linear-gradient(0deg,rgba(255,255,255,.08) 0,rgba(255,255,255,.08) 1px,transparent 1px,transparent 7px);color:#102b59}
+.seccion{color:#102b59;border-bottom-color:rgba(16,43,89,.16)}
+.titulo,.interior-nombres,.fecha-grande,.mini-titulo,.pie-nombres{color:#102b59;text-shadow:none}
+.texto,.galeria figcaption,.pie p{color:#102b59}
+.seccion:after{color:#102b59}
+.separador{background:#102b59}
+.calendario{background:rgba(255,255,255,.25);border-color:rgba(16,43,89,.25)}
+.tiempo{background:rgba(255,255,255,.3);border-color:rgba(16,43,89,.18)}
+.datos-regalo{background:rgba(255,255,255,.28);border-color:rgba(16,43,89,.2)}
+.mapa{border-color:#fff}
+/* La portada y la foto principal conservan el azul oscuro y los textos blancos */
 </style>
 </head>
 <body>
@@ -40,7 +83,8 @@
     <div class="sobre sobre-realista" id="sobre" role="button" tabindex="0" aria-label="Tocar la estampilla dorada para abrir la invitación">
       <div class="sobre-borde"></div><div class="sello"><span>A&amp;S</span></div>
     </div>
-    <p class="portada-instruccion">Comienza una historia de amor sin fin<br><br>Subí el volumen de tu celular<br>y tocá la estampilla dorada<br>para descubrir algo muy especial</p>
+    <p class="frase-sobre">Hoy comienza una historia de amor sin fin</p>
+    <p class="portada-instruccion">Subí el volumen de tu celular<br>y tocá la estampilla para abrir la invitación</p>
     <button class="boton-abrir" id="botonAbrir" type="button">Abrir invitación</button>
   </div>
 </div>
@@ -54,35 +98,41 @@
       
       <h1 class="hero-titulo">¡Nos casamos!</h1>
       <p class="hero-frase">Dios unió nuestras vidas</p>
-      <p class="hero-frase-secundaria">y hoy queremos celebrar nuestro amor con ustedes</p>
+      <p class="hero-frase-secundaria">y queremos compartir este día con ustedes</p>
     </div>
   </section>
   <section class="seccion portada-interior">
     <p class="mini-titulo">Con la bendición de Dios</p><h2 class="interior-nombres">Alan &amp; Sol</h2><div class="separador"></div>
-    <p class="texto">Dios unió nuestras vidas y queremos celebrar este amor con ustedes.</p>
+    <p class="texto">Con Dios como guía, elegimos caminar juntos para siempre.</p>
     <div class="separador"></div><p class="fecha-grande">19 · 12 · 2026</p><p class="mini-titulo">Nuestra boda</p>
   </section>
-  <section class="seccion">
-    <h2 class="titulo">La cuenta regresiva</h2><p class="texto">Cada vez falta menos.</p>
-    <div class="cuenta-regresiva" aria-label="Cuenta regresiva"><div class="tiempo"><strong id="dias">---</strong><span>Días</span></div><div class="tiempo"><strong id="horas">--</strong><span>Horas</span></div><div class="tiempo"><strong id="minutos">--</strong><span>Minutos</span></div><div class="tiempo"><strong id="segundos">--</strong><span>Segundos</span></div></div>
-  </section>
+
   <!-- Montañas en el medio + reloj antiguo -->
   <section class="seccion">
     <h2 class="titulo">Un camino compartido</h2><p class="texto">Dios guía nuestro camino y nos enseña a caminar juntos.</p>
     <div class="galeria"><figure><img src="IMG-20261017-WA0125.jpg" alt="Paisaje de montañas que representa un camino compartido" loading="lazy"><figcaption>Que nunca nos falten nuevos caminos por recorrer juntos.</figcaption></figure></div>
-    <div class="reloj-antiguo" role="img" aria-label="Reloj antiguo de bolsillo con números y agujas"><div class="numero-reloj" id="numerosReloj"></div><div class="aguja aguja-hora"></div><div class="aguja aguja-minuto"></div><div class="aguja aguja-segundo"></div><div class="centro-reloj"></div></div>
     <p class="texto" style="margin-top:20px">El tiempo pasa, pero hay momentos que queremos guardar para siempre.</p>
-  </section>
-  <section class="seccion">
-    <h2 class="titulo">¡Te esperamos!</h2><p class="mini-titulo">Sábado</p><p class="fecha-grande">19 de diciembre de 2026</p><div class="separador"></div><p class="mini-titulo">Horario</p><p class="texto">21:00 horas</p><div class="separador"></div><p class="mini-titulo">Lugar</p><p class="texto">Lalola Eventos</p><p class="texto">Av. Dardo Rocha 1982</p><p class="texto">Berazategui, Buenos Aires</p>
-    <a class="boton" href="https://www.google.com/maps/search/?api=1&amp;query=Lalola+Eventos+Av.+Dardo+Rocha+1982+Berazategui" target="_blank" rel="noopener noreferrer"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>Ver ubicación en Google Maps</a>
-    <iframe class="mapa" title="Mapa de Lalola Eventos" src="https://maps.google.com/maps?q=Lalola%20Eventos%20Av.%20Dardo%20Rocha%201982%20Berazategui&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
   </section>
   <section class="seccion">
     <h2 class="titulo">Agendá la fecha</h2><p class="texto">Queremos que estés ahí para compartir con nosotros este día inolvidable.</p>
     <div class="calendario"><div class="calendario-mes">DICIEMBRE 2026</div><div class="dias-semana"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="dias"><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span class="dia-boda">19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span></div></div>
     <a class="boton" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Boda+de+Alan+y+Sol&amp;dates=20261219T210000/20261220T030000&amp;details=Celebramos+juntos+la+boda+de+Alan+y+Sol&amp;location=Lalola+Eventos%2C+Av.+Dardo+Rocha+1982%2C+Berazategui" target="_blank" rel="noopener noreferrer">Agregar al calendario</a>
   </section>
+  <section class="seccion">
+    <h2 class="titulo">El lugar de nuestro sí</h2><p class="mini-titulo">La hora</p><div class="reloj-antiguo reloj-hora" role="img" aria-label="Reloj clásico que marca las nueve"><div class="numero-reloj"><span style="left:50%;top:10%">XII</span><span style="left:73%;top:16%">I</span><span style="left:88%;top:31%">II</span><span style="left:90%;top:50%">III</span><span style="left:88%;top:69%">IV</span><span style="left:73%;top:84%">V</span><span style="left:50%;top:90%">VI</span><span style="left:27%;top:84%">VII</span><span style="left:12%;top:69%">VIII</span><span style="left:10%;top:50%">IX</span><span style="left:12%;top:31%">X</span><span style="left:27%;top:16%">XI</span></div><div class="aguja aguja-hora"></div><div class="aguja aguja-minuto"></div><div class="centro-reloj"></div></div><p class="fecha-grande">21:00 horas</p><div class="separador"></div><p class="mini-titulo">Lugar</p><p class="texto">Lalola Eventos</p><p class="texto">Av. Dardo Rocha 1982</p><p class="texto">Berazategui, Buenos Aires</p>
+    <a class="boton" href="https://www.google.com/maps/search/?api=1&amp;query=Lalola+Eventos+Av.+Dardo+Rocha+1982+Berazategui" target="_blank" rel="noopener noreferrer"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>Ver ubicación en Google Maps</a>
+    <iframe class="mapa" title="Mapa de Lalola Eventos" src="https://maps.google.com/maps?q=Lalola%20Eventos%20Av.%20Dardo%20Rocha%201982%20Berazategui&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+  <section class="seccion">
+    <h2 class="titulo">La cuenta regresiva</h2><p class="texto">Cada vez falta menos.</p>
+    <div class="cuenta-regresiva" aria-label="Cuenta regresiva"><div class="tiempo"><strong id="dias">---</strong><span>Días</span></div><div class="tiempo"><strong id="horas">--</strong><span>Horas</span></div><div class="tiempo"><strong id="minutos">--</strong><span>Minutos</span></div><div class="tiempo"><strong id="segundos">--</strong><span>Segundos</span></div></div>
+  </section>
+  <section class="seccion">
+    <h2 class="titulo">¡Te esperamos!</h2><p class="mini-titulo">Sábado</p><p class="fecha-grande">19 de diciembre de 2026</p><div class="separador"></div><p class="mini-titulo">Horario</p><p class="texto">21:00 horas</p><div class="separador"></div><p class="mini-titulo">Lugar</p><p class="texto">Lalola Eventos</p><p class="texto">Av. Dardo Rocha 1982</p><p class="texto">Berazategui, Buenos Aires</p>
+    <a class="boton" href="https://www.google.com/maps/search/?api=1&amp;query=Lalola+Eventos+Av.+Dardo+Rocha+1982+Berazategui" target="_blank" rel="noopener noreferrer"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>Ver ubicación en Google Maps</a>
+    <iframe class="mapa" title="Mapa de Lalola Eventos" src="https://maps.google.com/maps?q=Lalola%20Eventos%20Av.%20Dardo%20Rocha%201982%20Berazategui&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+
   <section class="seccion"><h2 class="titulo">Elegante</h2><p class="dress-code">Dress code<span>Elegante</span></p><p class="texto" style="margin-top:20px">Los esperamos para celebrar juntos.</p><img class="dress-code-imagen" src="file_000000005b10820eae163c046a54b8fd.png" alt="Inspiración de vestimenta elegante" loading="lazy"></section>
   <section class="seccion"><h2 class="titulo">Colores reservados</h2><p class="texto">Estos colores están reservados para los novios y el cortejo.</p><div class="colores-reservados"><div class="color-item"><span class="muestra-color color-blanco"></span><span>Blanco</span></div><div class="color-item"><span class="muestra-color color-rojo"></span><span>Rojo</span></div><div class="color-item"><span class="muestra-color color-nude"></span><span>Nude</span></div><div class="color-item"><span class="muestra-color color-azul"></span><span>Azul</span></div></div></section>
   <section class="seccion"><h2 class="titulo">¿Nos acompañás?</h2><p class="texto">¿Nos acompañás? Confirmá tu asistencia.</p>
@@ -100,10 +150,8 @@
 <script>
 (function(){
  const portada=document.getElementById('portada'),invitacion=document.getElementById('invitacion'),botonAbrir=document.getElementById('botonAbrir'),sobre=document.getElementById('sobre'),musica=document.getElementById('musica'),destello=document.getElementById('destello');let abierta=false;
- function abrirInvitacion(){if(abierta)return;abierta=true;destello.classList.remove('activo');void destello.offsetWidth;destello.classList.add('activo');setTimeout(()=>{invitacion.classList.add('visible');portada.classList.add('oculta');document.body.style.background='#102b59';musica.play().catch(()=>{});setTimeout(()=>{portada.style.display='none';window.scrollTo(0,0)},850)},170)}
+ function abrirInvitacion(){if(abierta)return;abierta=true;destello.classList.remove('activo');void destello.offsetWidth;destello.classList.add('activo');setTimeout(()=>{invitacion.classList.add('visible');portada.classList.add('oculta');document.body.style.background='#e9dfcf';musica.play().catch(()=>{});setTimeout(()=>{portada.style.display='none';window.scrollTo(0,0)},850)},170)}
  botonAbrir.addEventListener('click',abrirInvitacion);sobre.addEventListener('click',abrirInvitacion);sobre.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrirInvitacion()}});
- // Números romanos y agujas del reloj antiguo
- const reloj=document.getElementById('numerosReloj');for(let n=1;n<=12;n++){const s=document.createElement('span');const a=(n*30-90)*Math.PI/180;s.textContent=['XII','I','II','III','IV','V','VI','VII','VIII','IX','X','XI'][n%12];s.style.left=(50+38*Math.cos(a))+'%';s.style.top=(50+38*Math.sin(a))+'%';reloj.appendChild(s)}
  const fechaBoda=new Date(2026,11,19,21,0,0);function actualizarCuenta(){const d=fechaBoda.getTime()-Date.now();if(d<=0){['dias','horas','minutos','segundos'].forEach((id,i)=>document.getElementById(id).textContent=i===0?'0':'00');return}document.getElementById('dias').textContent=Math.floor(d/86400000);document.getElementById('horas').textContent=String(Math.floor(d/3600000)%24).padStart(2,'0');document.getElementById('minutos').textContent=String(Math.floor(d/60000)%60).padStart(2,'0');document.getElementById('segundos').textContent=String(Math.floor(d/1000)%60).padStart(2,'0')}actualizarCuenta();setInterval(actualizarCuenta,1000);
  function enviarWhatsApp(mensaje,estadoId){const telefono='5491123983071';document.getElementById(estadoId).textContent='Se abrirá WhatsApp para enviar tu mensaje.';window.open('https://wa.me/'+telefono+'?text='+encodeURIComponent(mensaje),'_blank','noopener,noreferrer')}
  document.getElementById('formConfirmacion').addEventListener('submit',function(e){e.preventDefault();const nombre=document.getElementById('nombre').value.trim(),asistencia=document.getElementById('asistencia').value;if(nombre&&asistencia)enviarWhatsApp('Hola, soy '+nombre+'. Confirmación para la boda de Alan y Sol: '+asistencia+'.','estadoConfirmacion')});
