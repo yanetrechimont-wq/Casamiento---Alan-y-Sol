@@ -116,7 +116,6 @@ body{background:#07162f;color:#102b59}
     <button class="boton-abrir" id="botonAbrir" type="button">Abrir invitación</button>
   </div>
 </div>
-<div class="papel-apertura" id="papelApertura" aria-hidden="true"></div>
 <div class="destello" id="destello" aria-hidden="true"></div>
 <audio id="musica" loop preload="none"><source src="cancion.mp3" type="audio/mpeg"></audio>
 <main id="invitacion">
@@ -177,7 +176,7 @@ body{background:#07162f;color:#102b59}
 <script>
 (function(){
  const portada=document.getElementById('portada'),invitacion=document.getElementById('invitacion'),botonAbrir=document.getElementById('botonAbrir'),sobre=document.getElementById('sobre'),musica=document.getElementById('musica'),destello=document.getElementById('destello');let abierta=false;
- function abrirInvitacion(){if(abierta)return;abierta=true;sobre.classList.add('abriendo');const papel=document.getElementById('papelApertura');papel.classList.remove('activo');void papel.offsetWidth;papel.classList.add('activo');destello.classList.remove('activo');void destello.offsetWidth;destello.classList.add('activo');setTimeout(()=>{invitacion.classList.add('visible');portada.classList.add('oculta');document.body.style.background='#e9dfcf';musica.play().catch(()=>{});setTimeout(()=>{portada.style.display='none';papel.classList.remove('activo');window.scrollTo(0,0)},850)},380)}
+ function abrirInvitacion(){if(abierta)return;abierta=true;sobre.classList.add('abriendo');destello.classList.remove('activo');void destello.offsetWidth;destello.classList.add('activo');musica.play().catch(()=>{});setTimeout(()=>{invitacion.classList.add('visible');portada.classList.add('oculta');document.body.style.background='#e9dfcf';window.scrollTo(0,0);setTimeout(()=>{portada.style.display='none'},850)},180)}
  botonAbrir.addEventListener('click',abrirInvitacion);sobre.addEventListener('click',abrirInvitacion);sobre.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrirInvitacion()}});
  const fechaBoda=new Date(2026,11,19,21,0,0);function actualizarCuenta(){const d=fechaBoda.getTime()-Date.now();if(d<=0){['dias','horas','minutos','segundos'].forEach((id,i)=>document.getElementById(id).textContent=i===0?'0':'00');return}document.getElementById('dias').textContent=Math.floor(d/86400000);document.getElementById('horas').textContent=String(Math.floor(d/3600000)%24).padStart(2,'0');document.getElementById('minutos').textContent=String(Math.floor(d/60000)%60).padStart(2,'0');document.getElementById('segundos').textContent=String(Math.floor(d/1000)%60).padStart(2,'0')}actualizarCuenta();setInterval(actualizarCuenta,1000);
  function enviarWhatsApp(mensaje,estadoId){const telefono='5491123983071';document.getElementById(estadoId).textContent='Se abrirá WhatsApp para enviar tu mensaje.';window.open('https://wa.me/'+telefono+'?text='+encodeURIComponent(mensaje),'_blank','noopener,noreferrer')}
@@ -189,3 +188,22 @@ body{background:#07162f;color:#102b59}
 </script>
 </body>
 </html>
+
+<style>
+/* Sobre real de gala: solapa marcada, perlas blancas y moño de satén */
+.sobre.sobre-realista{isolation:isolate;overflow:visible;border:1px solid #d9c69a;border-radius:4px;background:linear-gradient(145deg,#49658a 0%,#233f68 32%,#142e53 67%,#0a1b35 100%);box-shadow:0 28px 42px #0008,inset 0 1px 0 #ffffff70,inset 0 -20px 26px #0005,0 0 0 1px #d8c99d55;}
+.sobre.sobre-realista:before{content:"";position:absolute;inset:0;border-radius:3px;background:linear-gradient(145deg,transparent 48.8%,#d5c7a3 49.4%,#ffffff24 49.8%,transparent 50.6%),linear-gradient(215deg,transparent 48.8%,#d5c7a3 49.4%,#ffffff20 49.8%,transparent 50.6%),linear-gradient(180deg,#ffffff0b,#00000018);z-index:1;pointer-events:none;}
+.sobre.sobre-realista:after{content:"";position:absolute;inset:0;background:linear-gradient(35deg,#091a32 0%,#2b4a74 49%,#112642 100%);clip-path:polygon(0 0,100% 0,50% 72%);border-top:1px solid #ffffff45;filter:drop-shadow(0 4px 4px #0007);transform-origin:top center;transition:transform .48s ease,opacity .35s ease;z-index:2;}
+.sobre.sobre-realista .sobre-borde{inset:8px;border:1px solid #d9c79c65;z-index:3;}
+.sobre.sobre-realista .sello{z-index:5;width:48px;height:48px;background:radial-gradient(circle at 28% 20%,#fff4d2 0%,#d6b66e 15%,#a77a36 40%,#69461f 68%,#d1ad65 88%,#795328 100%);border:1px solid #f0d99d;box-shadow:0 3px 10px #0009,inset 0 0 0 2px #68451f,inset 0 0 0 3px #e0c17a;}
+.sobre.sobre-realista .sello:before{inset:5px;border:1px solid #f5e5b6;border-radius:50%;}
+.sobre.sobre-realista .sello:after{content:"✦";position:absolute;inset:-6px;display:grid;place-items:center;border:1px dotted #d8bd7e;border-radius:50%;color:#f3dda0;font-size:7px;}
+/* Pequeñas perlas nacaradas a los lados */
+.sobre.sobre-realista .sobre-borde:before{content:"";position:absolute;left:13px;top:14px;width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff 0%,#fffdf3 24%,#e8e2d8 62%,#a9a39b 100%);box-shadow:0 1px 3px #0007,calc(100% + 222px) 0 0 -1px #f7f3e9,calc(100% + 222px) 0 3px #0005,0 142px 0 -1px #f7f3e9,0 142px 3px #0005,calc(100% + 222px) 142px 0 -1px #f7f3e9,calc(100% + 222px) 142px 3px #0005;z-index:4;}
+/* Moño blanco satinado centrado en la solapa */
+.sobre.sobre-realista .sobre-borde:after{content:"";position:absolute;left:50%;top:calc(50% + 25px);width:39px;height:19px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 50%,#fff 0%,#f4f0e7 55%,#c9c2b6 100%);clip-path:polygon(0 0,40% 15%,50% 38%,60% 15%,100% 0,88% 100%,56% 70%,50% 100%,44% 70%,12% 100%);filter:drop-shadow(0 2px 2px #0008);z-index:4;pointer-events:none;}
+.sobre.sobre-realista.abriendo:after{transform:rotateX(165deg);opacity:.25;}
+.destello.activo{animation:destelloBreve .42s ease-out forwards;}
+@keyframes destelloBreve{0%{opacity:0;transform:scale(.35)}25%{opacity:.85;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
+@media(max-width:360px){.sobre.sobre-realista .sobre-borde:before{box-shadow:0 1px 3px #0007,calc(100% + 202px) 0 0 -1px #f7f3e9,0 142px 0 -1px #f7f3e9,calc(100% + 202px) 142px 0 -1px #f7f3e9;}}
+</style>
