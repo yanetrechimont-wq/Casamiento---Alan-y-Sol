@@ -750,11 +750,6 @@ document.getElementById('formulario').addEventListener('submit', function(event)
   const asistencia = document.getElementById('asistencia').value;
   const mensaje = document.getElementById('mensaje').value.trim();
 
-  const texto =
-    '¡Hola, Alan y Sol! Soy ' + nombre + '.%0A' +
-    'Confirmación: ' + asistencia + '.%0A' +
-    'Mensaje: ' + (mensaje || '¡Muchas felicidades!');
-
   window.open('https://wa.me/' + telefono + '?text=' + encodeURIComponent(
     '¡Hola, Alan y Sol! Soy ' + nombre + '.\n' +
     'Confirmación: ' + asistencia + '.\n' +
