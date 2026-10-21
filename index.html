@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías de Realeza Fina y Elegante -->
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tipografías Elegantes y Legibles -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <!-- Librería para la explosión sutil de brillos tipo princesa -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --azul-francia: #002266;
             --azul-portada: #0A192F;
-            --azul-sobre: #002D80;
-            --fondo-crema-oscuro: #F3EFE6;
+            --azul-sutil: #1E3A8A;
+            --fondo-crema-nude: #EFE8DC;
             --blanco: #FFFFFF;
             --oro-real: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
             --oro-borde: #D4AF37;
@@ -34,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA: FONDO AZUL CON TITULO EN CINZEL Y SOBRE FINO --- */
+        /* --- PORTADA: SOBRE AZUL CON LETRAS BLANCAS Y ESTAMPILLA DORADA --- */
         #portada-pantalla {
             position: fixed;
             top: 0;
@@ -59,7 +59,7 @@
         .tarjeta-sobre-container {
             width: 100%;
             max-width: 410px;
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
             border: 1.5px solid rgba(212, 175, 55, 0.4);
             border-radius: 24px;
             padding: 35px 22px;
@@ -77,11 +77,11 @@
             margin-bottom: 22px;
             line-height: 1.1;
             letter-spacing: 2px;
-            font-weight: 800;
+            font-weight: 900;
             text-shadow: 0 4px 15px rgba(0,0,0,0.8);
         }
 
-        /* SOBRE AZUL FRANCIA FINO Y ELEGANTE */
+        /* SOBRE AZUL FRANCIA ELEGANTE */
         .sobre-ilustracion {
             width: 100%;
             max-width: 295px;
@@ -170,16 +170,18 @@
             font-weight: 700;
         }
 
-        /* --- CONTENIDO INTERNO: FONDO CREMA MÁS OSCURO Y LETRAS AZUL FRANCIA --- */
+        /* --- CONTENIDO INTERNO: FONDO NUDE CREMA MÁS OSCURO CON DETALLES AZULES --- */
         #invitacion {
             max-width: 480px;
             margin: 0 auto;
-            background-color: var(--fondo-crema-oscuro);
+            background-color: var(--fondo-crema-nude);
             color: var(--azul-francia);
             min-height: 100vh;
             display: none;
             box-shadow: 0 0 40px rgba(0,0,0,0.25);
             padding-bottom: 60px;
+            border-left: 2px solid rgba(0, 34, 102, 0.15);
+            border-right: 2px solid rgba(0, 34, 102, 0.15);
         }
 
         #invitacion.visible {
@@ -189,8 +191,19 @@
         section {
             padding: 45px 22px;
             text-align: center;
-            border-bottom: 1.5px solid rgba(0, 34, 102, 0.1);
+            border-bottom: 1.5px solid rgba(0, 34, 102, 0.12);
             position: relative;
+        }
+
+        /* Detalles azules sutiles en los márgenes de sección */
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0, 34, 102, 0.15), transparent);
         }
 
         h2.seccion-titulo {
@@ -200,6 +213,7 @@
             margin-bottom: 12px;
             font-weight: 900;
             letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0, 34, 102, 0.15);
         }
 
         p, label {
@@ -207,38 +221,41 @@
             line-height: 1.6;
             font-size: 1rem;
             font-weight: 800;
+            text-shadow: 0 0 1px rgba(0, 34, 102, 0.1);
         }
 
         .texto-realeza {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.6rem;
+            font-size: 2.7rem;
             color: var(--azul-francia);
-            margin: 12px 0;
+            margin: 15px 0 5px 0;
             line-height: 1.2;
             font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 34, 102, 0.2);
         }
 
-        /* FOTO HERO AL ABRIR TIPO FOTO FABRIZIO CON TEXTO GLOWING */
-        .foto-hero-container {
+        /* PRIMERA FOTO: OCUPA TODO EL MARGEN SUPERIOR CON TEXTO EN EL CENTRO */
+        .foto-hero-full {
             position: relative;
             width: 100%;
-            border-radius: 16px;
+            height: 380px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 34, 102, 0.2);
-            margin: 15px 0;
-            border: 4px solid var(--blanco);
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 10px 30px rgba(0, 34, 102, 0.22);
+            border-bottom: 3px solid var(--blanco);
         }
 
-        .foto-hero-container img {
+        .foto-hero-full img {
             width: 100%;
-            display: block;
+            height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        .foto-hero-overlay {
+        .foto-hero-overlay-full {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.38);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -248,23 +265,23 @@
             padding: 20px;
         }
 
-        .foto-hero-overlay h3 {
+        .foto-hero-overlay-full h3 {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.6rem;
+            font-size: 3.8rem;
             color: #FFFFFF;
             line-height: 1;
             font-weight: bold;
-            text-shadow: 0 0 12px rgba(255,255,255,0.9), 0 0 25px rgba(255,255,255,0.6);
+            text-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 25px rgba(255,255,255,0.6);
         }
 
-        .foto-hero-overlay p {
+        .foto-hero-overlay-full p {
             font-family: 'Cinzel', serif;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             letter-spacing: 4px;
             color: #FFFFFF;
             font-weight: 900;
             margin-top: 10px;
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            text-shadow: 0 0 12px rgba(255,255,255,0.85);
         }
 
         .foto-boda {
@@ -374,9 +391,9 @@
             letter-spacing: 1px;
         }
 
-        /* VESTIMENTA MINI ELEGANTE CON IMAGEN ADJUNTA */
+        /* VESTIMENTA MINI ELEGANTE */
         .foto-mini-vestimenta {
-            width: 110px;
+            width: 115px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 34, 102, 0.15);
@@ -559,10 +576,9 @@
 </head>
 <body>
 
-    <!-- REPRODUCTOR DE AUDIO AUDIO PERFECT DE ED SHEERAN -->
+    <!-- REPRODUCTOR DE AUDIO LOCAL cancion.mp3 -->
     <audio id="musicaFondo" loop preload="auto">
-        <source src="https://cdns.jukehost.co.uk/c31505c24e86a59b6c16ff8380eb9d64380f2d48" type="audio/mpeg">
-        <source src="https://archive.org/download/EdSheeranPerfectOfficialMusicVideo/Ed%20Sheeran%20-%20Perfect%20%28Official%20Music%20Video%29.mp3" type="audio/mpeg">
+        <source src="cancion.mp3" type="audio/mpeg">
     </audio>
 
     <!-- BOTÓN FLOTANTE DE MÚSICA -->
@@ -570,12 +586,12 @@
         🎵
     </div>
 
-    <!-- PORTADA AZUL CON SOBRE FINO Y TITULO EN CINZEL BLANCO -->
+    <!-- PORTADA AZUL CON SOBRE Y ESTAMPILLA DORADA -->
     <div id="portada-pantalla">
         <div class="tarjeta-sobre-container">
             <h1 class="nombres-portada">Alan y Sol</h1>
 
-            <!-- Sobre Azul Francia interactivo con Estampilla Dorada -->
+            <!-- Sobre Azul Francia interactivo -->
             <div class="sobre-ilustracion" onclick="abrirInvitacion(event)">
                 <div class="sello-lacrado">
                     <span class="sello-texto">AS</span>
@@ -587,20 +603,20 @@
         </div>
     </div>
 
-    <!-- CONTENIDO INTERNO DE LA INVITACIÓN CON FONDO CREMA MÁS OSCURO -->
+    <!-- CONTENIDO INTERNO DE LA INVITACIÓN -->
     <div id="invitacion">
         
-        <!-- SECCIÓN 1: PRIMERA FOTO AL ABRIR -->
-        <section>
-            <p class="texto-realeza">Dios unió nuestras vidas</p>
-
-            <div class="foto-hero-container">
-                <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol" onerror="this.style.display='none'">
-                <div class="foto-hero-overlay">
-                    <h3>Alan y Sol</h3>
-                    <p>NOS CASAMOS</p>
-                </div>
+        <!-- SECCIÓN 1: PRIMERA FOTO FULL MARGEN CON TEXTO EN EL CENTRO -->
+        <div class="foto-hero-full">
+            <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol" onerror="this.style.display='none'">
+            <div class="foto-hero-overlay-full">
+                <h3>Alan y Sol</h3>
+                <p>NOS CASAMOS</p>
             </div>
+        </div>
+
+        <section style="padding-top: 25px;">
+            <p class="texto-realeza">Dios unió nuestras vidas</p>
         </section>
 
         <!-- SECCIÓN 2: CALENDARIO, CRONÓMETRO Y RELOJ ENORME -->
@@ -678,12 +694,11 @@
             </a>
         </section>
 
-        <!-- SECCIÓN 4: VESTIMENTA ELEGANTE CON MINI FOTO ADJUNTA Y RESERVA PARA EL CORTEJO -->
+        <!-- SECCIÓN 4: VESTIMENTA CON MINI FOTO Y RESERVA PARA EL CORTEJO -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
             <p style="font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
             
-            <!-- Foto mini agregada para la vestimenta -->
             <img src="file_000000005b10820eae163c046a54b8fd.png" alt="Vestimenta Elegante" class="foto-mini-vestimenta" onerror="this.style.display='none'">
 
             <p style="margin-top: 25px; font-weight: 900; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
@@ -791,14 +806,13 @@
 
     <!-- SCRIPTS DE REPRODUCCIÓN Y ANIMACIONES COMPATIBLES -->
     <script>
-        // --- APERTURA CON MÚSICA Y BRILLO FINO DE PRINCESA ---
+        // --- APERTURA CON MÚSICA Y MINI EXPLOSIÓN SUTIL DE BRILLO BLANCO ---
         function abrirInvitacion(event) {
-            // Explosión sutil y delicada de destellos de brillo princesa
             confetti({
-                particleCount: 90,
-                spread: 75,
+                particleCount: 50,
+                spread: 60,
                 origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
-                colors: ['#D4AF37', '#FFF8DC', '#FFFFFF', '#F3E5AB']
+                colors: ['#FFFFFF', '#F8FAFC', '#FFF8DC']
             });
 
             // Transición suave
@@ -807,7 +821,7 @@
                 document.getElementById('invitacion').classList.add('visible');
                 document.getElementById('btnMusica').style.display = 'flex';
                 reproducirMusica();
-            }, 600);
+            }, 550);
         }
 
         // --- CONTROL DE MÚSICA COMPATIBLE PARA IPHONE Y ANDROID ---
