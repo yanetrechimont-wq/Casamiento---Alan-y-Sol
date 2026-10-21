@@ -34,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA: ESTILO PAPIRO Y REALEZA --- */
+        /* --- PORTADA CON DECORACIÓN MÁGICA Y EXTERIOR DE REALEZA --- */
         #portada-pantalla {
             position: fixed;
             top: 0;
@@ -59,46 +59,53 @@
         .tarjeta-sobre-container {
             width: 100%;
             max-width: 420px;
-            background: linear-gradient(135deg, rgba(15, 28, 54, 0.95) 0%, rgba(5, 12, 26, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(15, 28, 54, 0.96) 0%, rgba(5, 12, 26, 0.96) 100%);
             border: 2.5px solid var(--oro-borde);
             border-radius: 20px;
-            padding: 35px 22px;
+            padding: 40px 22px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.35), inset 0 0 20px rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0,0,0,0.9);
+            box-shadow: 0 0 70px rgba(212, 175, 55, 0.45), inset 0 0 25px rgba(255, 255, 255, 0.1), 0 20px 60px rgba(0,0,0,0.9);
             position: relative;
         }
 
+        /* Decoración mágica exterior de princesa */
         .tarjeta-sobre-container::before {
-            content: '❧ ❖ ❧';
+            content: '✧ ✦ ❦  ❖  ❀  ❖  ❦ ✦ ✧';
             position: absolute;
-            top: 12px;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
             color: var(--oro-borde);
-            font-size: 0.9rem;
-            letter-spacing: 8px;
-            opacity: 0.8;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 5px #FFFFFF;
+            white-space: nowrap;
         }
 
         .tarjeta-sobre-container::after {
-            content: '❧ ❖ ❧';
+            content: '✧ ✦ ❦  ❖  ❀  ❖  ❦ ✦ ✧';
             position: absolute;
-            bottom: 12px;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%);
             color: var(--oro-borde);
-            font-size: 0.9rem;
-            letter-spacing: 8px;
-            opacity: 0.8;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 5px #FFFFFF;
+            white-space: nowrap;
         }
 
         .nombres-portada {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.9rem;
+            font-size: 4.1rem;
             color: #FFFFFF;
             margin-bottom: 15px;
             line-height: 1.1;
             font-weight: bold;
-            text-shadow: 0 0 20px rgba(255,255,255,0.9), 0 4px 15px rgba(0,0,0,0.95);
+            text-shadow: 0 0 25px rgba(255,255,255,1), 0 0 10px rgba(212,175,55,0.6), 0 4px 15px rgba(0,0,0,0.95);
         }
 
         .sobre-ilustracion {
@@ -109,7 +116,7 @@
             border: 2px solid var(--oro-borde);
             border-radius: 12px;
             position: relative;
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.45), inset 0 0 15px rgba(255,255,255,0.15), 0 15px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5), inset 0 0 15px rgba(255,255,255,0.2), 0 15px 35px rgba(0,0,0,0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -149,7 +156,7 @@
             background: var(--oro-real);
             border-radius: 50%;
             border: 2.5px solid #FFF8DC;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 4px 20px rgba(212, 175, 55, 0.95), inset 0 2px 5px rgba(255,255,255,0.9);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 4px 20px rgba(212, 175, 55, 1), inset 0 2px 5px rgba(255,255,255,0.9);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -174,11 +181,11 @@
 
         .frase-portada {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.3rem;
+            font-size: 2.4rem;
             color: #FFFFFF;
             margin-bottom: 12px;
             line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 0 10px rgba(255,255,255,0.5);
             font-weight: bold;
         }
 
@@ -220,38 +227,42 @@
             position: relative;
         }
 
+        /* Cenefas de princesa súper decorativas y mágicas entre secciones */
         section::after {
-            content: '❦  ⟡  ♦  ⟡  ❦';
+            content: '✧  ✦  ❦   ⟡   ♦   ⟡   ❦  ✦  ✧';
             display: block;
-            margin-top: 28px;
+            margin-top: 30px;
             color: var(--azul-francia);
-            font-size: 0.9rem;
-            letter-spacing: 5px;
-            opacity: 0.55;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
         }
 
+        /* TÍTULOS Y TEXTOS ULTRA LLAMATIVOS E ILUMINADOS */
         h2.seccion-titulo {
             font-family: 'Cinzel', serif;
-            font-size: 1.9rem;
+            font-size: 2.05rem;
             color: var(--azul-francia);
             margin-bottom: 12px;
             font-weight: 900;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-shadow: 
-                -1px -1px 0 #FFFFFF,  
-                 1px -1px 0 #FFFFFF,
-                -1px  1px 0 #FFFFFF,
-                 1px  1px 0 #FFFFFF,
-                 0 0 12px rgba(255, 255, 255, 0.95),
-                 0 0 20px rgba(0, 34, 102, 0.2);
+                -2px -2px 0 #FFFFFF,  
+                 2px -2px 0 #FFFFFF,
+                -2px  2px 0 #FFFFFF,
+                 2px  2px 0 #FFFFFF,
+                 0 0 18px rgba(255, 255, 255, 1),
+                 0 0 30px rgba(212, 175, 55, 0.4),
+                 0 0 10px rgba(0, 34, 102, 0.3);
         }
 
         p, label {
             color: var(--azul-francia);
             line-height: 1.6;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 800;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.95);
         }
 
         .foto-hero-container {
@@ -287,29 +298,42 @@
 
         .foto-hero-overlay h3 {
             font-family: 'Alex Brush', cursive;
-            font-size: 4.2rem;
+            font-size: 4.6rem;
             color: #FFFFFF;
             line-height: 1;
             font-weight: bold;
-            text-shadow: 0 0 20px rgba(255,255,255,1), 0 0 35px rgba(0,0,0,0.85);
+            text-shadow: 0 0 25px rgba(255,255,255,1), 0 0 45px rgba(0,0,0,0.9);
             margin-bottom: 10px;
         }
 
         .foto-hero-overlay .sub-casamos {
             font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            letter-spacing: 5px;
+            font-size: 1.8rem;
+            letter-spacing: 6px;
             color: #FFFFFF;
             font-weight: 900;
-            text-shadow: 0 0 15px rgba(255,255,255,0.95), 0 0 30px rgba(0,0,0,0.9);
+            text-shadow: 0 0 20px rgba(255,255,255,1), 0 0 35px rgba(0,0,0,0.9);
             margin-bottom: 25px;
         }
 
+        /* "dios unió nuestras vidas" en minúsculas, cursiva metálica súper llamativa */
         .foto-hero-overlay .frase-dios {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.2rem;
-            color: #FFF8DC;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+            font-size: 2.8rem;
+            color: #FFFFFF;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 
+                -1.5px -1.5px 0 #002266,  
+                 1.5px -1.5px 0 #002266,
+                -1.5px  1.5px 0 #002266,
+                 1.5px  1.5px 0 #002266,
+                 0 0 20px rgba(255, 255, 255, 1),
+                 0 0 30px rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF8DC 50%, #B3E5FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.9));
         }
 
         .foto-boda {
@@ -328,18 +352,18 @@
             border-radius: 16px;
             margin: 20px 0;
             box-shadow: 0 6px 20px rgba(0, 34, 102, 0.1);
-            border: 2px solid rgba(0, 34, 102, 0.15);
+            border: 2.5px solid var(--oro-borde);
         }
 
         .cal-mes {
             font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 15px;
             color: var(--azul-francia);
             font-weight: 900;
-            text-shadow: 0 0 8px rgba(255,255,255,0.9);
+            text-shadow: 0 0 10px rgba(255,255,255,1);
         }
 
         .cal-grid {
@@ -399,62 +423,127 @@
             font-weight: 900;
         }
 
-        /* RELOJ DIGITAL REAL EN VIVO */
-        .reloj-real-box {
+        /* --- RELOJ ANALÓGICO REAL CON AGUJAS Y NÚMEROS --- */
+        .reloj-analogico-container {
+            margin: 25px auto 10px auto;
+            width: 165px;
+            height: 165px;
             background: var(--blanco);
-            padding: 18px;
-            border-radius: 16px;
-            margin: 20px auto;
-            max-width: 260px;
-            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.1);
-            border: 2.5px solid var(--oro-borde);
+            border-radius: 50%;
+            border: 4.5px solid var(--oro-borde);
+            box-shadow: 0 8px 25px rgba(0, 34, 102, 0.25), inset 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .reloj-real-hora {
+        .reloj-face {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .numero-reloj {
+            position: absolute;
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
+            font-size: 0.9rem;
             font-weight: 900;
             color: var(--azul-francia);
-            letter-spacing: 2px;
-            text-shadow: 
-                -1px -1px 0 #FFFFFF,  
-                 1px -1px 0 #FFFFFF,
-                -1px  1px 0 #FFFFFF,
-                 1px  1px 0 #FFFFFF,
-                 0 0 12px rgba(255, 255, 255, 1);
         }
 
-        /* VESTIMENTA CON ESPACIO GENEROSO */
+        .n12 { top: 8px; left: 50%; transform: translateX(-50%); }
+        .n3  { right: 10px; top: 50%; transform: translateY(-50%); }
+        .n6  { bottom: 8px; left: 50%; transform: translateX(-50%); }
+        .n9  { left: 10px; top: 50%; transform: translateY(-50%); }
+
+        .aguja {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            border-radius: 4px;
+        }
+
+        .aguja-hora {
+            width: 4px;
+            height: 40px;
+            background-color: var(--azul-francia);
+            transform: translateX(-50%) rotate(0deg);
+            z-index: 3;
+        }
+
+        .aguja-minuto {
+            width: 3px;
+            height: 55px;
+            background-color: var(--azul-francia);
+            transform: translateX(-50%) rotate(0deg);
+            z-index: 2;
+        }
+
+        .aguja-segundo {
+            width: 1.5px;
+            height: 62px;
+            background-color: #D4AF37;
+            transform: translateX(-50%) rotate(0deg);
+            z-index: 4;
+        }
+
+        .centro-reloj {
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .centro-punto {
+            width: 10px;
+            height: 10px;
+            background: var(--oro-real);
+            border-radius: 50%;
+            border: 1px solid #FFFFFF;
+        }
+
+        /* --- CÓDIGO DE VESTIMENTA CON ESPACIO AMPLIO Y COLORES SEPARADOS --- */
         .foto-mini-vestimenta {
-            width: 110px;
+            width: 125px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 34, 102, 0.15);
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 34, 102, 0.2);
             margin: 15px auto;
             display: block;
-            border: 2px solid var(--blanco);
+            border: 3px solid var(--blanco);
         }
 
-        .espacio-vestimenta {
-            height: 35px; /* Espacio bastante amplio solicitado */
+        .espacio-generoso-vestimenta {
+            height: 55px;
         }
 
-        .texto-reserva-cortejo {
-            margin-top: 20px;
-            font-size: 0.88rem;
-            font-weight: 800;
+        .titulo-colores-reservados {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
             color: var(--azul-francia);
-            font-style: italic;
-            max-width: 320px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 0 8px rgba(255,255,255,0.9);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 
+                -1.5px -1.5px 0 #FFFFFF,  
+                 1.5px -1.5px 0 #FFFFFF,
+                -1.5px  1.5px 0 #FFFFFF,
+                 1.5px  1.5px 0 #FFFFFF,
+                 0 0 12px rgba(255, 255, 255, 1);
+            margin-bottom: 18px;
         }
 
         .colores-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
             margin-top: 15px;
         }
 
@@ -462,19 +551,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--azul-francia);
             font-weight: 800;
             text-shadow: 0 0 8px rgba(255,255,255,0.9);
         }
 
         .circulo-color {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             margin-bottom: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             border: 2px solid rgba(0,0,0,0.15);
+        }
+
+        .texto-reserva-cortejo {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--azul-francia);
+            font-style: italic;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 8px rgba(255,255,255,0.9);
         }
 
         .mapa-iframe {
@@ -490,14 +591,14 @@
             background: var(--blanco);
             padding: 25px 18px;
             border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.08);
-            border: 2px solid rgba(0, 34, 102, 0.12);
+            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.1);
+            border: 2.5px solid var(--oro-borde);
         }
 
         .versiculo-texto {
             font-family: 'Alex Brush', cursive;
             font-size: 2.4rem;
-            line-height: 1.3;
+            line-height: 1.35;
             color: var(--azul-francia);
             font-weight: 800;
         }
@@ -571,7 +672,7 @@
             text-align: left;
             margin: 18px 0;
             box-shadow: 0 6px 18px rgba(0, 34, 102, 0.08);
-            border: 2px solid rgba(0, 34, 102, 0.12);
+            border: 2.5px solid var(--oro-borde);
             color: var(--azul-francia);
         }
 
@@ -620,7 +721,7 @@
         🎵
     </div>
 
-    <!-- PORTADA TIPO PAPIRO CON RELIEVES -->
+    <!-- PORTADA CON DECORACIÓN MÁGICA Y EXTERIOR DE REALEZA -->
     <div id="portada-pantalla">
         <div class="tarjeta-sobre-container">
             <h1 class="nombres-portada">Alan y Sol</h1>
@@ -644,7 +745,7 @@
             <div class="foto-hero-overlay">
                 <h3>Alan y Sol</h3>
                 <div class="sub-casamos">NOS CASAMOS</div>
-                <div class="frase-dios">Dios unió nuestras vidas</div>
+                <div class="frase-dios">dios unió nuestras vidas</div>
             </div>
         </div>
 
@@ -692,11 +793,20 @@
                 </div>
             </div>
 
-            <!-- RELOJ DIGITAL REAL EN VIVO -->
-            <div class="reloj-real-box">
-                <div class="reloj-real-hora" id="relojReal">00:00:00</div>
+            <!-- RELOJ ANALÓGICO REAL CON AGUJAS Y NÚMEROS -->
+            <div class="reloj-analogico-container">
+                <div class="reloj-face">
+                    <span class="numero-reloj n12">XII</span>
+                    <span class="numero-reloj n3">III</span>
+                    <span class="numero-reloj n6">VI</span>
+                    <span class="numero-reloj n9">IX</span>
+                    <div class="aguja aguja-hora" id="agujaHora"></div>
+                    <div class="aguja aguja-minuto" id="agujaMinuto"></div>
+                    <div class="aguja aguja-segundo" id="agujaSegundo"></div>
+                    <div class="centro-reloj"><div class="centro-punto"></div></div>
+                </div>
             </div>
-            <p style="font-size: 0.85rem; letter-spacing: 1px; font-weight: 900;">Hora del evento: 21:00 hs</p>
+            <p style="font-size: 1.1rem; letter-spacing: 1px; font-weight: 900; margin-top: 12px;">Gran Celebración: 21:00 hs</p>
         </section>
 
         <section>
@@ -711,16 +821,16 @@
             </a>
         </section>
 
+        <!-- CÓDIGO DE VESTIMENTA CON ESPACIO AMPLIO Y COLORES SEPARADOS -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
+            <p style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
             
             <img src="file_000000005b10820eae163c046a54b8fd.png" alt="Vestimenta Elegante" class="foto-mini-vestimenta" onerror="this.style.display='none'">
 
-            <!-- Espacio generoso solicitado -->
-            <div class="espacio-vestimenta"></div>
+            <div class="espacio-generoso-vestimenta"></div>
 
-            <p style="font-weight: 900; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1.5px;">Colores no permitidos</p>
+            <div class="titulo-colores-reservados">Colores no permitidos</div>
             <div class="colores-grid">
                 <div class="color-item">
                     <div class="circulo-color" style="background-color: #FFFFFF;"></div>
@@ -743,12 +853,13 @@
             <p class="texto-reserva-cortejo">“Estos colores están reservados para los novios y para el cortejo”</p>
         </section>
 
+        <!-- SECCIÓN CON EL VERSÍCULO BÍBLICO EXACTO -->
         <section>
             <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda" onerror="this.style.display='none'">
 
             <div class="versiculo-box" style="margin-top: 20px;">
                 <p class="versiculo-texto">“El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia.”</p>
-                <p class="versiculo-ref">1 Corintios 13:7</p>
+                <p class="versiculo-ref">1 Corintios 13:7[span_1](start_span)[span_1](end_span)</p>
             </div>
         </section>
 
@@ -831,14 +942,13 @@
                 console.log("Audio bloqueado:", err);
             });
 
-            // Explosión de brillo mágico puramente blanco y cristalino
             confetti({
-                particleCount: 75,
-                spread: 65,
+                particleCount: 85,
+                spread: 70,
                 origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
                 colors: ['#FFFFFF', '#F5F5F5', '#E0F7FA', '#FFF8DC'],
                 scalar: 0.95,
-                ticks: 130
+                ticks: 140
             });
 
             setTimeout(() => {
@@ -861,18 +971,23 @@
             }
         }
 
-        // --- RELOJ DIGITAL EN TIEMPO REAL ---
-        function actualizarRelojReal() {
+        function actualizarRelojAnalogico() {
             const ahora = new Date();
-            const horas = String(ahora.getHours()).padStart(2, '0');
-            const minutos = String(ahora.getMinutes()).padStart(2, '0');
-            const segundos = String(ahora.getSeconds()).padStart(2, '0');
-            document.getElementById("relojReal").innerText = `${horas}:${minutos}:${segundos}`;
-        }
-        setInterval(actualizarRelojReal, 1000);
-        actualizarRelojReal();
+            const segundos = ahora.getSeconds();
+            const minutos = ahora.getMinutes();
+            const horas = ahora.getHours();
 
-        // --- CRONÓMETRO REGRESIVO AL 19 DE DICIEMBRE DE 2026 ---
+            const gradosSegundos = (segundos / 60) * 360;
+            const gradosMinutos = (minutos / 60) * 360 + (segundos / 60) * 6;
+            const gradosHoras = ((horas % 12) / 12) * 360 + (minutos / 60) * 30;
+
+            document.getElementById('agujaSegundo').style.transform = `translateX(-50%) rotate(${gradosSegundos}deg)`;
+            document.getElementById('agujaMinuto').style.transform = `translateX(-50%) rotate(${gradosMinutos}deg)`;
+            document.getElementById('agujaHora').style.transform = `translateX(-50%) rotate(${gradosHoras}deg)`;
+        }
+        setInterval(actualizarRelojAnalogico, 1000);
+        actualizarRelojAnalogico();
+
         const fechaBoda = new Date("December 19, 2026 21:00:00").getTime();
         const x = setInterval(function() {
             const ahora = new Date().getTime();
