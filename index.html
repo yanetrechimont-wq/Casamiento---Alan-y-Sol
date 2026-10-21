@@ -70,7 +70,6 @@
             position: relative;
         }
 
-        /* Pliegues y cenefas finas decorativas muy elegantes */
         .tarjeta-sobre-container::before {
             content: '✧ ✦ ❖ ❀ ❖ ✦ ✧';
             position: absolute;
@@ -107,7 +106,6 @@
             text-shadow: 0 0 25px rgba(255,255,255,1), 0 4px 15px rgba(0,0,0,0.95);
         }
 
-        /* Sobre realista y fino con textura y solapas */
         .sobre-ilustracion {
             width: 100%;
             max-width: 290px;
@@ -150,7 +148,6 @@
             z-index: 1;
         }
 
-        /* Estampilla metálica dorada con diseño e iniciales */
         .sello-lacrado {
             width: 66px;
             height: 66px;
@@ -224,19 +221,18 @@
             position: relative;
         }
 
-        /* Cenefas decorativas de princesa bien visibles y hermosas */
+        /* Decoración refinada dentro de la invitación (sin marcos en las cartas) */
         section::after {
-            content: '✨ ⚜️ ❦ ❖ ❀ ❖ ❦ ⚜️ ✨';
+            content: '❧ ❖ ⚜️ ✧ ⚜️ ❖ ☙';
             display: block;
             margin-top: 32px;
             color: var(--azul-francia);
-            font-size: 1rem;
-            letter-spacing: 4px;
-            opacity: 0.85;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            font-size: 1.1rem;
+            letter-spacing: 6px;
+            opacity: 0.8;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
         }
 
-        /* Títulos en cursiva fina y elegante / o Cinzel impecable */
         h2.seccion-titulo {
             font-family: 'Cinzel', serif;
             font-size: 2.1rem;
@@ -260,7 +256,7 @@
             font-weight: 700;
         }
 
-        /* PRIMERA FOTO: SIN NINGÚN MARCO AZUL */
+        /* PRIMERA FOTO: SIN MARCO AZUL */
         .foto-hero-container {
             position: relative;
             width: 100%;
@@ -300,7 +296,6 @@
             margin-bottom: 8px;
         }
 
-        /* ¡NOS CASAMOS! con signos de admiración */
         .foto-hero-overlay .sub-casamos {
             font-family: 'Cinzel', serif;
             font-size: 1.7rem;
@@ -311,7 +306,7 @@
             margin-bottom: 22px;
         }
 
-        /* "dios unió nuestras vidas" más chico, cursiva fina y letras blancas llamativas */
+        /* "Dios unió nuestras vidas" con D mayúscula */
         .foto-hero-overlay .frase-dios {
             font-family: 'Alex Brush', cursive;
             font-size: 2.2rem;
@@ -327,7 +322,6 @@
                  0 0 25px rgba(255, 255, 255, 0.9);
         }
 
-        /* SEGUNDA Y ÚLTIMA FOTO: SIN RECUADROS NI BORDES */
         .foto-boda {
             width: 100%;
             border-radius: 12px;
@@ -413,19 +407,33 @@
             font-weight: 900;
         }
 
-        /* --- RELOJ ANALÓGICO MÁS GRANDE Y REALISTA --- */
+        /* --- RELOJ VIEJO Y FINO (ESTILO BOLSILLO ANTIGUO) --- */
         .reloj-analogico-container {
             margin: 28px auto 12px auto;
-            width: 185px;
-            height: 185px;
-            background: var(--blanco);
+            width: 190px;
+            height: 190px;
+            background: radial-gradient(circle, #FFFDF9 0%, #F4EEDC 100%);
             border-radius: 50%;
-            border: 5px solid var(--oro-borde);
-            box-shadow: 0 10px 30px rgba(0, 34, 102, 0.22), inset 0 0 18px rgba(0,0,0,0.12);
+            border: 6px double var(--oro-borde);
+            box-shadow: 0 12px 35px rgba(0, 34, 102, 0.25), inset 0 0 20px rgba(100, 70, 0, 0.15);
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /* Anillo decorativo exterior del reloj viejo */
+        .reloj-analogico-container::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 14px;
+            border: 3px solid var(--oro-borde);
+            border-radius: 6px 6px 0 0;
+            background: var(--fondo-crema);
         }
 
         .reloj-face {
@@ -439,13 +447,13 @@
             font-family: 'Cinzel', serif;
             font-size: 0.95rem;
             font-weight: 900;
-            color: var(--azul-francia);
+            color: #3B2A00;
         }
 
-        .n12 { top: 9px; left: 50%; transform: translateX(-50%); }
-        .n3  { right: 12px; top: 50%; transform: translateY(-50%); }
-        .n6  { bottom: 9px; left: 50%; transform: translateX(-50%); }
-        .n9  { left: 12px; top: 50%; transform: translateY(-50%); }
+        .n12 { top: 12px; left: 50%; transform: translateX(-50%); }
+        .n3  { right: 14px; top: 50%; transform: translateY(-50%); }
+        .n6  { bottom: 12px; left: 50%; transform: translateX(-50%); }
+        .n9  { left: 14px; top: 50%; transform: translateY(-50%); }
 
         .aguja {
             position: absolute;
@@ -456,25 +464,25 @@
         }
 
         .aguja-hora {
-            width: 4.5px;
-            height: 46px;
-            background-color: var(--azul-francia);
+            width: 4px;
+            height: 48px;
+            background-color: #2E2100;
             transform: translateX(-50%) rotate(0deg);
             z-index: 3;
         }
 
         .aguja-minuto {
-            width: 3.5px;
-            height: 64px;
-            background-color: var(--azul-francia);
+            width: 3px;
+            height: 68px;
+            background-color: #2E2100;
             transform: translateX(-50%) rotate(0deg);
             z-index: 2;
         }
 
         .aguja-segundo {
-            width: 1.5px;
-            height: 72px;
-            background-color: #D4AF37;
+            width: 1.2px;
+            height: 75px;
+            background-color: #A03030;
             transform: translateX(-50%) rotate(0deg);
             z-index: 4;
         }
@@ -493,14 +501,13 @@
         }
 
         .centro-punto {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background: var(--oro-real);
             border-radius: 50%;
-            border: 1.5px solid #FFFFFF;
+            border: 1.5px solid #2E2100;
         }
 
-        /* Letras del día del compromiso en cursiva fina, legibles, azul y remarcó blanco llamativo */
         .compromiso-titulo-cursiva {
             font-family: 'Alex Brush', cursive;
             font-size: 3.2rem;
@@ -517,7 +524,7 @@
                  0 0 25px rgba(0, 34, 102, 0.2);
         }
 
-        /* CÓDIGO DE VESTIMENTA BIEN SEPARADO */
+        /* CÓDIGO DE VESTIMENTA CON SEPARACIÓN EXTRA AÚN MÁS AMPLIA */
         .foto-mini-vestimenta {
             width: 130px;
             height: auto;
@@ -529,7 +536,7 @@
         }
 
         .espacio-generoso-vestimenta {
-            height: 70px;
+            height: 85px;
         }
 
         .titulo-colores-reservados {
@@ -751,7 +758,7 @@
             <div class="foto-hero-overlay">
                 <h3>Alan y Sol</h3>
                 <div class="sub-casamos">¡NOS CASAMOS!</div>
-                <div class="frase-dios">dios unió nuestras vidas</div>
+                <div class="frase-dios">Dios unió nuestras vidas</div>
             </div>
         </div>
 
@@ -799,7 +806,7 @@
                 </div>
             </div>
 
-            <!-- RELOJ ANALÓGICO MÁS GRANDE Y REALISTA -->
+            <!-- RELOJ VIEJO Y FINO -->
             <div class="reloj-analogico-container">
                 <div class="reloj-face">
                     <span class="numero-reloj n12">XII</span>
@@ -827,7 +834,7 @@
             </a>
         </section>
 
-        <!-- CÓDIGO DE VESTIMENTA CON ESPACIO AMPLIO Y COLORES SEPARADOS -->
+        <!-- CÓDIGO DE VESTIMENTA CON SEPARACIÓN EXTRA AMPLIA -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
             <p style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
