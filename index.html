@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -72,7 +72,6 @@
             position: relative;
         }
 
-        /* Marco ornamental sutil en la portada */
         .tarjeta-sobre-container::before {
             content: '';
             position: absolute;
@@ -134,7 +133,6 @@
             z-index: 1;
         }
 
-        /* Estampilla metálica con diseño de realeza e iniciales AS */
         .sello-lacrado {
             width: 62px;
             height: 62px;
@@ -182,7 +180,7 @@
             font-weight: 800;
         }
 
-        /* --- CONTENIDO INTERNO: FONDO CREMA NUDE CON DETALLES AZULES --- */
+        /* --- CONTENIDO INTERNO --- */
         #invitacion {
             max-width: 480px;
             margin: 0 auto;
@@ -212,7 +210,6 @@
             position: relative;
         }
 
-        /* Cenefa decorativa elegante en los espacios de cada sección */
         section::after {
             content: '❧   ◆   ☙';
             display: block;
@@ -241,7 +238,6 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
-        /* FOTO HERO A PANTALLA COMPLETA */
         .foto-hero-container {
             position: relative;
             width: 100%;
@@ -310,7 +306,6 @@
             border: 4px solid var(--blanco);
         }
 
-        /* CALENDARIO */
         .calendario-card {
             background: var(--blanco);
             padding: 22px;
@@ -354,7 +349,6 @@
             box-shadow: 0 3px 10px rgba(0, 34, 102, 0.35);
         }
 
-        /* CRONÓMETRO */
         .cronometro {
             display: flex;
             justify-content: space-between;
@@ -407,7 +401,6 @@
             text-shadow: 0 0 10px rgba(255,255,255,0.8);
         }
 
-        /* VESTIMENTA */
         .foto-mini-vestimenta {
             width: 110px;
             height: auto;
@@ -813,12 +806,14 @@
                 console.log("Audio bloqueado:", err);
             });
 
-            // Explosión de brillo sutil y transparente tipo princesa
+            // Explosión de brillo mágico exclusivamente blanca y cristalina (transparente tipo princesa)
             confetti({
-                particleCount: 65,
-                spread: 55,
+                particleCount: 70,
+                spread: 60,
                 origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
-                colors: ['#FFFFFF', '#FFF8DC', '#E6F0FA']
+                colors: ['#FFFFFF', '#F5F5F5', '#E0F7FA'],
+                scalar: 0.9,
+                ticks: 120
             });
 
             setTimeout(() => {
@@ -890,3 +885,4 @@
     </script>
 </body>
 </html>
+          
