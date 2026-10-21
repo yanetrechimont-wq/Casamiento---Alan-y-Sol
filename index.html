@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías de Realeza y Art Déco -->
+    <!-- Tipografías de Realeza -->
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
     <!-- Librería para el brillo sutil de princesa -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -13,7 +13,7 @@
             --azul-francia: #002266;
             --azul-portada: #050C1A;
             --azul-sobre: #002D80;
-            --fondo-nude: #F4EFEB;
+            --fondo-nude-oscuro: #EFE9DD;
             --blanco: #FFFFFF;
             --oro-real: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
             --oro-borde: #D4AF37;
@@ -34,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA: ESTILO ART DÉCO Y SOBRE GEOMÉTRICO --- */
+        /* --- PORTADA CON DECORACIÓN EXTERIOR AL MARGEN DORADO --- */
         #portada-pantalla {
             position: fixed;
             top: 0;
@@ -59,25 +59,42 @@
         .tarjeta-sobre-container {
             width: 100%;
             max-width: 420px;
-            background: linear-gradient(135deg, rgba(10, 22, 45, 0.96) 0%, rgba(3, 7, 18, 0.96) 100%);
-            border: 3px solid var(--oro-borde);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(15, 28, 54, 0.96) 0%, rgba(5, 12, 26, 0.96) 100%);
+            border: 2.5px solid var(--oro-borde);
+            border-radius: 20px;
             padding: 40px 22px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            box-shadow: 0 0 70px rgba(212, 175, 55, 0.4), inset 0 0 25px rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0,0,0,0.9);
+            box-shadow: 0 0 70px rgba(212, 175, 55, 0.45), inset 0 0 25px rgba(255, 255, 255, 0.1), 0 20px 60px rgba(0,0,0,0.9);
             position: relative;
         }
 
         .tarjeta-sobre-container::before {
-            content: '';
+            content: '✧ ✦ ❦  ❖  ❀  ❖  ❦ ✦ ✧';
             position: absolute;
-            inset: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            border-radius: 12px;
-            pointer-events: none;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--oro-borde);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 5px #FFFFFF;
+            white-space: nowrap;
+        }
+
+        .tarjeta-sobre-container::after {
+            content: '✧ ✦ ❦  ❖  ❀  ❖  ❦ ✦ ✧';
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--oro-borde);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.9), 0 0 5px #FFFFFF;
+            white-space: nowrap;
         }
 
         .nombres-portada {
@@ -96,7 +113,7 @@
             height: 190px;
             background: linear-gradient(135deg, #002D80 0%, #001233 100%);
             border: 2px solid var(--oro-borde);
-            border-radius: 10px;
+            border-radius: 12px;
             position: relative;
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.5), inset 0 0 15px rgba(255,255,255,0.2), 0 15px 35px rgba(0,0,0,0.8);
             display: flex;
@@ -133,8 +150,8 @@
         }
 
         .sello-lacrado {
-            width: 65px;
-            height: 65px;
+            width: 62px;
+            height: 62px;
             background: var(--oro-real);
             border-radius: 50%;
             border: 2.5px solid #FFF8DC;
@@ -154,7 +171,7 @@
 
         .sello-texto {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 900;
             color: #3B2A00;
             letter-spacing: 2px;
@@ -179,31 +196,81 @@
             font-weight: 800;
         }
 
-        /* --- CONTENIDO INTERNO: FONDO AZUL FRANCIA CON CARTAS INTERNAS NUDE --- */
+        /* --- CONTENIDO INTERNO --- */
         #invitacion {
             max-width: 480px;
             margin: 0 auto;
-            background-color: var(--azul-portada);
+            background-color: var(--fondo-nude-oscuro);
             color: var(--azul-francia);
             min-height: 100vh;
             display: none;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            box-shadow: 0 0 40px rgba(0,0,0,0.3);
             padding-bottom: 60px;
             position: relative;
-            border-left: 8px solid var(--oro-borde);
-            border-right: 8px solid var(--oro-borde);
+            border-left: 8px solid var(--azul-francia);
+            border-right: 8px solid var(--azul-francia);
+            background-image: 
+                radial-gradient(circle at 12px 12px, rgba(0, 34, 102, 0.08) 2px, transparent 0),
+                radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(0, 34, 102, 0.08) 2px, transparent 0);
+            background-size: 45px 45px;
         }
 
-        /* PRIMERA FOTO A PANTALLA COMPLETA */
+        #invitacion.visible {
+            display: block;
+        }
+
+        section {
+            padding: 50px 22px;
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 34, 102, 0.18);
+            position: relative;
+        }
+
+        section::after {
+            content: '✧  ✦  ❦   ⟡   ♦   ⟡   ❦  ✦  ✧';
+            display: block;
+            margin-top: 30px;
+            color: var(--azul-francia);
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+        }
+
+        h2.seccion-titulo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.05rem;
+            color: var(--azul-francia);
+            margin-bottom: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-shadow: 
+                -2px -2px 0 #FFFFFF,  
+                 2px -2px 0 #FFFFFF,
+                -2px  2px 0 #FFFFFF,
+                 2px  2px 0 #FFFFFF,
+                 0 0 18px rgba(255, 255, 255, 1),
+                 0 0 30px rgba(212, 175, 55, 0.4),
+                 0 0 10px rgba(0, 34, 102, 0.3);
+        }
+
+        p, label {
+            color: var(--azul-francia);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.95);
+        }
+
         .foto-hero-container {
             position: relative;
             width: 100%;
             height: 100vh;
             min-height: 550px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 0;
-            border-bottom: 5px solid var(--oro-borde);
+            box-shadow: 0 10px 30px rgba(0, 34, 102, 0.25);
+            margin-bottom: 30px;
+            border-bottom: 5px solid var(--azul-francia);
         }
 
         .foto-hero-container img {
@@ -216,7 +283,7 @@
         .foto-hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(5, 12, 26, 0.2) 0%, rgba(5, 12, 26, 0.75) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.65) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -265,79 +332,34 @@
             filter: drop-shadow(0 2px 10px rgba(0,0,0,0.9));
         }
 
-        /* SECCIONES ESTILO CARTA NUDE ART DÉCO */
-        section {
-            background-color: var(--fondo-nude);
-            margin: 20px 15px;
-            padding: 45px 20px;
-            border-radius: 16px;
-            text-align: center;
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.5);
-            position: relative;
-        }
-
-        section::after {
-            content: '◆ ❖ ◈ ❖ ◆';
-            display: block;
-            margin-top: 28px;
-            color: var(--azul-francia);
-            font-size: 0.85rem;
-            letter-spacing: 6px;
-            opacity: 0.65;
-        }
-
-        h2.seccion-titulo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.95rem;
-            color: var(--azul-francia);
-            margin-bottom: 12px;
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            text-shadow: 
-                -1.5px -1.5px 0 #FFFFFF,  
-                 1.5px -1.5px 0 #FFFFFF,
-                -1.5px  1.5px 0 #FFFFFF,
-                 1.5px  1.5px 0 #FFFFFF,
-                 0 0 15px rgba(255, 255, 255, 1),
-                 0 0 25px rgba(0, 34, 102, 0.25);
-        }
-
-        p, label {
-            color: var(--azul-francia);
-            line-height: 1.6;
-            font-size: 1.02rem;
-            font-weight: 800;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
-        }
-
         .foto-boda {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 14px;
             box-shadow: 0 8px 22px rgba(0, 34, 102, 0.15);
             margin: 18px 0;
             display: block;
             object-fit: cover;
-            border: 3px solid var(--blanco);
+            border: 4px solid var(--blanco);
         }
 
         .calendario-card {
             background: var(--blanco);
             padding: 22px;
-            border-radius: 14px;
+            border-radius: 16px;
             margin: 20px 0;
-            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.08);
-            border: 2px solid var(--oro-borde);
+            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.1);
+            border: 2.5px solid var(--oro-borde);
         }
 
         .cal-mes {
             font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 15px;
             color: var(--azul-francia);
             font-weight: 900;
+            text-shadow: 0 0 10px rgba(255,255,255,1);
         }
 
         .cal-grid {
@@ -376,15 +398,16 @@
             padding: 12px 6px;
             border-radius: 12px;
             flex: 1;
-            box-shadow: 0 4px 12px rgba(0, 34, 102, 0.08);
+            box-shadow: 0 6px 15px rgba(0, 34, 102, 0.08);
             border: 2px solid rgba(0, 34, 102, 0.15);
         }
 
         .crono-num {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: var(--azul-francia);
+            text-shadow: 0 0 8px rgba(255,255,255,0.9);
         }
 
         .crono-tag {
@@ -396,15 +419,15 @@
             font-weight: 900;
         }
 
-        /* --- RELOJ ANALÓGICO REAL --- */
+        /* --- RELOJ ANALÓGICO REAL CON AGUJAS Y NÚMEROS --- */
         .reloj-analogico-container {
             margin: 25px auto 10px auto;
-            width: 160px;
-            height: 160px;
+            width: 165px;
+            height: 165px;
             background: var(--blanco);
             border-radius: 50%;
-            border: 4px solid var(--oro-borde);
-            box-shadow: 0 8px 25px rgba(0, 34, 102, 0.2), inset 0 0 15px rgba(0,0,0,0.1);
+            border: 4.5px solid var(--oro-borde);
+            box-shadow: 0 8px 25px rgba(0, 34, 102, 0.25), inset 0 0 15px rgba(0,0,0,0.1);
             position: relative;
             display: flex;
             justify-content: center;
@@ -483,9 +506,9 @@
             border: 1px solid #FFFFFF;
         }
 
-        /* VESTIMENTA CON ESPACIO Y COLORES SEPARADOS */
+        /* --- CÓDIGO DE VESTIMENTA CON ESPACIO AMPLIO Y COLORES SEPARADOS --- */
         .foto-mini-vestimenta {
-            width: 120px;
+            width: 125px;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 6px 16px rgba(0, 34, 102, 0.2);
@@ -495,28 +518,28 @@
         }
 
         .espacio-generoso-vestimenta {
-            height: 50px;
+            height: 55px;
         }
 
         .titulo-colores-reservados {
             font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: var(--azul-francia);
             font-weight: 900;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-shadow: 
-                -1px -1px 0 #FFFFFF,  
-                 1px -1px 0 #FFFFFF,
-                -1px  1px 0 #FFFFFF,
-                 1px  1px 0 #FFFFFF,
-                 0 0 10px rgba(255, 255, 255, 1);
-            margin-bottom: 15px;
+                -1.5px -1.5px 0 #FFFFFF,  
+                 1.5px -1.5px 0 #FFFFFF,
+                -1.5px  1.5px 0 #FFFFFF,
+                 1.5px  1.5px 0 #FFFFFF,
+                 0 0 12px rgba(255, 255, 255, 1);
+            margin-bottom: 18px;
         }
 
         .colores-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            gap: 12px;
             margin-top: 15px;
         }
 
@@ -524,36 +547,38 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--azul-francia);
             font-weight: 800;
+            text-shadow: 0 0 8px rgba(255,255,255,0.9);
         }
 
         .circulo-color {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             margin-bottom: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             border: 2px solid rgba(0,0,0,0.15);
         }
 
         .texto-reserva-cortejo {
             margin-top: 25px;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             font-weight: 800;
             color: var(--azul-francia);
             font-style: italic;
             max-width: 320px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 0 0 8px rgba(255,255,255,0.9);
         }
 
         .mapa-iframe {
             width: 100%;
             height: 220px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             margin-top: 15px;
             box-shadow: 0 4px 14px rgba(0, 34, 102, 0.12);
         }
@@ -561,14 +586,14 @@
         .versiculo-box {
             background: var(--blanco);
             padding: 25px 18px;
-            border-radius: 14px;
-            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.08);
-            border: 2px solid var(--oro-borde);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 34, 102, 0.1);
+            border: 2.5px solid var(--oro-borde);
         }
 
         .versiculo-texto {
             font-family: 'Alex Brush', cursive;
-            font-size: 2.3rem;
+            font-size: 2.4rem;
             line-height: 1.35;
             color: var(--azul-francia);
             font-weight: 800;
@@ -643,7 +668,7 @@
             text-align: left;
             margin: 18px 0;
             box-shadow: 0 6px 18px rgba(0, 34, 102, 0.08);
-            border: 2px solid var(--oro-borde);
+            border: 2.5px solid var(--oro-borde);
             color: var(--azul-francia);
         }
 
@@ -692,7 +717,7 @@
         🎵
     </div>
 
-    <!-- PORTADA ART DÉCO -->
+    <!-- PORTADA CON DECORACIÓN EXTERIOR AL MARGEN DORADO -->
     <div id="portada-pantalla">
         <div class="tarjeta-sobre-container">
             <h1 class="nombres-portada">Alan y Sol</h1>
@@ -711,7 +736,6 @@
     <!-- CONTENIDO DE LA INVITACIÓN -->
     <div id="invitacion">
         
-        <!-- FOTO PRINCIPAL A PANTALLA COMPLETA -->
         <div class="foto-hero-container">
             <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol" onerror="this.style.display='none'">
             <div class="foto-hero-overlay">
@@ -765,7 +789,7 @@
                 </div>
             </div>
 
-            <!-- RELOJ ANALÓGICO REAL -->
+            <!-- RELOJ ANALÓGICO REAL CON AGUJAS Y NÚMEROS -->
             <div class="reloj-analogico-container">
                 <div class="reloj-face">
                     <span class="numero-reloj n12">XII</span>
@@ -778,7 +802,7 @@
                     <div class="centro-reloj"><div class="centro-punto"></div></div>
                 </div>
             </div>
-            <p style="font-size: 1.05rem; letter-spacing: 1px; font-weight: 900; margin-top: 10px;">Gran Celebración: 21:00 hs</p>
+            <p style="font-size: 1.1rem; letter-spacing: 1px; font-weight: 900; margin-top: 12px;">Gran Celebración: 21:00 hs</p>
         </section>
 
         <section>
@@ -793,10 +817,10 @@
             </a>
         </section>
 
-        <!-- CÓDIGO DE VESTIMENTA CON ESPACIO Y COLORES SEPARADOS -->
+        <!-- CÓDIGO DE VESTIMENTA CON ESPACIO AMPLIO Y COLORES SEPARADOS -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
+            <p style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
             
             <img src="file_000000005b10820eae163c046a54b8fd.png" alt="Vestimenta Elegante" class="foto-mini-vestimenta" onerror="this.style.display='none'">
 
@@ -825,7 +849,7 @@
             <p class="texto-reserva-cortejo">“Estos colores están reservados para los novios y para el cortejo”</p>
         </section>
 
-        <!-- VERSÍCULO BÍBLICO EXACTO -->
+        <!-- SECCIÓN CON EL VERSÍCULO BÍBLICO EXACTO -->
         <section>
             <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda" onerror="this.style.display='none'">
 
