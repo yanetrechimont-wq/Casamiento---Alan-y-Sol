@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías de Realeza y Cursiva Fina -->
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tipografías de Realeza y Cursiva Fina Elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <!-- Librería para el brillo mágico de princesa -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --azul-francia: #002266;
             --azul-portada: #030712;
-            --fondo-crema: #FAF6EE;
+            --fondo-crema-oscuro: #EFE8DC;
             --blanco: #FFFFFF;
             --oro-real: linear-gradient(135deg, #DFBD69 0%, #FFF3B8 30%, #C59B37 60%, #FDF3B1 100%);
             --oro-borde: #D4AF37;
@@ -33,7 +33,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PORTADA CON SOBRE ULTRA REALISTA Y FINO --- */
+        /* --- PORTADA CON SOBRE REALISTA Y ESTAMPILLA CON DISEÑO --- */
         #portada-pantalla {
             position: fixed;
             top: 0;
@@ -71,7 +71,7 @@
         }
 
         .tarjeta-sobre-container::before {
-            content: '✧ ✦ ❖ ❀ ❖ ✦ ✧';
+            content: '✨ ⚜️ ✧ ⚜️ ✨';
             position: absolute;
             top: -18px;
             left: 50%;
@@ -84,7 +84,7 @@
         }
 
         .tarjeta-sobre-container::after {
-            content: '✧ ✦ ❖ ❀ ❖ ✦ ✧';
+            content: '✨ ⚜️ ✧ ⚜️ ✨';
             position: absolute;
             bottom: -18px;
             left: 50%;
@@ -149,13 +149,14 @@
         }
 
         .sello-lacrado {
-            width: 66px;
-            height: 66px;
+            width: 70px;
+            height: 70px;
             background: var(--oro-real);
             border-radius: 50%;
             border: 2px solid #FFFBEA;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 5px 20px rgba(197, 155, 55, 0.9), inset 0 2px 4px rgba(255,255,255,0.9);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 5px 20px rgba(197, 155, 55, 0.95), inset 0 2px 4px rgba(255,255,255,0.9);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -170,11 +171,20 @@
 
         .sello-texto {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: #2E2100;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .sello-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #3B2A00;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .frase-portada {
@@ -199,7 +209,7 @@
         #invitacion {
             max-width: 480px;
             margin: 0 auto;
-            background-color: var(--fondo-crema);
+            background-color: var(--fondo-crema-oscuro);
             color: var(--azul-francia);
             min-height: 100vh;
             display: none;
@@ -217,46 +227,49 @@
         section {
             padding: 55px 22px;
             text-align: center;
-            border-bottom: 1.5px solid rgba(0, 34, 102, 0.12);
+            border-bottom: 1.5px solid rgba(0, 34, 102, 0.15);
             position: relative;
         }
 
-        /* Decoración refinada dentro de la invitación (sin marcos en las cartas) */
+        /* DECORACIÓN REAL DE REINA Y PRINCESA (DESTELLOS BLANCOS Y AZUL FRANCIA) */
         section::after {
-            content: '❧ ❖ ⚜️ ✧ ⚜️ ❖ ☙';
+            content: '✨ 🔷 ⚜️ ✧ ⚜️ 🔷 ✨';
             display: block;
             margin-top: 32px;
-            color: var(--azul-francia);
+            color: #FFFFFF;
             font-size: 1.1rem;
             letter-spacing: 6px;
-            opacity: 0.8;
-            text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+            text-shadow: 0 0 12px var(--azul-francia), 0 0 5px #FFFFFF;
         }
 
+        /* Títulos generales en cursiva fina y elegante */
         h2.seccion-titulo {
-            font-family: 'Cinzel', serif;
-            font-size: 2.1rem;
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.4rem;
             color: var(--azul-francia);
             margin-bottom: 12px;
-            font-weight: 900;
-            letter-spacing: 1.5px;
+            font-weight: bold;
+            line-height: 1.1;
             text-shadow: 
-                -1px -1px 0 #FFFFFF,  
-                 1px -1px 0 #FFFFFF,
-                -1px  1px 0 #FFFFFF,
-                 1px  1px 0 #FFFFFF,
+                -1.5px -1.5px 0 #FFFFFF,  
+                 1.5px -1.5px 0 #FFFFFF,
+                -1.5px  1.5px 0 #FFFFFF,
+                 1.5px  1.5px 0 #FFFFFF,
                  0 0 15px rgba(255, 255, 255, 1),
-                 0 0 25px rgba(0, 34, 102, 0.2);
+                 0 0 25px rgba(0, 34, 102, 0.25);
         }
 
-        p, label {
+        /* Textos, párrafos y etiquetas en Cursiva Fina legible y resaltada */
+        p, label, input, select {
             color: var(--azul-francia);
             line-height: 1.6;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            font-style: italic;
             font-weight: 700;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
 
-        /* PRIMERA FOTO: SIN MARCO AZUL */
+        /* FOTOS COMPLETAMENTE LIBRES DE MARCOS Y RECUADROS */
         .foto-hero-container {
             position: relative;
             width: 100%;
@@ -304,20 +317,21 @@
             font-weight: 900;
             text-shadow: 0 0 20px rgba(255,255,255,1), 0 0 30px rgba(0,0,0,0.9);
             margin-bottom: 22px;
+            font-style: normal;
         }
 
-        /* "Dios unió nuestras vidas" con D mayúscula */
         .foto-hero-overlay .frase-dios {
             font-family: 'Alex Brush', cursive;
             font-size: 2.2rem;
             color: #FFFFFF;
             font-weight: bold;
             letter-spacing: 1px;
+            font-style: italic;
             text-shadow: 
                 -1px -1px 0 #002266,  
                  1px -1px 0 #002266,
-                -1px  1px 0 #002266,
-                 1px  1px 0 #002266,
+                -1.5px  1.5px 0 #002266,
+                 1.5px  1.5px 0 #002266,
                  0 0 15px rgba(255, 255, 255, 1),
                  0 0 25px rgba(255, 255, 255, 0.9);
         }
@@ -338,7 +352,7 @@
             border-radius: 16px;
             margin: 20px 0;
             box-shadow: 0 6px 20px rgba(0, 34, 102, 0.08);
-            border: 2px solid rgba(0, 34, 102, 0.12);
+            border: none;
         }
 
         .cal-mes {
@@ -349,6 +363,7 @@
             margin-bottom: 15px;
             color: var(--azul-francia);
             font-weight: 900;
+            font-style: normal;
         }
 
         .cal-grid {
@@ -388,7 +403,7 @@
             border-radius: 12px;
             flex: 1;
             box-shadow: 0 6px 15px rgba(0, 34, 102, 0.08);
-            border: 2px solid rgba(0, 34, 102, 0.12);
+            border: none;
         }
 
         .crono-num {
@@ -396,6 +411,7 @@
             font-size: 1.6rem;
             font-weight: 900;
             color: var(--azul-francia);
+            font-style: normal;
         }
 
         .crono-tag {
@@ -405,9 +421,10 @@
             margin-top: 2px;
             color: var(--azul-francia);
             font-weight: 900;
+            font-style: normal;
         }
 
-        /* --- RELOJ VIEJO Y FINO (ESTILO BOLSILLO ANTIGUO) --- */
+        /* --- RELOJ VIEJO Y FINO --- */
         .reloj-analogico-container {
             margin: 28px auto 12px auto;
             width: 190px;
@@ -422,7 +439,6 @@
             align-items: center;
         }
 
-        /* Anillo decorativo exterior del reloj viejo */
         .reloj-analogico-container::before {
             content: '';
             position: absolute;
@@ -433,7 +449,7 @@
             height: 14px;
             border: 3px solid var(--oro-borde);
             border-radius: 6px 6px 0 0;
-            background: var(--fondo-crema);
+            background: var(--fondo-crema-oscuro);
         }
 
         .reloj-face {
@@ -448,6 +464,7 @@
             font-size: 0.95rem;
             font-weight: 900;
             color: #3B2A00;
+            font-style: normal;
         }
 
         .n12 { top: 12px; left: 50%; transform: translateX(-50%); }
@@ -508,50 +525,33 @@
             border: 1.5px solid #2E2100;
         }
 
-        .compromiso-titulo-cursiva {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.2rem;
-            color: var(--azul-francia);
-            font-weight: bold;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-shadow: 
-                -1.5px -1.5px 0 #FFFFFF,  
-                 1.5px -1.5px 0 #FFFFFF,
-                -1.5px  1.5px 0 #FFFFFF,
-                 1.5px  1.5px 0 #FFFFFF,
-                 0 0 15px rgba(255, 255, 255, 1),
-                 0 0 25px rgba(0, 34, 102, 0.2);
-        }
-
-        /* CÓDIGO DE VESTIMENTA CON SEPARACIÓN EXTRA AÚN MÁS AMPLIA */
+        /* VESTIMENTA: ELEGANT / ELEGANT, LÍNEA FINANCIERA Y SEPARACIÓN MÁXIMA */
         .foto-mini-vestimenta {
             width: 130px;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 6px 16px rgba(0, 34, 102, 0.2);
-            margin: 15px auto 25px auto;
+            margin: 15px auto;
             display: block;
-            border: 3px solid var(--blanco);
+            border: none;
         }
 
-        .espacio-generoso-vestimenta {
-            height: 85px;
+        .linea-fina-divisor {
+            width: 60px;
+            height: 1.5px;
+            background-color: var(--azul-francia);
+            margin: 45px auto 45px auto;
+            opacity: 0.5;
         }
 
         .titulo-colores-reservados {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.5rem;
             color: var(--azul-francia);
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            text-shadow: 
-                -1px -1px 0 #FFFFFF,  
-                 1px -1px 0 #FFFFFF,
-                -1px  1px 0 #FFFFFF,
-                 1px  1px 0 #FFFFFF,
-                 0 0 10px rgba(255, 255, 255, 1);
+            font-weight: bold;
+            letter-spacing: 1px;
             margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255,255,255,1);
         }
 
         .colores-grid {
@@ -581,7 +581,7 @@
 
         .texto-reserva-cortejo {
             margin-top: 30px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: var(--azul-francia);
             font-style: italic;
@@ -604,7 +604,7 @@
             padding: 25px 18px;
             border-radius: 16px;
             box-shadow: 0 6px 20px rgba(0, 34, 102, 0.08);
-            border: 2px solid rgba(0, 34, 102, 0.12);
+            border: none;
         }
 
         .versiculo-texto {
@@ -623,6 +623,7 @@
             text-transform: uppercase;
             color: var(--azul-francia);
             font-weight: 900;
+            font-style: normal;
         }
 
         .btn-accion {
@@ -644,6 +645,7 @@
             margin-top: 15px;
             box-shadow: 0 4px 15px rgba(0, 34, 102, 0.35);
             transition: transform 0.2s;
+            font-style: normal;
         }
 
         .btn-accion:active {
@@ -684,7 +686,7 @@
             text-align: left;
             margin: 18px 0;
             box-shadow: 0 6px 18px rgba(0, 34, 102, 0.08);
-            border: 2px solid rgba(0, 34, 102, 0.12);
+            border: none;
             color: var(--azul-francia);
         }
 
@@ -718,6 +720,7 @@
             color: #002266;
             margin-top: 6px;
             font-weight: 900;
+            font-style: normal;
         }
     </style>
 </head>
@@ -733,7 +736,7 @@
         🎵
     </div>
 
-    <!-- PORTADA CON SOBRE REALISTA -->
+    <!-- PORTADA CON SOBRE Y ESTAMPILLA CON DISEÑO REAL -->
     <div id="portada-pantalla">
         <div class="tarjeta-sobre-container">
             <h1 class="nombres-portada">Alan y Sol</h1>
@@ -741,6 +744,7 @@
             <div class="sobre-ilustracion" onclick="abrirInvitacion(event)">
                 <div class="sello-lacrado">
                     <span class="sello-texto">AS</span>
+                    <span class="sello-sub">Boda</span>
                 </div>
             </div>
 
@@ -752,7 +756,7 @@
     <!-- CONTENIDO DE LA INVITACIÓN -->
     <div id="invitacion">
         
-        <!-- PRIMERA FOTO: SIN MARCO AZUL -->
+        <!-- FOTO PRINCIPAL: SIN MARCOS -->
         <div class="foto-hero-container">
             <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol" onerror="this.style.display='none'">
             <div class="foto-hero-overlay">
@@ -763,7 +767,7 @@
         </div>
 
         <section>
-            <h2 class="compromiso-titulo-cursiva">Día del Compromiso</h2>
+            <h2 class="seccion-titulo">Día del Compromiso</h2>
             
             <div class="calendario-card">
                 <div class="cal-mes">Diciembre 2026</div>
@@ -785,7 +789,7 @@
                 </div>
             </div>
 
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 900; margin-top: 25px;">¿Cuánto falta?</p>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 900; margin-top: 25px; font-style: normal;">¿Cuánto falta?</p>
             
             <div class="cronometro">
                 <div class="crono-box">
@@ -819,7 +823,7 @@
                     <div class="centro-reloj"><div class="centro-punto"></div></div>
                 </div>
             </div>
-            <p style="font-size: 1.25rem; letter-spacing: 1.5px; font-weight: 900; margin-top: 15px;">Gran Celebración: 21:00 hs</p>
+            <p style="font-size: 1.25rem; letter-spacing: 1.5px; font-weight: 900; margin-top: 15px; font-style: normal;">Gran Celebración: 21:00 hs</p>
         </section>
 
         <section>
@@ -834,14 +838,14 @@
             </a>
         </section>
 
-        <!-- CÓDIGO DE VESTIMENTA CON SEPARACIÓN EXTRA AMPLIA -->
+        <!-- CÓDIGO DE VESTIMENTA: ELEGANT / ELEGANT, LÍNEA FINA Y SEPARACIÓN MÁXIMA -->
         <section>
             <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Elegante / Elegant</p>
+            <p style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; font-style: normal;">Elegante / Elegant</p>
             
             <img src="file_000000005b10820eae163c046a54b8fd.png" alt="Vestimenta Elegante" class="foto-mini-vestimenta" onerror="this.style.display='none'">
 
-            <div class="espacio-generoso-vestimenta"></div>
+            <div class="linea-fina-divisor"></div>
 
             <div class="titulo-colores-reservados">Colores no permitidos</div>
             <div class="colores-grid">
@@ -866,7 +870,7 @@
             <p class="texto-reserva-cortejo">“Estos colores están reservados para los novios y para el cortejo”</p>
         </section>
 
-        <!-- SEGUNDA FOTO: SIN RECUADRO -->
+        <!-- FOTO INTERMEDIA: SIN MARCOS -->
         <section>
             <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda" onerror="this.style.display='none'">
 
@@ -890,7 +894,7 @@
             <button onclick="sugerirCancion()" class="btn-accion btn-secundario">
                 🎵 Sugerir Canción
             </button>
-            <p id="msgCancion" style="display:none; color: #002266; margin-top: 10px; font-weight: 900;">¡Gracias por tu sugerencia musical!</p>
+            <p id="msgCancion" style="display:none; color: #002266; margin-top: 10px; font-weight: 900; font-style: normal;">¡Gracias por tu sugerencia musical!</p>
         </section>
 
         <section>
@@ -932,9 +936,9 @@
             </form>
         </section>
 
-        <!-- ÚLTIMA FOTO: SIN RECUADRO -->
+        <!-- FOTO FINAL: SIN MARCOS -->
         <section>
-            <p class="texto-realeza">Hay momentos en la vida que son inolvidables, compartirlos con vos los hace eternos.</p>
+            <p>Hay momentos en la vida que son inolvidables, compartirlos con vos los hace eternos.</p>
             
             <img src="IMG-20261017-WA0126.jpg" alt="Alan y Sol" class="foto-boda" onerror="this.style.display='none'" style="margin-top: 20px;">
             
@@ -960,7 +964,7 @@
                 particleCount: 95,
                 spread: 75,
                 origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
-                colors: ['#FFFFFF', '#FAF6EE', '#E0F7FA', '#FFF8DC'],
+                colors: ['#FFFFFF', '#FAF6EE', '#002266', '#FFF8DC'],
                 scalar: 0.95,
                 ticks: 140
             });
