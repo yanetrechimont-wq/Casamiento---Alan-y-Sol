@@ -1,1042 +1,1160 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Alan & Sol - Invitación de Boda</title>
-    <!-- Tipografías de Realeza y Cursiva Fina Elegante -->
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <!-- Librería para el brillo mágico -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-        :root {
-            --azul-francia: #002266;
-            --azul-portada: #030712;
-            --fondo-crema-oscuro: #EFE8DC;
-            --blanco: #FFFFFF;
-            --oro-real: linear-gradient(135deg, #DFBD69 0%, #FFF3B8 30%, #C59B37 60%, #FDF3B1 100%);
-            --oro-borde: #D4AF37;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--azul-portada);
-            color: var(--azul-francia);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- PORTADA CON SOBRE REALISTA Y ESTAMPILLA LIMPIA --- */
-        #portada-pantalla {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: radial-gradient(circle at center, #0A162B 0%, #020409 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            padding: 20px;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        #portada-pantalla.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .tarjeta-sobre-container {
-            width: 100%;
-            max-width: 410px;
-            background: linear-gradient(145deg, rgba(16, 28, 54, 0.98) 0%, rgba(6, 12, 26, 0.98) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.6);
-            border-radius: 24px;
-            padding: 42px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.3), 0 25px 60px rgba(0,0,0,0.95);
-            position: relative;
-        }
-
-        .tarjeta-sobre-container::before {
-            content: '✨ ⚜️ ✧ ⚜️ ✨';
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--oro-borde);
-            font-size: 1rem;
-            letter-spacing: 5px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.9);
-            white-space: nowrap;
-        }
-
-        .tarjeta-sobre-container::after {
-            content: '✨ ⚜️ ✧ ⚜️ ✨';
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--oro-borde);
-            font-size: 1rem;
-            letter-spacing: 5px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.9);
-            white-space: nowrap;
-        }
-
-        .nombres-portada {
-            font-family: 'Alex Brush', cursive;
-            font-size: 4.2rem;
-            color: #FFFFFF;
-            margin-bottom: 12px;
-            line-height: 1.1;
-            font-weight: bold;
-            text-shadow: 0 0 25px rgba(255,255,255,1), 0 4px 15px rgba(0,0,0,0.95);
-        }
-
-        .sobre-ilustracion {
-            width: 100%;
-            max-width: 290px;
-            height: 185px;
-            background: linear-gradient(145deg, #0A328A 0%, #001A4D 100%);
-            border: 1.5px solid var(--oro-borde);
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.15);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 25px;
-            cursor: pointer;
-        }
-
-        .sobre-ilustracion::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 145px solid transparent;
-            border-right: 145px solid transparent;
-            border-top: 98px solid rgba(0, 59, 153, 0.85);
-            z-index: 1;
-        }
-
-        .sobre-ilustracion::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 145px solid #00122E;
-            border-right: 145px solid #00122E;
-            border-top: 88px solid transparent;
-            z-index: 1;
-        }
-
-        .sello-lacrado {
-            width: 66px;
-            height: 66px;
-            background: var(--oro-real);
-            border-radius: 50%;
-            border: 2px solid #FFFBEA;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8), 0 5px 20px rgba(197, 155, 55, 0.95), inset 0 2px 4px rgba(255,255,255,0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            z-index: 3;
-            animation: latidoSutil 2s infinite ease-in-out;
-        }
-
-        @keyframes latidoSutil {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.07); }
-        }
-
-        .sello-texto {
-            font-family: 'Cinzel', serif;
-            font-size: 1.35rem;
-            font-weight: 900;
-            color: #2E2100;
-            letter-spacing: 2px;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-        }
-
-        .frase-portada {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.3rem;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            font-weight: bold;
-        }
-
-        .instruccion-portada {
-            font-size: 0.88rem;
-            color: #E2E8F0;
-            line-height: 1.5;
-            max-width: 290px;
-            font-weight: 700;
-        }
-
-        /* --- CONTENIDO INTERNO --- */
-        #invitacion {
-            max-width: 480px;
-            margin: 0 auto;
-            background-color: var(--fondo-crema-oscuro);
-            color: var(--azul-francia);
-            min-height: 100vh;
-            display: none;
-            box-shadow: 0 0 40px rgba(0,0,0,0.3);
-            padding-bottom: 60px;
-            position: relative;
-            border-left: 6px solid var(--azul-francia);
-            border-right: 6px solid var(--azul-francia);
-            background-image: radial-gradient(rgba(0, 34, 102, 0.03) 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-        }
-
-        #invitacion.visible {
-            display: block;
-        }
-
-        section {
-            padding: 55px 22px;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 34, 102, 0.1);
-            position: relative;
-            background: rgba(255, 255, 255, 0.45);
-            margin: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 34, 102, 0.03);
-        }
-
-        /* DECORACIÓN EN BLANCO PURO */
-        section::after {
-            content: '✨ 🤍 ⚜️ ✧ ⚜️ 🤍 ✨';
-            display: block;
-            margin-top: 32px;
-            color: #FFFFFF;
-            font-size: 1.1rem;
-            letter-spacing: 6px;
-            text-shadow: 0 0 8px rgba(0, 34, 102, 0.3), 0 0 4px #FFFFFF;
-        }
-
-        /* Títulos en cursiva fina, bien marcada y sin iluminación recargada */
-        h2.seccion-titulo {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.4rem;
-            color: var(--azul-francia);
-            margin-bottom: 12px;
-            font-weight: 700;
-            line-height: 1.1;
-            text-shadow: none;
-        }
-
-        /* Textos y párrafos en cursiva fina bien marcada y legible */
-        p, label, input, select {
-            color: var(--azul-francia);
-            line-height: 1.6;
-            font-size: 1.1rem;
-            font-style: italic;
-            font-weight: 700;
-            text-shadow: none;
-        }
-
-        /* FOTOS: COMPLETAMENTE SIN MARCOS NI RECUADROS */
-        .foto-hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 550px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            background: none;
-            box-shadow: none;
-            border-radius: 0;
-            padding: 0;
-        }
-
-        .foto-hero-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .foto-hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.6) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--blanco);
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .foto-hero-overlay h3 {
-            font-family: 'Alex Brush', cursive;
-            font-size: 4.6rem;
-            color: #FFFFFF;
-            line-height: 1;
-            font-weight: bold;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            margin-bottom: 8px;
-        }
-
-        .foto-hero-overlay .sub-casamos {
-            font-family: 'Cinzel', serif;
-            font-size: 1.7rem;
-            letter-spacing: 5px;
-            color: #FFFFFF;
-            font-weight: 900;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            margin-bottom: 22px;
-            font-style: normal;
-        }
-
-        .foto-hero-overlay .frase-dios {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.2rem;
-            color: #FFFFFF;
-            font-weight: bold;
-            letter-spacing: 1px;
-            font-style: italic;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-        }
-
-        .foto-boda {
-            width: 100%;
-            border-radius: 12px;
-            margin: 18px 0;
-            display: block;
-            object-fit: cover;
-            border: none;
-            box-shadow: none;
-        }
-
-        .calendario-card {
-            background: var(--blanco);
-            padding: 22px;
-            border-radius: 16px;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0, 34, 102, 0.05);
-            border: none;
-        }
-
-        .cal-mes {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            color: var(--azul-francia);
-            font-weight: 900;
-            font-style: normal;
-        }
-
-        .cal-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            font-size: 0.92rem;
-            text-align: center;
-            color: var(--azul-francia);
-            font-weight: 800;
-        }
-
-        .cal-dia-head {
-            font-weight: 900;
-            opacity: 0.9;
-        }
-
-        .cal-destacado {
-            background-color: var(--azul-francia);
-            color: var(--blanco) !important;
-            font-weight: 900;
-            border-radius: 50%;
-            padding: 6px 0;
-        }
-
-        .cronometro {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-            gap: 8px;
-        }
-
-        .crono-box {
-            background: var(--blanco);
-            padding: 12px 6px;
-            border-radius: 12px;
-            flex: 1;
-            box-shadow: 0 4px 12px rgba(0, 34, 102, 0.05);
-            border: none;
-        }
-
-        .crono-num {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--azul-francia);
-            font-style: normal;
-        }
-
-        .crono-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 2px;
-            color: var(--azul-francia);
-            font-weight: 900;
-            font-style: normal;
-        }
-
-        /* --- RELOJ VIEJO Y FINO --- */
-        .reloj-analogico-container {
-            margin: 28px auto 12px auto;
-            width: 190px;
-            height: 190px;
-            background: radial-gradient(circle, #FFFDF9 0%, #F4EEDC 100%);
-            border-radius: 50%;
-            border: 6px double var(--oro-borde);
-            box-shadow: 0 10px 30px rgba(0, 34, 102, 0.15), inset 0 0 15px rgba(100, 70, 0, 0.1);
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .reloj-analogico-container::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 22px;
-            height: 14px;
-            border: 3px solid var(--oro-borde);
-            border-radius: 6px 6px 0 0;
-            background: var(--fondo-crema-oscuro);
-        }
-
-        .reloj-face {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .numero-reloj {
-            position: absolute;
-            font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            font-weight: 900;
-            color: #3B2A00;
-            font-style: normal;
-        }
-
-        .n12 { top: 12px; left: 50%; transform: translateX(-50%); }
-        .n3  { right: 14px; top: 50%; transform: translateY(-50%); }
-        .n6  { bottom: 12px; left: 50%; transform: translateX(-50%); }
-        .n9  { left: 14px; top: 50%; transform: translateY(-50%); }
-
-        .aguja {
-            position: absolute;
-            bottom: 50%;
-            left: 50%;
-            transform-origin: bottom;
-            border-radius: 4px;
-        }
-
-        .aguja-hora {
-            width: 4px;
-            height: 48px;
-            background-color: #2E2100;
-            transform: translateX(-50%) rotate(0deg);
-            z-index: 3;
-        }
-
-        .aguja-minuto {
-            width: 3px;
-            height: 68px;
-            background-color: #2E2100;
-            transform: translateX(-50%) rotate(0deg);
-            z-index: 2;
-        }
-
-        .aguja-segundo {
-            width: 1.2px;
-            height: 75px;
-            background-color: #A03030;
-            transform: translateX(-50%) rotate(0deg);
-            z-index: 4;
-        }
-
-        .centro-reloj {
-            width: 12px;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        }
-
-        .centro-punto {
-            width: 10px;
-            height: 10px;
-            background: var(--oro-real);
-            border-radius: 50%;
-            border: 1.5px solid #2E2100;
-        }
-
-        /* VESTIMENTA SEPARADA */
-        .foto-mini-vestimenta {
-            width: 130px;
-            height: auto;
-            border-radius: 12px;
-            margin: 15px auto;
-            display: block;
-            border: none;
-            box-shadow: none;
-        }
-
-        .linea-fina-divisor {
-            width: 60px;
-            height: 1px;
-            background-color: var(--azul-francia);
-            margin: 50px auto 50px auto;
-            opacity: 0.4;
-        }
-
-        .titulo-colores-reservados {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.6rem;
-            color: var(--azul-francia);
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .colores-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .color-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--azul-francia);
-            font-weight: 800;
-        }
-
-        .circulo-color {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            margin-bottom: 6px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1.5px solid rgba(0,0,0,0.1);
-        }
-
-        .texto-reserva-cortejo {
-            margin-top: 30px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--azul-francia);
-            font-style: italic;
-            max-width: 320px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mapa-iframe {
-            width: 100%;
-            height: 220px;
-            border: none;
-            border-radius: 14px;
-            margin-top: 15px;
-            box-shadow: 0 4px 14px rgba(0, 34, 102, 0.08);
-        }
-
-        .versiculo-box {
-            background: var(--blanco);
-            padding: 25px 18px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 34, 102, 0.05);
-            border: none;
-        }
-
-        .versiculo-texto {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.4rem;
-            line-height: 1.35;
-            color: var(--azul-francia);
-            font-weight: 800;
-        }
-
-        .versiculo-ref {
-            margin-top: 12px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.88rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--azul-francia);
-            font-weight: 900;
-            font-style: normal;
-        }
-
-        .btn-accion {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--azul-francia);
-            color: var(--blanco);
-            padding: 16px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(0, 34, 102, 0.2);
-            transition: transform 0.2s;
-            font-style: normal;
-        }
-
-        .btn-accion:active {
-            transform: scale(0.98);
-        }
-
-        .btn-secundario {
-            background-color: transparent;
-            color: var(--azul-francia);
-            border: 2px solid var(--azul-francia);
-            box-shadow: none;
-        }
-
-        .btn-wsp {
-            background-color: #25D366 !important;
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25) !important;
-        }
-
-        input[type="text"], select {
-            width: 100%;
-            padding: 15px;
-            border: 1.5px solid rgba(0, 34, 102, 0.25);
-            border-radius: 12px;
-            background: var(--blanco);
-            color: var(--azul-francia);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 800;
-            margin-top: 10px;
-            outline: none;
-            font-style: italic;
-        }
-
-        .datos-banco {
-            background: var(--blanco);
-            padding: 20px;
-            border-radius: 14px;
-            text-align: left;
-            margin: 18px 0;
-            box-shadow: 0 4px 15px rgba(0, 34, 102, 0.05);
-            border: none;
-            color: var(--azul-francia);
-        }
-
-        .datos-banco p {
-            margin-bottom: 6px;
-            font-size: 0.98rem;
-            font-weight: 800;
-        }
-
-        .musica-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9000;
-            background: var(--azul-francia);
-            color: var(--blanco);
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
-            border: 2px solid var(--oro-borde);
-        }
-
-        .alerta-copiado {
-            display: none;
-            font-size: 0.88rem;
-            color: #002266;
-            margin-top: 6px;
-            font-weight: 900;
-            font-style: normal;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#102b59">
+<title>Alan & Sol | Nuestra boda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --azul: #102b59;
+  --azul-medio: #1c3b6c;
+  --azul-oscuro: #07162f;
+  --crema: #e9dfcf;
+  --crema-claro: #f4ecdf;
+  --blanco: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--azul-oscuro);
+  color: var(--azul);
+  overflow-x: hidden;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* PORTADA AZUL */
+
+#portada {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at top, #234776 0%, #102b59 48%, #06142c 100%);
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+#portada.oculta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.portada-contenido {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+}
+
+.portada-subtitulo {
+  font-family: 'Cinzel', serif;
+  color: #fff;
+  font-size: .72rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.portada-nombres {
+  font-family: 'Alex Brush', cursive;
+  color: #fff;
+  font-size: clamp(4rem, 15vw, 5.2rem);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.sobre {
+  width: 100%;
+  max-width: 315px;
+  height: 205px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(145deg, #234b80, #102d5b 55%, #091a38);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 3px;
+  box-shadow: 0 20px 45px rgba(0,0,0,.38);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(145deg, transparent 49.5%, rgba(255,255,255,.15) 50%, transparent 50.6%),
+    linear-gradient(215deg, transparent 49.5%, rgba(255,255,255,.1) 50%, transparent 50.6%);
+  z-index: -1;
+}
+
+.sobre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(35deg, #0a2044, #183966, #0a2044);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  z-index: 0;
+}
+
+.sobre-borde {
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255,255,255,.18);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sello {
+  position: relative;
+  z-index: 2;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 25%, #557caf, #244a7e 48%, #0b2044);
+  border: 3px solid #8fa8ca;
+  box-shadow: 0 5px 16px rgba(0,0,0,.4), inset 0 0 0 3px rgba(255,255,255,.12);
+  animation: latido 2.5s infinite ease-in-out;
+}
+
+.sello::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 50%;
+}
+
+.sello span {
+  font-family: 'Cinzel', serif;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+.portada-frase {
+  color: #fff;
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+
+.portada-instruccion {
+  color: #e4ebf7;
+  font-size: .74rem;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  max-width: 300px;
+}
+
+.boton-abrir {
+  color: var(--azul);
+  background: #f5eee3;
+  border: 1px solid rgba(255,255,255,.8);
+  padding: 13px 30px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .25s;
+}
+
+.boton-abrir:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+/* INVITACIÓN */
+
+#invitacion {
+  display: none;
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-bottom: 35px;
+  overflow: hidden;
+  color: var(--azul);
+  background-color: var(--crema);
+  background-image:
+    radial-gradient(ellipse at 8% 5%, rgba(255,255,255,.35), transparent 38%),
+    radial-gradient(ellipse at 90% 45%, rgba(125,100,70,.06), transparent 40%),
+    repeating-linear-gradient(135deg, rgba(70,55,35,.018) 0, rgba(70,55,35,.018) 1px, transparent 1px, transparent 5px);
+  box-shadow: 0 0 50px rgba(0,0,0,.2);
+}
+
+#invitacion.visible { display: block; }
+
+.seccion {
+  position: relative;
+  padding: 48px 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(16,43,89,.15);
+}
+
+.seccion::after {
+  content: "❧";
+  display: block;
+  margin-top: 25px;
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.5rem;
+  color: var(--azul);
+  opacity: .7;
+  line-height: 1;
+}
+
+.titulo {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(2.7rem, 10vw, 3.5rem);
+  color: var(--azul);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.texto {
+  color: var(--azul);
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.85;
+}
+
+.mini-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  color: var(--azul);
+  text-transform: uppercase;
+}
+
+.portada-interior {
+  padding-top: 65px;
+  padding-bottom: 55px;
+}
+
+.portada-interior .mini-titulo {
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.interior-nombres {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(4rem, 15vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--azul);
+  margin: 12px 0 22px;
+}
+
+.fecha-grande {
+  font-family: 'Cinzel', serif;
+  color: var(--azul);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1.8;
+}
+
+.separador {
+  width: 80px;
+  height: 1px;
+  background: var(--azul);
+  margin: 24px auto;
+  opacity: .65;
+}
+
+/* FOTOS SIN MARCOS */
+
+.foto-principal {
+  width: 100%;
+  display: block;
+  margin: 28px auto 0;
+  object-fit: cover;
+  max-height: 490px;
+  border: none;
+  box-shadow: none;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.galeria img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  border: none;
+  box-shadow: none;
+}
+
+.galeria img:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  height: 300px;
+}
+
+/* CUENTA REGRESIVA */
+
+.cuenta-regresiva {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.tiempo {
+  padding: 16px 3px;
+  background: rgba(255,255,255,.23);
+  border: 1px solid rgba(16,43,89,.17);
+}
+
+.tiempo strong {
+  display: block;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.tiempo span {
+  display: block;
+  margin-top: 7px;
+  font-size: .58rem;
+  color: var(--azul);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* BOTONES */
+
+.boton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 46px;
+  padding: 13px 20px;
+  margin-top: 18px;
+  background: var(--azul);
+  color: white;
+  border: 1px solid var(--azul);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .7rem;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.boton:hover {
+  background: var(--azul-medio);
+}
+
+.boton-secundario {
+  background: transparent;
+  color: var(--azul);
+}
+
+.boton-secundario:hover {
+  color: white;
+}
+
+/* UBICACIÓN */
+
+.mapa {
+  width: 100%;
+  height: 270px;
+  margin-top: 22px;
+  display: block;
+  border: 0;
+}
+
+/* CALENDARIO */
+
+.calendario {
+  max-width: 340px;
+  margin: 25px auto 0;
+  padding: 20px 15px;
+  background: rgba(255,255,255,.22);
+  border: 1px solid rgba(16,43,89,.2);
+}
+
+.calendario-mes {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.dias-semana, .dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.dias-semana span {
+  font-size: .63rem;
+  font-weight: 700;
+  padding-bottom: 8px;
+}
+
+.dias span {
+  padding: 9px 0;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.dias .dia-boda {
+  color: white;
+  background: var(--azul);
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* DRESS CODE */
+
+.dress-code-imagen {
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+  display: block;
+  margin: 25px auto;
+  border: none;
+  box-shadow: none;
+}
+
+.dress-code {
+  margin-top: 18px;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+.dress-code span {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .82rem;
+  letter-spacing: 3px;
+  margin-top: 5px;
+}
+
+/* COLORES RESERVADOS */
+
+.colores-reservados {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px auto 0;
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.muestra-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(16,43,89,.2);
+}
+
+.color-blanco { background: #fff; }
+.color-rojo { background: #9d1427; }
+.color-nude { background: #cbb39e; }
+.color-azul { background: #102b59; }
+
+/* FORMULARIOS */
+
+.formulario {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.formulario label {
+  display: block;
+  margin: 15px 0 7px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.formulario input,
+.formulario select {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px;
+  color: var(--azul);
+  background: rgba(255,255,255,.38);
+  border: 1px solid rgba(16,43,89,.35);
+  border-radius: 0;
+  outline: none;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+  border-color: var(--azul);
+}
+
+.formulario .boton {
+  width: 100%;
+  cursor: pointer;
+}
+
+/* REGALO */
+
+.datos-regalo {
+  margin-top: 24px;
+  padding: 20px 12px;
+  background: rgba(255,255,255,.23);
+  border: 1px solid rgba(16,43,89,.18);
+  overflow-wrap: anywhere;
+}
+
+.datos-regalo p {
+  font-size: .85rem;
+  margin: 5px 0;
+}
+
+.alias {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1rem !important;
+  letter-spacing: .5px;
+}
+
+.pie {
+  padding: 40px 22px;
+  text-align: center;
+}
+
+.pie-nombres {
+  font-family: 'Alex Brush', cursive;
+  font-size: 3.2rem;
+  color: var(--azul);
+}
+
+.pie p {
+  font-size: .8rem;
+}
+
+.mensaje-estado {
+  font-size: .8rem;
+  font-weight: 700;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 360px) {
+  .seccion { padding: 40px 17px; }
+  .tiempo strong { font-size: 1.25rem; }
+  .tiempo span { font-size: .52rem; }
+  .galeria img { height: 175px; }
+  .sobre { height: 185px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- AUDIO LOCAL (CANCION.MP3) -->
-    <audio id="musicaFondo" loop preload="auto">
-        <source src="cancion.mp3" type="audio/mpeg">
-    </audio>
+<!-- PORTADA -->
+<div id="portada">
+  <div class="portada-contenido">
+    <p class="portada-subtitulo">Una invitación especial</p>
 
-    <!-- BOTÓN FLOTANTE DE MÚSICA -->
-    <div class="musica-control" id="btnMusica" onclick="toggleMusica()" style="display: none;">
-        🎵
+    <h1 class="portada-nombres">Alan &amp; Sol</h1>
+
+    <div class="sobre" id="sobre" role="button" tabindex="0" aria-label="Abrir invitación">
+      <div class="sobre-borde"></div>
+      <div class="sello"><span>A&amp;S</span></div>
     </div>
 
-    <!-- PORTADA CON SOBRE REALISTA Y ESTAMPILLA LIMPIA -->
-    <div id="portada-pantalla">
-        <div class="tarjeta-sobre-container">
-            <h1 class="nombres-portada">Alan y Sol</h1>
+    <p class="portada-frase">¡Nos casamos!</p>
 
-            <div class="sobre-ilustracion" onclick="abrirInvitacion(event)">
-                <div class="sello-lacrado">
-                    <span class="sello-texto">AS</span>
-                </div>
-            </div>
+    <p class="portada-instruccion">
+      Subí el volumen de tu celular<br>
+      y tocá el sello para descubrir<br>
+      algo muy especial
+    </p>
 
-            <div class="frase-portada">Nuestra historia de amor comienza aquí</div>
-            <p class="instruccion-portada">Sube el volumen de tu celular y presiona la estampilla dorada para contarte algo muy importante...</p>
-        </div>
+    <button class="boton-abrir" id="botonAbrir" type="button">
+      Abrir invitación
+    </button>
+  </div>
+</div>
+
+<!-- MÚSICA: guardá la canción como cancion.mp3 en la misma carpeta -->
+<audio id="musica" loop preload="auto">
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+
+<main id="invitacion">
+
+  <!-- BIENVENIDA -->
+  <section class="seccion portada-interior">
+    <p class="mini-titulo">Con la bendición de Dios</p>
+
+    <h1 class="interior-nombres">Alan &amp; Sol</h1>
+
+    <div class="separador"></div>
+
+    <p class="texto">
+      Hay historias que Dios escribe en el corazón
+      mucho antes de que podamos comprenderlas.
+      Hoy queremos compartir con ustedes la alegría
+      de celebrar nuestro amor y comenzar una nueva etapa juntos.
+    </p>
+
+    <div class="separador"></div>
+
+    <p class="fecha-grande">19 · 12 · 2026</p>
+    <p class="mini-titulo">Día del compromiso</p>
+
+    <img
+      class="foto-principal"
+      src="IMG-20261016-WA0086.jpg"
+      alt="Alan y Sol"
+      loading="eager"
+    >
+  </section>
+
+  <!-- CUENTA REGRESIVA -->
+  <section class="seccion">
+    <h2 class="titulo">La cuenta regresiva</h2>
+
+    <p class="texto">
+      Cada día nos acerca a uno de los momentos
+      más importantes de nuestras vidas.
+    </p>
+
+    <div class="cuenta-regresiva" aria-label="Cuenta regresiva">
+      <div class="tiempo">
+        <strong id="dias">---</strong>
+        <span>Días</span>
+      </div>
+      <div class="tiempo">
+        <strong id="horas">--</strong>
+        <span>Horas</span>
+      </div>
+      <div class="tiempo">
+        <strong id="minutos">--</strong>
+        <span>Minutos</span>
+      </div>
+      <div class="tiempo">
+        <strong id="segundos">--</strong>
+        <span>Segundos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTRA HISTORIA -->
+  <section class="seccion">
+    <h2 class="titulo">Nuestra historia</h2>
+
+    <p class="texto">
+      Dos caminos se encontraron, dos corazones aprendieron
+      a caminar juntos y un amor fue creciendo con la
+      compañía y la gracia de Dios.
+      Hoy elegimos seguir construyendo nuestra historia,
+      tomados de Su mano.
+    </p>
+
+    <div class="galeria">
+      <img
+        src="IMG-20261017-WA0125.jpg"
+        alt="Un recuerdo de Alan y Sol"
+        loading="lazy"
+      >
+      <img
+        src="IMG-20261017-WA0126.jpg"
+        alt="Un momento especial de la pareja"
+        loading="lazy"
+      >
+    </div>
+  </section>
+
+  <!-- CEREMONIA Y FIESTA -->
+  <section class="seccion">
+    <h2 class="titulo">¡Te esperamos!</h2>
+
+    <p class="mini-titulo">Sábado</p>
+    <p class="fecha-grande">19 de diciembre de 2026</p>
+
+    <div class="separador"></div>
+
+    <p class="mini-titulo">Horario</p>
+    <p class="texto">21:00 horas</p>
+
+    <div class="separador"></div>
+
+    <p class="mini-titulo">Lugar</p>
+    <p class="texto">Lalola Eventos</p>
+    <p class="texto">Av. Dardo Rocha 1982</p>
+    <p class="texto">Berazategui, Buenos Aires</p>
+
+    <a
+      class="boton"
+      href="https://www.google.com/maps/search/?api=1&query=Lalola+Eventos+Av.+Dardo+Rocha+1982+Berazategui"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ver ubicación
+    </a>
+
+    <iframe
+      class="mapa"
+      title="Mapa de Lalola Eventos"
+      src="https://maps.google.com/maps?q=Lalola%20Eventos%20Av.%20Dardo%20Rocha%201982%20Berazategui&t=&z=14&ie=UTF8&iwloc=&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section class="seccion">
+    <h2 class="titulo">Agendá la fecha</h2>
+
+    <p class="texto">
+      Queremos que estés ahí para compartir
+      con nosotros este día inolvidable.
+    </p>
+
+    <div class="calendario">
+      <div class="calendario-mes">DICIEMBRE 2026</div>
+
+      <div class="dias-semana">
+        <span>L</span><span>M</span><span>M</span>
+        <span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+
+      <div class="dias">
+        <span></span><span>1</span><span>2</span><span>3</span>
+        <span>4</span><span>5</span><span>6</span>
+        <span>7</span><span>8</span><span>9</span><span>10</span>
+        <span>11</span><span>12</span><span>13</span>
+        <span>14</span><span>15</span><span>16</span><span>17</span>
+        <span>18</span><span class="dia-boda">19</span><span>20</span>
+        <span>21</span><span>22</span><span>23</span><span>24</span>
+        <span>25</span><span>26</span><span>27</span>
+        <span>28</span><span>29</span><span>30</span><span>31</span>
+      </div>
     </div>
 
-    <!-- CONTENIDO DE LA INVITACIÓN -->
-    <div id="invitacion">
-        
-        <!-- FOTO PRINCIPAL: SIN MARCOS -->
-        <div class="foto-hero-container">
-            <img src="IMG-20261016-WA0086.jpg" alt="Alan y Sol" onerror="this.style.display='none'">
-            <div class="foto-hero-overlay">
-                <h3>Alan y Sol</h3>
-                <div class="sub-casamos">¡NOS CASAMOS!</div>
-                <div class="frase-dios">Dios unió nuestras vidas</div>
-            </div>
-        </div>
+    <a
+      class="boton"
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+Alan+y+Sol&dates=20261219T210000/20261220T030000&details=Celebramos+juntos+la+boda+de+Alan+y+Sol&location=Lalola+Eventos%2C+Av.+Dardo+Rocha+1982%2C+Berazategui"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Agregar al calendario
+    </a>
+  </section>
 
-        <section>
-            <h2 class="seccion-titulo">Día del Compromiso</h2>
-            
-            <div class="calendario-card">
-                <div class="cal-mes">Diciembre 2026</div>
-                <div class="cal-grid">
-                    <div class="cal-dia-head">L</div>
-                    <div class="cal-dia-head">M</div>
-                    <div class="cal-dia-head">M</div>
-                    <div class="cal-dia-head">J</div>
-                    <div class="cal-dia-head">V</div>
-                    <div class="cal-dia-head">S</div>
-                    <div class="cal-dia-head">D</div>
-                    
-                    <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
-                    <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
-                    <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
-                    <div class="cal-destacado">19</div>
-                    <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
-                    <div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
-                </div>
-            </div>
+  <!-- VESTIMENTA -->
+  <section class="seccion">
+    <h2 class="titulo">Elegante</h2>
 
-            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 900; margin-top: 25px; font-style: normal;">¿Cuánto falta?</p>
-            
-            <div class="cronometro">
-                <div class="crono-box">
-                    <div class="crono-num" id="dias">00</div>
-                    <div class="crono-tag">Días</div>
-                </div>
-                <div class="crono-box">
-                    <div class="crono-num" id="horas">00</div>
-                    <div class="crono-tag">Hs</div>
-                </div>
-                <div class="crono-box">
-                    <div class="crono-num" id="minutos">00</div>
-                    <div class="crono-tag">Min</div>
-                </div>
-                <div class="crono-box">
-                    <div class="crono-num" id="segundos">00</div>
-                    <div class="crono-tag">Seg</div>
-                </div>
-            </div>
+    <p class="dress-code">
+      Dress code
+      <span>Elegante</span>
+    </p>
 
-            <!-- RELOJ VIEJO Y FINO -->
-            <div class="reloj-analogico-container">
-                <div class="reloj-face">
-                    <span class="numero-reloj n12">XII</span>
-                    <span class="numero-reloj n3">III</span>
-                    <span class="numero-reloj n6">VI</span>
-                    <span class="numero-reloj n9">IX</span>
-                    <div class="aguja aguja-hora" id="agujaHora"></div>
-                    <div class="aguja aguja-minuto" id="agujaMinuto"></div>
-                    <div class="aguja aguja-segundo" id="agujaSegundo"></div>
-                    <div class="centro-reloj"><div class="centro-punto"></div></div>
-                </div>
-            </div>
-            <p style="font-size: 1.25rem; letter-spacing: 1.5px; font-weight: 900; margin-top: 15px; font-style: normal;">Gran Celebración: 21:00 hs</p>
-        </section>
+    <p class="texto" style="margin-top:20px">
+      Nos encantará compartir esta celebración
+      con ustedes en una noche especial.
+      Los invitamos a acompañarnos con vestimenta elegante.
+    </p>
 
-        <section>
-            <h2 class="seccion-titulo">Ubicación</h2>
-            <p><strong>"Lalola"</strong></p>
-            <p>Av. Dardo Rocha 1982, Berazategui</p>
+    <img
+      class="dress-code-imagen"
+      src="file_000000005b10820eae163c046a54b8fd.png"
+      alt="Inspiración de vestimenta elegante"
+      loading="lazy"
+    >
+  </section>
 
-            <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.431284711685!2d-58.21631022342981!3d-34.74472256501198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32831d15668d5%3A0x6b6d21f8a8ad3b6!2sAv.%20Dardo%20Rocha%201982%2C%20B1884%20Berazategui%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
-            
-            <a href="https://maps.google.com/?q=Av.+Dardo+Rocha+1982,+Berazategui" target="_blank" class="btn-accion">
-                📍 Ver en Google Maps
-            </a>
-        </section>
+  <!-- COLORES RESERVADOS: SECCIÓN APARTE -->
+  <section class="seccion">
+    <h2 class="titulo">Colores reservados</h2>
 
-        <!-- CÓDIGO DE VESTIMENTA SEPARADO -->
-        <section>
-            <h2 class="seccion-titulo">Código de Vestimenta</h2>
-            <p style="font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; font-style: normal;">Elegante / Elegant</p>
-            
-            <img src="file_000000005b10820eae163c046a54b8fd.png" alt="Vestimenta Elegante" class="foto-mini-vestimenta" onerror="this.style.display='none'">
+    <p class="texto">
+      Les pedimos tener en cuenta estos colores
+      al elegir su vestimenta.
+    </p>
 
-            <div class="linea-fina-divisor"></div>
+    <div class="colores-reservados">
+      <div class="color-item">
+        <span class="muestra-color color-blanco"></span>
+        <span>Blanco</span>
+      </div>
 
-            <div class="titulo-colores-reservados">Colores no permitidos</div>
-            <div class="colores-grid">
-                <div class="color-item">
-                    <div class="circulo-color" style="background-color: #FFFFFF;"></div>
-                    <span>Blanco</span>
-                </div>
-                <div class="color-item">
-                    <div class="circulo-color" style="background-color: #D32F2F;"></div>
-                    <span>Rojo</span>
-                </div>
-                <div class="color-item">
-                    <div class="circulo-color" style="background-color: #E8D8C8;"></div>
-                    <span>Nude</span>
-                </div>
-                <div class="color-item">
-                    <div class="circulo-color" style="background-color: #0A1128;"></div>
-                    <span>Azul Noche</span>
-                </div>
-            </div>
+      <div class="color-item">
+        <span class="muestra-color color-rojo"></span>
+        <span>Rojo</span>
+      </div>
 
-            <p class="texto-reserva-cortejo">“Estos colores están reservados para los novios y para el cortejo”</p>
-        </section>
+      <div class="color-item">
+        <span class="muestra-color color-nude"></span>
+        <span>Nude</span>
+      </div>
 
-        <!-- FOTO INTERMEDIA: SIN MARCOS -->
-        <section>
-            <img src="IMG-20261017-WA0125.jpg" alt="Alan y Sol juntos" class="foto-boda" onerror="this.style.display='none'">
-
-            <div class="versiculo-box" style="margin-top: 25px;">
-                <p class="versiculo-texto">“El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia.”</p>
-                <p class="versiculo-ref">1 Corintios 13:7</p>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="seccion-titulo">Música para Bailar</h2>
-            <p>¿Qué canción no puede faltar en la fiesta?</p>
-            
-            <div style="margin: 15px 0;">
-                <svg width="45" height="45" viewBox="0 0 24 24" fill="#1DB954">
-                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.899 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.019zm1.441-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.38-1.38 9.841-.72 13.561 1.56.42.24.6.78.18 1.261zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-                </svg>
-            </div>
-
-            <input type="text" id="cancionInput" placeholder="Artista y tema musical...">
-            <button onclick="sugerirCancion()" class="btn-accion btn-secundario">
-                🎵 Sugerir Canción
-            </button>
-            <p id="msgCancion" style="display:none; color: #002266; margin-top: 10px; font-weight: 900; font-style: normal;">¡Gracias por tu sugerencia musical!</p>
-        </section>
-
-        <section>
-            <h2 class="seccion-titulo">Mesa de Regalos</h2>
-            <p>El mejor regalo es que asistas a compartir este día con nosotros. Si deseas hacernos un obsequio, puedes colaborar mediante:</p>
-            
-            <div class="datos-banco">
-                <p><strong>Banco:</strong> Brubank</p>
-                <p><strong>Titular:</strong> Rosario Soledad Patitucci</p>
-                <p><strong>Alias:</strong> <span id="aliasTexto">labodadealanysol</span></p>
-                <p><strong>CBU:</strong> <span id="cbuTexto">1430001713038912300011</span></p>
-            </div>
-
-            <button onclick="copiarDato('aliasTexto', 'msgAlias')" class="btn-accion btn-secundario">
-                📋 Copiar Alias
-            </button>
-            <p id="msgAlias" class="alerta-copiado">¡Alias copiado al portapapeles!</p>
-        </section>
-
-        <section>
-            <h2 class="seccion-titulo">Confirmación</h2>
-            <p>Por favor confirma tu asistencia completando tus datos:</p>
-            
-            <form onsubmit="enviarRSVP(event)">
-                <input type="text" id="nombreInvitado" placeholder="Tu nombre y apellido" required>
-                
-                <select id="asistenciaSelect" required>
-                    <option value="" disabled selected>¿Asistirás?</option>
-                    <option value="Sí, con gusto asistiré">¡Sí, ahí estaré!</option>
-                    <option value="Lamentablemente no puedo ir">No podré asistir</option>
-                </select>
-
-                <button type="submit" class="btn-accion btn-wsp">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                    Confirmar por WhatsApp
-                </button>
-            </form>
-        </section>
-
-        <!-- FOTO FINAL: SIN MARCOS -->
-        <section>
-            <p>Hay momentos en la vida que son inolvidables, compartirlos con vos los hace eternos.</p>
-            
-            <img src="IMG-20261017-WA0126.jpg" alt="Alan y Sol" class="foto-boda" onerror="this.style.display='none'" style="margin-top: 20px;">
-            
-            <h2 class="seccion-titulo" style="margin-top: 25px;">¡Los esperamos!</h2>
-        </section>
-
+      <div class="color-item">
+        <span class="muestra-color color-azul"></span>
+        <span>Azul</span>
+      </div>
     </div>
+  </section>
 
-    <script>
-        const audio = document.getElementById('musicaFondo');
-        let sonando = false;
+  <!-- CONFIRMACIÓN -->
+  <section class="seccion">
+    <h2 class="titulo">¿Nos acompañás?</h2>
 
-        function abrirInvitacion(event) {
-            audio.load();
-            audio.play().then(() => {
-                sonando = true;
-                document.getElementById('btnMusica').innerHTML = '🎵';
-            }).catch((err) => {
-                console.log("Audio bloqueado:", err);
-            });
+    <p class="texto">
+      Tu presencia hará que este día sea todavía
+      más especial. Confirmá tu asistencia.
+    </p>
 
-            confetti({
-                particleCount: 95,
-                spread: 75,
-                origin: { y: event.clientY / window.innerHeight, x: event.clientX / window.innerWidth },
-                colors: ['#FFFFFF', '#FAF6EE', '#002266', '#FFF8DC'],
-                scalar: 0.95,
-                ticks: 140
-            });
+    <form class="formulario" id="formConfirmacion">
+      <label for="nombre">Nombre y apellido</label>
+      <input
+        id="nombre"
+        name="nombre"
+        type="text"
+        placeholder="Escribí tu nombre completo"
+        autocomplete="name"
+        required
+      >
 
-            setTimeout(() => {
-                document.getElementById('portada-pantalla').classList.add('hidden');
-                document.getElementById('invitacion').classList.add('visible');
-                document.getElementById('btnMusica').style.display = 'flex';
-            }, 600);
-        }
+      <label for="asistencia">¿Vas a acompañarnos?</label>
+      <select id="asistencia" name="asistencia" required>
+        <option value="">Seleccioná una opción</option>
+        <option value="Sí, voy a asistir">Sí, voy a asistir</option>
+        <option value="No voy a poder asistir">No voy a poder asistir</option>
+      </select>
 
-        function toggleMusica() {
-            if (sonando) {
-                audio.pause();
-                sonando = false;
-                document.getElementById('btnMusica').innerHTML = '🔇';
-            } else {
-                audio.play().then(() => {
-                    sonando = true;
-                    document.getElementById('btnMusica').innerHTML = '🎵';
-                });
-            }
-        }
+      <label for="cantidad">Cantidad de personas</label>
+      <select id="cantidad" name="cantidad" required>
+        <option value="1">1 persona</option>
+        <option value="2">2 personas</option>
+        <option value="3">3 personas</option>
+        <option value="4">4 personas</option>
+        <option value="5">5 personas</option>
+      </select>
 
-        function actualizarRelojAnalogico() {
-            const ahora = new Date();
-            const segundos = ahora.getSeconds();
-            const minutos = ahora.getMinutes();
-            const horas = ahora.getHours();
+      <button class="boton" type="submit">
+        Confirmar por WhatsApp
+      </button>
+    </form>
 
-            const gradosSegundos = (segundos / 60) * 360;
-            const gradosMinutos = (minutos / 60) * 360 + (segundos / 60) * 6;
-            const gradosHoras = ((horas % 12) / 12) * 360 + (minutos / 60) * 30;
+    <p class="mensaje-estado" id="estadoConfirmacion" aria-live="polite"></p>
+  </section>
 
-            document.getElementById('agujaSegundo').style.transform = `translateX(-50%) rotate(${gradosSegundos}deg)`;
-            document.getElementById('agujaMinuto').style.transform = `translateX(-50%) rotate(${gradosMinutos}deg)`;
-            document.getElementById('agujaHora').style.transform = `translateX(-50%) rotate(${gradosHoras}deg)`;
-        }
-        setInterval(actualizarRelojAnalogico, 1000);
-        actualizarRelojAnalogico();
+  <!-- CANCIÓN PARA LOS NOVIOS -->
+  <section class="seccion">
+    <h2 class="titulo">Una canción para nosotros</h2>
 
-        const fechaBoda = new Date("December 19, 2026 21:00:00").getTime();
-        const x = setInterval(function() {
-            const ahora = new Date().getTime();
-            const distancia = fechaBoda - ahora;
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+    <p class="texto">
+      ¿Hay alguna canción que te haga pensar en nosotros?
+      ¡Nos encantaría recibir tu sugerencia!
+    </p>
 
-            document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
-            document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
-            document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
-            document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+    <form class="formulario" id="formCancion">
+      <label for="nombreCancion">Tu nombre</label>
+      <input
+        id="nombreCancion"
+        type="text"
+        placeholder="¿Quién la recomienda?"
+        required
+      >
 
-            if (distancia < 0) {
-                clearInterval(x);
-                document.querySelector(".cronometro").innerHTML = "<b>¡HOY ES EL GRAN DÍA!</b>";
-            }
-        }, 1000);
+      <label for="cancionSugerida">Nombre de la canción y artista</label>
+      <input
+        id="cancionSugerida"
+        type="text"
+        placeholder="Canción y artista"
+        required
+      >
 
-        function copiarDato(idTexto, idMsg) {
-            const texto = document.getElementById(idTexto).innerText;
-            navigator.clipboard.writeText(texto).then(() => {
-                const msg = document.getElementById(idMsg);
-                msg.style.display = 'block';
-                setTimeout(() => { msg.style.display = 'none'; }, 2500);
-            });
-        }
+      <button class="boton" type="submit">
+        Enviar sugerencia
+      </button>
+    </form>
 
-        function sugerirCancion() {
-            const val = document.getElementById('cancionInput').value.trim();
-            if (val !== "") {
-                document.getElementById('msgCancion').style.display = 'block';
-                document.getElementById('cancionInput').value = "";
-                setTimeout(() => { document.getElementById('msgCancion').style.display = 'none'; }, 3000);
-            }
-        }
+    <p class="mensaje-estado" id="estadoCancion" aria-live="polite"></p>
+  </section>
 
-        function enviarRSVP(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombreInvitado').value;
-            const asistencia = document.getElementById('asistenciaSelect').value;
-            const mensaje = `¡Hola Alan y Sol! Soy ${nombre}.%0A${asistencia}.`;
-            const telefono = "5491123983071"; 
-            window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
-        }
-    </script>
+  <!-- REGALO -->
+  <section class="seccion">
+    <h2 class="titulo">Un regalo para nosotros</h2>
+
+    <p class="texto">
+      Lo más importante es compartir este día con ustedes.
+      Si además desean hacernos un regalo, pueden hacerlo
+      a través de los siguientes datos.
+    </p>
+
+    <div class="datos-regalo">
+      <p class="mini-titulo">Alias</p>
+      <p class="alias" id="aliasRegalo">labodadealanysol</p>
+
+      <p class="mini-titulo" style="margin-top:18px">Titular</p>
+      <p>Rosario Soledad Patitucci</p>
+
+      <p class="mini-titulo" style="margin-top:18px">CBU</p>
+      <p id="cbuRegalo">1430001713038912300011</p>
+
+      <button class="boton" type="button" id="copiarAlias">
+        Copiar alias
+      </button>
+
+      <button class="boton boton-secundario" type="button" id="copiarCBU">
+        Copiar CBU
+      </button>
+
+      <p class="mensaje-estado" id="estadoCopia" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- VERSÍCULO -->
+  <section class="seccion">
+    <h2 class="titulo">El amor todo lo soporta</h2>
+
+    <p class="texto">
+      “Todo lo sufre, todo lo cree, todo lo espera,
+      todo lo soporta”.
+    </p>
+
+    <div class="separador"></div>
+
+    <p class="mini-titulo">1 Corintios 13:7</p>
+  </section>
+
+  <!-- CIERRE -->
+  <footer class="pie">
+    <p class="mini-titulo">Con todo nuestro amor</p>
+    <h2 class="pie-nombres">Alan &amp; Sol</h2>
+
+    <p>
+      Gracias por formar parte de nuestra historia.
+      ¡Los esperamos para celebrar juntos!
+    </p>
+
+    <div class="separador"></div>
+
+    <p class="mini-titulo">19 · 12 · 2026</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  const portada = document.getElementById('portada');
+  const invitacion = document.getElementById('invitacion');
+  const botonAbrir = document.getElementById('botonAbrir');
+  const sobre = document.getElementById('sobre');
+  const musica = document.getElementById('musica');
+
+  let invitacionAbierta = false;
+
+  function abrirInvitacion() {
+    if (invitacionAbierta) return;
+    invitacionAbierta = true;
+
+    invitacion.classList.add('visible');
+    portada.classList.add('oculta');
+
+    document.body.style.background = '#e9dfcf';
+
+    musica.play().catch(function () {
+      // Algunos celulares requieren habilitar la reproducción manualmente.
+    });
+
+    setTimeout(function () {
+      portada.style.display = 'none';
+    }, 900);
+  }
+
+  botonAbrir.addEventListener('click', abrirInvitacion);
+  sobre.addEventListener('click', abrirInvitacion);
+
+  sobre.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      abrirInvitacion();
+    }
+  });
+
+  // Cuenta regresiva para el 19 de diciembre de 2026 a las 21:00.
+  const fechaBoda = new Date(2026, 11, 19, 21, 0, 0);
+
+  function actualizarCuenta() {
+    const diferencia = fechaBoda.getTime() - Date.now();
+
+    if (diferencia <= 0) {
+      document.getElementById('dias').textContent = '0';
+      document.getElementById('horas').textContent = '00';
+      document.getElementById('minutos').textContent = '00';
+      document.getElementById('segundos').textContent = '00';
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById('dias').textContent = dias;
+    document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+    document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+    document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+  }
+
+  actualizarCuenta();
+  setInterval(actualizarCuenta, 1000);
+
+  // Confirmación de asistencia por WhatsApp.
+  document.getElementById('formConfirmacion').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const asistencia = document.getElementById('asistencia').value;
+    const cantidad = document.getElementById('cantidad').value;
+
+    if (!nombre || !asistencia || !cantidad) return;
+
+    const mensaje =
+      'Hola, soy ' + nombre + '. ' +
+      'Confirmación para la boda de Alan y Sol: ' + asistencia + '. ' +
+      'Cantidad de personas: ' + cantidad + '.';
+
+    const telefono = '5491123983071';
+    const url = 'https://wa.me/' + telefono + '?text=' + encodeURIComponent(mensaje);
+
+    document.getElementById('estadoConfirmacion').textContent =
+      'Se abrirá WhatsApp para enviar tu confirmación.';
+
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  // Sugerencia musical por WhatsApp.
+  document.getElementById('formCancion').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById('nombreCancion').value.trim();
+    const cancion = document.getElementById('cancionSugerida').value.trim();
+
+    if (!nombre || !cancion) return;
+
+    const mensaje =
+      '¡Hola, Alan y Sol! Soy ' + nombre +
+      ' y les sugiero esta canción para su boda: ' + cancion + '.';
+
+    const telefono = '5491123983071';
+    const url = 'https://wa.me/' + telefono + '?text=' + encodeURIComponent(mensaje);
+
+    document.getElementById('estadoCancion').textContent =
+      'Se abrirá WhatsApp para enviar tu sugerencia.';
+
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  // Copiar datos para regalo.
+  async function copiarTexto(texto) {
+    try {
+      await navigator.clipboard.writeText(texto);
+      document.getElementById('estadoCopia').textContent = '¡Copiado correctamente!';
+    } catch (error) {
+      const area = document.createElement('textarea');
+      area.value = texto;
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+
+      const copiado = document.execCommand('copy');
+      area.remove();
+
+      document.getElementById('estadoCopia').textContent =
+        copiado ? '¡Copiado correctamente!' :
+        'No se pudo copiar. Mantené presionado el dato para copiarlo.';
+    }
+  }
+
+  document.getElementById('copiarAlias').addEventListener('click', function () {
+    copiarTexto(document.getElementById('aliasRegalo').textContent.trim());
+  });
+
+  document.getElementById('copiarCBU').addEventListener('click', function () {
+    copiarTexto(document.getElementById('cbuRegalo').textContent.trim());
+  });
+})();
+</script>
+
 </body>
 </html>
